@@ -1,9 +1,8 @@
-archetype (adl_version=1.4; uid=2fe9e9f8-adfd-4406-878a-82b38ef498a9)
+﻿archetype (adl_version=1.4; uid=2fe9e9f8-adfd-4406-878a-82b38ef498a9)
 	openEHR-EHR-CLUSTER.anatomical_location.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Anatomical location
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -69,21 +68,17 @@ language
 			>
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2008-11-10">
 		["name"] = <"Heather Leslie">
 		["organisation"] = <"Ocean Informatics">
 		["email"] = <"heather.leslie@oceaninformatics.com">
+		["date"] = <"2008-11-10">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Grethe Almenning, Bergen kommune, Norway","Tomas Alme, DIPS, Norway","Anne Pauline Anderssen, Helse Nord RHF, Norway","Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Koray Atalag, University of Auckland, New Zealand","Silje Ljosland Bakke, Helse Vest IKT AS, Norway (Nasjonal IKT redaktør)","Maria Beate Nupen, Oslo Universitetssykehus, Norway","Lars Bitsch-Larsen, Haukeland University Hospital, Bergen, Norway","Hanne Marte Bårholm, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Rong Chen, Cambio Healthcare Systems, Sweden","Stephen Chu, Queensland Health, Australia","Lisbeth Dahlhaug, Helse Midt - Norge IT, Norway","Mona Didriksen, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Aitor Eguzkitza, UPNA (Public University of Navarre) - CHN (Complejo Hospitalario de Navarra), Spain","Shahla Foozonkhah, Ocean Informatics, Australia","Einar Fosse, UNN HF, Norwegian Centre for Integrated Care and Telemedicine, Norway","Sebastian Garde, Ocean Informatics, Germany","Bente Gjelsvik, Helse Bergen, Norway","Heather Grain, Llewelyn Grain Informatics, Australia","Sam Heard, Ocean Informatics, Australia","Ingrid Heitmann, NTNU, Norway","Andreas Hering, Helse Bergen HF, Haukeland universitetssjukehus, Norway","Anca Heyd, DIPS ASA, Norway","Dunmail Hodkinson, Black Pear Software Ltd, UK","Erling Are Hole, Helse Bergen, Norway","Lars Karlsen, DIPS ASA, Norway","Lars Morgan Karlsen, Nordlandssykehuset Bodø, Norway","Shinji Kobayashi, Kyoto University, Japan","Kanika Kuwelker, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Liv Laugen, Oslo universitetssykehus, Norway (Nasjonal IKT redaktør)","Sabine Leh, Helse Bergen, Norway","Heather Leslie, Ocean Informatics, Australia (openEHR Editor)","Vesna Levasic, Orthopaedic Hospital Valdoltra, Slovenia","Hallvard Lærum, Direktoratet for e-helse, Norway","Luis Marco Ruiz, Norwegian Center for Integrated Care and Telemedicine, Norway","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)","Erik Nissen, Cambio Healthcare Systems AB, Sweden","Maria Beate Nupen-Stieng, Oslo Universitetssykehus, Norway","Bjørn Næss, DIPS ASA, Norway","Andrej Orel, Marand d.o.o., Slovenia","Rune Pedersen, Universitetssykehuset i Nord Norge, Norway","Jussara Rotzsch, UNB, Brazil","Terje Sagmyr, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Thomas Schopf, University Hospital of North-Norway, Norway","Nils Thomas Songstad, UNN HF, BUK, Barneavdelingen., Norway","Micaela Thierley, Helse Vest IKT, Norway","Rowan Thomas, St. Vincent's Hospital Melbourne, Australia","Richard Townley-O'Neill, NEHTA, Australia","John Tore Valand, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Marit Alice Venheim, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Dmitri Wall, Irish Skin Foundation, Ireland">
 	details = <
 		["de"] = <
 			language = <[ISO_639-1::de]>
 			purpose = <"Zur Identifikation und Dokumentation von strukturierten Daten bezüglich einer bestimmten Körperstelle oder innerhalb des menschlichen Körpers, unter Verwendung makroskopischer anatomischer Fachbegriffe.">
-			keywords = <"Lokalisation","Stelle","anatomisch","anatomischer Bereich","topographische Anatomie","makroskopisch","Anatomie">
 			use = <"Zur Dokumentation von strukturierten und konsistenten Details eines einzelnen bestimmten physischen Bereich innerhalb des menschlichen Körpers verwenden.
 
 Dieser Archetyp wurde speziell für die Verwendung im Rahmen von allen geeigneten ENTRY- oder CLUSTER-Archetypen entwickelt, die den Kontext des anatomischen Fundortes liefern.
@@ -98,12 +93,12 @@ Der SLOT \"Alternative Struktur\" erlaubt die Aufnahme zusätzlicher Archetypen,
 
 Wenn dieser Archetyp in anderen Archetypen verwendet wird, in denen das angegebene Thema nicht die Person ist, für die der Datensatz erstellt wird, z.B. ein Fötus in-utero, dann wird der anatomische Ort eine Körperstelle auf oder innerhalb des Fötus identifizieren.\"
 ">
+			keywords = <"Lokalisation", "Stelle", "anatomisch", "anatomischer Bereich", "topographische Anatomie", "makroskopisch", "Anatomie">
 			misuse = <"Nicht zur Angabe von unilateralen/bilateralen Vorkommen eines anatomischen Merkmals verwenden.">
 		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att identifiera och registrera strukturerade detaljer om ett enskilt fysiskt ställe, på eller i människokroppen genom att använda makroskopiska anatomiska termer.">
-			keywords = <"lokalisation","ställe","anatomisk","anatomiskt område","topografisk anatomi","makroskopisk","anatomi">
 			use = <"Används för att strukturerat och konsekvent registrera detaljer om ett enskilt fysiskt ställe på eller i människokroppen.
 
 Arketypen är specifikt utformad för att användas i lämpliga ENTRY- och CLUSTER-arketyper som sätter den anatomiska lokalisationen i ett sammanhang.
@@ -117,13 +112,12 @@ En kombination av dataelement i den här arketypen kan användas för att regist
 SLOT ‘Alternativt struktur’ möjliggör inkludering av ytterligare arketyper som ger en alternativ struktur för att beskriva samma anatomisk plats, så som CLUSTER.anatomical_location_relative eller CLUSTER.anatomical_location_clock, om detta skulle krävas. I situationen där denna arketyp kan användas endast för att namnge en stor och/eller ej specifik kroppsdel, kan användning av CLUSTER.anatomical_location_relative arketyp stödja registrering av mer exakt anatomisk plats – till exempel , 2cm anteriort från fossa cubitalis på vänster arm eller 4 cm under revbensbågen i medioklavikularlinjen på bröstväggen.
 
 Om denna arketyp används inom andra arketyper där patienten inte är den individen för vilken dokumentation skapas, till exempel ett foster i livmodern, används denna arketyp för att identifiera en anatomisk plats på eller i fostret.">
+			keywords = <"lokalisation", "ställe", "anatomisk", "anatomiskt område", "topografisk anatomi", "makroskopisk", "anatomi">
 			misuse = <"Används inte för att specificera unilaterala/bilaterala förekomster av ett anatomiskt särdrag">
 		>
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For registering av strukturerte detaljer om én enkelt makroskopisk fysisk lokalisering på eller i menneskekroppen.">
-			keywords = <"sted","lokalisering","lokalisasjon","anatomisk","kroppssted","anatomisk region","topografisk anatomi","makroskopisk","anatomi","kroppsdel","dermatom","legemsdel">
-			copyright = <"© openEHR Foundation">
 			use = <"Brukes for å dokumentere strukturerte og ensartede detaljer om et enkelt identifisert fysisk sted på eller i menneskekroppen.
 
 Denne arketypen er spesifikt designet for bruk i ENTRY og CLUSTER-arketyper som gir konteksten for den anatomiske lokaliseringen.
@@ -137,12 +131,13 @@ En kombinasjon av dataelementer i denne arketypen kan brukes for individuell reg
 Arketypen inneholder et \"Alternativ struktur\" SLOT som tillater inklusjon av ytterligere arketyper som gir en alternativ struktur for beskrivelse av det samme kroppssted, som CLUSTER.anatomical_location_relative eller CLUSTER.anatomical_location_clock om dette er nødvendig. I en situasjon hvor denne arketypen bare brukes til å navngi en større og/eller ikke-spesifikk kroppsdel, kan ytterligere bruk av CLUSTER.anatomical_location_relative-arketypen understøtte registrering av en mer presis lokasjon - for eksempel 2 cm anteriort for venstre arms cubitalfossa eller 4 cm under høyre costamargin på brystveggen i midtclaviculærlinjen.
 
 Hvis denne arketypen brukes i andre arketyper hvor pasienten/klienten ikke er den som dokumentasjonen omhandler, for eksempel foetus-in-utero, så vil den anatomiske lokaliseringen bli identifisert som en lokalisering på eller i kroppen til fosteret.">
+			keywords = <"sted", "lokalisering", "lokalisasjon", "anatomisk", "kroppssted", "anatomisk region", "topografisk anatomi", "makroskopisk", "anatomi", "kroppsdel", "dermatom", "legemsdel">
 			misuse = <"Brukes ikke for spesifisering av unilateral/bilateral forekomst av et anatomisk kjennetegn.">
+			copyright = <"© openEHR Foundation">
 		>
 		["pt-br"] = <
 			language = <[ISO_639-1::pt-br]>
 			purpose = <"Para identificar e anotar informações estruturadas sobre um único local físico do corpo humano usando termos anatômicos macroscópicos.">
-			keywords = <"localização","local","anatômico","região anatômica","topografia anatômica","macroscópico","anatomia">
 			use = <"Use para gravar detalhes estruturados e consistentes sobre um único local físico identificado do corpo humano.
 
 Este arquétipo foi projetado especificamente para ser utilizado dentro do contexto de qualquer entrada ou CLUSTER arquétipo que forneça o contexto da localização anatômica.
@@ -156,27 +151,28 @@ Uma combinação de elementos de dados neste arquétipo pode ser usado para grav
 A estrutura alternativa SLOT permite a inclusão de arquétipos adicionais que fornecem uma estrutura alternativa para descrever o mesmo local do corpo, como CLUSTER.anatomical_location_relative ou CLUSTER.anatomical_location_clock, esta deve ser exigida. Na situação onde este arquétipo só pode ser usado para nomear uma parte do corpo e/ou não-específica, o uso adicional do arquétipo CLUSTER.anatomical_location_relative oferecerá suporte a gravação de uma localização mais precisa - por exemplo, 2 cm anterior da fossa cubital do antebraço esquerdo ou 4 cm abaixo da margem costal de R na parede torácica na linha médio-clavicular.
 
 Se este arquétipo é usado dentro de outros arquétipos onde o assunto especificado de cuidados não é o indivíduo para quem o registro está sendo criado, por exemplo um feto em útero, então a localização anatômica vai estar realizada identificando um local do corpo ou com o feto.">
+			keywords = <"localização", "local", "anatômico", "região anatômica", "topografia anatômica", "macroscópico", "anatomia">
 			misuse = <"Não deve ser usado para especificar as ocorrências unilateral/bilateral de uma característica anatômica.">
 		>
 		["ar-sy"] = <
 			language = <[ISO_639-1::ar-sy]>
 			purpose = <"تسجيل المكان التشريحي بالتفصيل">
-			keywords = <"الموقع","المكان","تشريحي">
-			copyright = <"© openEHR Foundation">
+			use = <"">
+			keywords = <"الموقع", "المكان", "تشريحي">
 			misuse = <"لا يستخدم لتحديد حالات الحدوث في جانب واحد أو في الجانبين - حيث إن ذلك متعلق بتقييم قد يتضمن العديد من الأماكن">
+			copyright = <"© openEHR Foundation">
 		>
 		["sl"] = <
 			language = <[ISO_639-1::sl]>
 			purpose = <"*To record details about anatomical location.(en)">
-			keywords = <"*location(en)","*site(en)","*anatomical(en)">
-			copyright = <"© openEHR Foundation">
+			use = <"">
+			keywords = <"*location(en)", "*site(en)", "*anatomical(en)">
 			misuse = <"*Not for specifiying unilateral/bilateral occurence - this is related to an evaluation which perhaps includes multiple locations.(en)">
+			copyright = <"© openEHR Foundation">
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To identify and record structured details about a single physical site on, or within, the human body using macroscopic anatomical terms.">
-			keywords = <"location","site","anatomical","anatomic region","topographic anatomy","macroscopic","anatomic","anatomy">
-			copyright = <"© openEHR Foundation">
 			use = <"Use to record structured and consistent details about a single identified physical site on, or within, the human body. 
 
 This archetype is specifically designed to be used within the context of any appropriate ENTRY or CLUSTER archetypes which supply the context of the anatomical location. 
@@ -190,12 +186,13 @@ A combination of the data elements in this archetype can be used to individually
 The 'Alternative structure' SLOT allows inclusion of additional archetypes that provide an alternative structure for describing the same body site, such as CLUSTER.anatomical_location_relative or CLUSTER.anatomical_location_clock, should this be required. In the situation where this archetype can only be used to name a large and/or non-specific body part, the additional use of the CLUSTER.anatomical_location_relative archetype will support recording of a more precise location - for example, 2 cm anterior to the cubital fossa of the left forearm or 4 cm below R costal margin on the chest wall in the mid-clavicular line.
 
 If this archetype is used within other archetypes where the specified subject of care is not the individual for whom the record is being created, for example a fetus in-utero, then the anatomical location will be identifying a body site on or within the fetus.">
+			keywords = <"location", "site", "anatomical", "anatomic region", "topographic anatomy", "macroscopic", "anatomic", "anatomy">
 			misuse = <"Not to be used for specifiying unilateral/bilateral occurrences of an anatomical feature.">
+			copyright = <"© openEHR Foundation">
 		>
 		["fr"] = <
 			language = <[ISO_639-1::fr]>
 			purpose = <"Identifier et enregistrer des détails structurés concernant un site physique unique sur ou dans le corps humain en utilisant des termes anatomiques macroscopiques.">
-			keywords = <"emplacement","site","anatomique","région anatomique","anatomie topographique","macroscopique","anatomique","anatomie">
 			use = <"À utiliser pour enregistrer des détails structurés et cohérents sur un seul site physique identifié sur ou dans le corps humain. 
 
 Cet archétype est spécifiquement conçu pour être utilisé dans le contexte des archétypes ENTRY ou CLUSTER appropriés qui fournissent le contexte de la localisation anatomique. 
@@ -209,16 +206,19 @@ Une combinaison des éléments de données de cet archétype peut être utilisé
 Le SLOT \"Structure alternative\" permet d'inclure des archétypes supplémentaires qui fournissent une structure alternative pour décrire le même site corporel, comme CLUSTER.anatomical_location_relative ou CLUSTER.anatomical_location_clock, si cela s'avère nécessaire. Dans le cas où cet archétype ne peut être utilisé que pour nommer une partie du corps importante et/ou non spécifique, l'utilisation supplémentaire de l'archétype CLUSTER.anatomical_location_relative permettra d'enregistrer une localisation plus précise - par exemple, 2 cm en avant de la fosse cubitale de l'avant-bras gauche ou 4 cm en dessous du rebord costal R sur la paroi thoracique, au niveau de la ligne claviculaire médiane.
 
 Si cet archétype est utilisé dans d'autres archétypes où le sujet de soins spécifié n'est pas la personne pour laquelle le dossier est créé, par exemple un fœtus in-utero, la localisation anatomique identifiera alors un site corporel sur ou dans le fœtus.">
+			keywords = <"emplacement", "site", "anatomique", "région anatomique", "anatomie topographique", "macroscopique", "anatomique", "anatomie">
 			misuse = <"Ne pas utiliser pour spécifier les occurrences unilatérales/bilatérales d'une caractéristique anatomique.">
 		>
 		["nl"] = <
 			language = <[ISO_639-1::nl]>
 			purpose = <"Om gestructureerde details over een structuur op of in het menselijk lichaam te identificeren en vast te leggen, in macroscopische anatomische termen.">
-			keywords = <"locatie","structuur","anatomisch","anatomische regio","topografische anatomie","macroscopisch">
 			use = <"Gebruik om gestructureerde details over een structuur op of in het menselijk lichaam te identificeren en vast te leggen.">
+			keywords = <"locatie", "structuur", "anatomisch", "anatomische regio", "topografische anatomie", "macroscopisch">
 			misuse = <"Niet gebruiken om meerdere unilaterale/bilaterale structuren vast te leggen.">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Grethe Almenning, Bergen kommune, Norway", "Tomas Alme, DIPS, Norway", "Anne Pauline Anderssen, Helse Nord RHF, Norway", "Vebjørn Arntzen, Oslo universitetssykehus HF, Norway", "Koray Atalag, University of Auckland, New Zealand", "Silje Ljosland Bakke, Helse Bergen HF, Norway (Nasjonal IKT redaktør)", "Lars Bitsch-Larsen, Haukeland University Hospital, Bergen, Norway", "Rong Chen, Cambio Healthcare Systems, Sweden", "Stephen Chu, Queensland Health, Australia", "Lisbeth Dahlhaug, Helse Midt - Norge IT, Norway", "Aitor Eguzkitza, UPNA (Public University of Navarre) - CHN (Complejo Hospitalario de Navarra), Spain", "Shahla Foozonkhah, Ocean Informatics, Australia", "Einar Fosse, UNN HF, Norwegian Centre for Integrated Care and Telemedicine, Norway", "Sebastian Garde, Ocean Informatics, Germany", "Bente Gjelsvik, Helse Bergen, Norway", "Heather Grain, Llewelyn Grain Informatics, Australia", "Sam Heard, Ocean Informatics, Australia", "Ingrid Heitmann, NTNU, Norway", "Andreas Hering, Helse Bergen HF, Haukeland universitetssjukehus, Norway", "Anca Heyd, DIPS ASA, Norway", "Dunmail Hodkinson, Black Pear Software Ltd, UK", "Erling Are Hole, Helse Bergen, Norway", "Lars Karlsen, DIPS ASA, Norway", "Lars Morgan Karlsen, DIPS ASA, Norway", "Shinji Kobayashi, Kyoto University, Japan", "Sabine Leh, Helse-Bergen, Norway", "Heather Leslie, Ocean Informatics, Australia (openEHR Editor)", "Vesna Levasic, Orthopaedic Hospital Valdoltra, Slovenia", "Hallvard Lærum, Oslo Universitetssykehus HF, Norway", "Luis Marco Ruiz, Norwegian Center for Integrated Care and Telemedicine, Norway", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)", "Erik Nissen, Cambio Healthcare Systems AB, Sweden", "Maria Beate Nupen, Oslo Universitetssykehus, Norway", "Bjørn Næss, DIPS ASA, Norway", "Andrej Orel, Marand d.o.o., Slovenia", "Rune Pedersen, Universitetssykehuset i Nord Norge, Norway", "Jussara Rotzsch, UNB, Brazil", "Thomas Schopf, University Hospital of North-Norway, Norway", "Nils Thomas Songstad, UNN HF, BUK, Barneavdelingen., Norway", "Micaela Thierley, Helse Bergen, Norway", "Rowan Thomas, St. Vincent's Hospital Melbourne, Australia", "Richard Townley-O'Neill, NEHTA, Australia", "John Tore Valand, Haukeland Universitetssjukehus, Norway (Nasjonal IKT redaktør)", "Dmitri Wall, Irish Skin Foundation, Ireland">
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
@@ -228,9 +228,9 @@ Si cet archétype est utilisé dans d'autres archétypes où le sujet de soins s
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
 		["MD5-CAM-1.0.1"] = <"430B520EC4563F96465173ED840F7A4A">
-		["build_uid"] = <"ea61672c-ecdd-4874-bb87-3320ccab2a43">
+		["build_uid"] = <"a35e9727-a67b-469f-ab59-a7216d21f7df">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact https://www.snomed.org/snomed-ct/get-snomed or info@snomed.org.">
-		["revision"] = <"1.2.0">
+		["revision"] = <"1.3.1">
 	>
 
 definition
@@ -315,6 +315,7 @@ definition
 			}
 		}
 	}
+
 
 ontology
 	terminologies_available = <"SNOMED-CT", ...>
@@ -1704,7 +1705,7 @@ In most situations this will be a single specific site. This data element has mu
 			>
 		>
 	>
-	term_binding = <
+	term_bindings = <
 		["SNOMED-CT"] = <
 			items = <
 				["at0002"] = <[SNOMED-CT::272741003]>
