@@ -1,12 +1,20 @@
-archetype (adl_version=1.4; uid=442431f2-fcfb-47b5-b0f7-ba7ff33c2b59)
+﻿archetype (adl_version=1.4; uid=47c86b03-8289-497c-8203-5234618614ad)
 	openEHR-EHR-OBSERVATION.body_surface_area.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Body surface area
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			author = <
+				["name"] = <"Aljoscha Kindermann">
+				["organisation"] = <"University Hospital of Heidelberg">
+				["email"] = <"aljoscha.kindermann@med.uni-heidelberg.de">
+			>
+			accreditation = <"Data Steward HiGHmed Use Case Cardiology">
+		>
 		["fi"] = <
 			language = <[ISO_639-1::fi]>
 			author = <
@@ -24,27 +32,38 @@ language
 			>
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2012-12-07">
 		["name"] = <"Cailin Lowry">
 		["organisation"] = <"The Chris O'Brien Lifehouse at RPA">
 		["email"] = <"cailin.lowry@lifehouserpa.org.au">
+		["date"] = <"2012-12-07">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Tomas Alme, Norway","Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Koray Atalag, University of Auckland, New Zealand","Heidi Aursand, Oslo universitetssykehus, Norway","Gustavo Bacelar-Silva, Healthcare Designs, Brazil (openEHR Editor)","Silje Ljosland Bakke, Nasjonal IKT HF, Norway (Nasjonal IKT redaktør)","Malin Berg, DIPS ASA, Norway","Lars Bitsch-Larsen, Haukeland University hospital, Norway","Laila Bruun, Oslo universitetssykehus HF, Norway","Margaret Campbell, Queensland Health, Australia","Rong Chen, Cambio Healthcare Systems, Sweden","Lisbeth Dahlhaug, Helse Midt - Norge IT, Norway","Einar Fosse, National Centre for Integrated Care and Telemedicine, Norway","Sebastian Garde, Ocean Informatics, Germany","Christian Ghan, Lifehouse, Australia","Heather Grain, Llewelyn Grain Informatics, Australia","Sam Heard, Ocean Informatics, Australia","Hilde Hollås, DIPS AS, Norway","Evelyn Hovenga, EJSH Consulting, Australia","Lars Ivar Mehlum, Nasjonal IKT HF, Norway","Lars Karlsen, DIPS ASA, Norway","Lars Morgan Karlsen, Nordlandssykehuset Bodø, Norway","Thomas Kilvær, Universitetssykehuset Nord Norge, Norway","Shinji Kobayashi, Kyoto University, Japan","Harmony Kosola, Alberta Health Services, Canada","Liv Laugen, Oslo universitetssykehus, Norway","Heather Leslie, Atomica Informatics, Australia (openEHR Editor)","Siv Marie Lien, DIPS ASA, Norway","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)","Bjoern Naess, DIPS ASA, Norway","Andrej Orel, Marand d.o.o., Slovenia","Jussara Rotzsch, UNB, Brazil","Elisabeth Sagafos, Sykehuset Telemark HF, Norway","Ole Martin Sand, DIPS ASA, Norway","Gro-Hilde Severinsen, Norwegian center for ehealthresearch, Norway","Line Silsand, Universitetssykehuset i Nord-Norge, Norway","Trine Strand, Oslo Universitetssykehus (OUS), Norway","Micaela Thierley, Helse Bergen/Haraldsplass sykehus, Norway","Rowan Thomas, St. Vincent's Hospital Melbourne, Australia","Richard Townley-O'Neill, Australian Digital Health Agency, Australia","Gro-Hilde Ulriksen, Norwegian center for ehealthresearch, Norway","John Tore Valand, Haukeland Universitetssjukehus, Norway (Nasjonal IKT redaktør)","Dennis Valk, Code24 BV, Netherlands">
 	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"Zur Repräsentation der gemessenen oder berechneten Oberfläche des menschlichen Körpers.">
+			use = <"Zur Repräsentation der gemessenen oder berechneten Oberfläche des menschlichen Körpers.
+
+KOF bzw. BSA kann zur Unterstützung der klinischen Entscheidungsfindung verwendet werden, einschließlich, aber nicht beschränkt auf:
+- die Bestimmung der Dosierung der Chemotherapie und anderer Medikamente mit einem engen therapeutischen Index;
+- der Berechnung des Herzindex; und
+- der Berechnung des intravenösen Flüssigkeitsbedarfs.">
+			keywords = <"Körper", "Oberfläche", "Fläche", "Körperoberfläche", "KOF", "BSA">
+			misuse = <"Nicht zur Repräsentation des prozentualen Anteils der Körperoberfläche, der an Verbrennungen oder anderen Hautschäden usw. beteiligt ist. Diese Informationen sollten in separaten spezifischen Archetypen zur Beurteilung von Verbrennungen erfasst werden.
+
+Nicht zu verwenden, um die angepasste Körperoberflächenfläche aufzuzeichnen, z.B. eine Berechnung der KOF/BSA einer Person mit Gliedmaßenamputation, basierend auf anderen Körperteilmessungen und einem Algorithmus - verwenden Sie OBSERVATION.body_surface_area-adjusted.">
+		>
 		["fi"] = <
 			language = <[ISO_639-1::fi]>
 			purpose = <"*To record the measured or calculated surface area of a human body.(en)">
-			keywords = <"*body(en)","*surface(en)","*area(en)","*BSA(en)","*surface area(en)">
 			use = <"*Use to record the measured or calculated surface area of a human body. 
 
 BSA can be used to support clinical decision-making, including but not limited to:
 - determine the dosage of chemotherapy and other drugs with a narrow therapeutic index; 
 - calculation of the cardiac index; and
 - calculation of intravenous fluid requirements.(en)">
+			keywords = <"*body(en)", "*surface(en)", "*area(en)", "*BSA(en)", "*surface area(en)">
 			misuse = <"*Not to be used to record the percentage of body surface area involvement in burns or other skin damage etc. This information should be carried in separate specific archetypes related to burns assessment.
 
 Not to be used to record the adjusted Body surface area eg a calculation of the BSA of a person with limb amputation, based on other body part measurements and an algorithm - use OBSERVATION.body_surface_area-adjusted.(en)">
@@ -52,13 +71,13 @@ Not to be used to record the adjusted Body surface area eg a calculation of the 
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å registrere måling eller beregning av en persons kroppsoverflate.">
-			keywords = <"kropp","overflate","areal","BSA">
 			use = <"Brukes for å registrere måling eller beregning av en persons kroppsoverflate.
 
 Kroppsoverflaten kan brukes for å understøtte kliniske beslutninger som for eksempel:
 - å beregne riktig dose av et legemiddel som har smal terapeutisk indeks som f.eks kjemoterapeutiske medikamenter 
 - beregning av minuttvolum per overflate (Cardiac Index)
 - beregning av behov for intravenøse væsker">
+			keywords = <"kropp", "overflate", "areal", "BSA">
 			misuse = <"Brukes ikke for å registrere prosentandel av kroppsoverflaten som er påvirket av brannskade eller andre skader i huden. Dette registreres i egne arketyper som er relatert til vurdering av brannskader eller sår.
 
 Brukes ikke for å registrere justert kroppsoverflate, for eksempel en utregning av kroppsoverflate hos en person som har amputert en kroppsdel. Bruk arketypen OBSERVATION.body_surface_area-adjusted.">
@@ -66,19 +85,21 @@ Brukes ikke for å registrere justert kroppsoverflate, for eksempel en utregning
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the measured or calculated surface area of a human body.">
-			keywords = <"body","surface","area","BSA","surface area">
-			copyright = <"© openEHR Foundation">
 			use = <"Use to record the measured or calculated surface area of a human body. 
 
 BSA can be used to support clinical decision-making, including but not limited to:
 - determine the dosage of chemotherapy and other drugs with a narrow therapeutic index; 
 - calculation of the cardiac index; and
 - calculation of intravenous fluid requirements.">
+			keywords = <"body", "surface", "area", "BSA", "surface area">
 			misuse = <"Not to be used to record the percentage of body surface area involvement in burns or other skin damage etc. This information should be carried in separate specific archetypes related to burns assessment.
 
 Not to be used to record the adjusted Body surface area eg a calculation of the BSA of a person with limb amputation, based on other body part measurements and an algorithm - use OBSERVATION.body_surface_area-adjusted.">
+			copyright = <"© openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Tomas Alme, Norway", "Vebjørn Arntzen, Oslo University Hospital, Norway", "Koray Atalag, University of Auckland, New Zealand", "Heidi Aursand, Oslo universitetssykehus, Norway", "Gustavo Bacelar-Silva, Healthcare Designs, Brazil (openEHR Editor)", "Silje Ljosland Bakke, Nasjonal IKT HF, Norway (openEHR Editor)", "Malin Berg, DIPS ASA, Norway", "Lars Bitsch-Larsen, Haukeland University hospital, Norway", "Laila Bruun, Oslo universitetssykehus HF, Norway", "Margaret Campbell, Queensland Health, Australia", "Rong Chen, Cambio Healthcare Systems, Sweden", "Lisbeth Dahlhaug, Helse Midt - Norge IT, Norway", "Einar Fosse, National Centre for Integrated Care and Telemedicine, Norway", "Sebastian Garde, Ocean Informatics, Germany", "Christian Ghan, Lifehouse, Australia", "Heather Grain, Llewelyn Grain Informatics, Australia", "Sam Heard, Ocean Informatics, Australia", "Hilde Hollås, DIPS AS, Norway", "Evelyn Hovenga, EJSH Consulting, Australia", "Lars Karlsen, DIPS ASA, Norway", "Lars Morgan Karlsen, DIPS ASA, Norway", "Thomas Kilvær, Universitetssykehuset Nord Norge, Norway", "Shinji Kobayashi, Kyoto University, Japan", "Harmony Kosola, Alberta Health Services, Canada", "Liv Laugen, Oslo universitetssykehus, Norway", "Heather Leslie, Atomica Informatics, Australia (openEHR Editor)", "Siv Marie Lien, DIPS ASA, Norway", "Ole Martin Sand, DIPS ASA, Norway", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)", "Lars Ivar Mehlum, Nasjonal IKT HF, Norway", "Bjoern Naess, DIPS ASA, Norway", "Andrej Orel, Marand d.o.o., Slovenia", "Jussara Rotzsch, Hospital Alemão Oswaldo Cruz, Brazil", "Elisabeth Sagafos, Sykehuset Telemark HF, Norway", "Gro-Hilde Severinsen, Norwegian center for ehealthresearch, Norway", "Line Silsand, Universitetssykehuset i Nord-Norge, Norway", "Trine Strand, Oslo Universitetssykehus (OUS), Norway", "Norwegian Review Summary, Nasjonal IKT HF, Norway", "Micaela Thierley, Helse Bergen/Haraldsplass sykehus, Norway", "Rowan Thomas, St. Vincent's Hospital Melbourne, Australia", "John Tore Valand, Haukeland Universitetssjukehus, Norway (Nasjonal IKT redaktør)", "Richard Townley-O'Neill, Australian Digital Health Agency, Australia", "Gro-Hilde Ulriksen, Norwegian center for ehealthresearch, Norway", "Dennis Valk, Code24 BV, Netherlands">
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
@@ -100,21 +121,21 @@ Wang Y, Moss J, Thisted R. Predictors of body surface area. J Clin Anesth. 1992;
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"34DD848B4F67F69B8E7DC21E5AD244E9">
-		["build_uid"] = <"f5eb3d9f-6a91-451b-b233-58a20766f8fb">
-		["revision"] = <"1.0.0">
+		["MD5-CAM-1.0.1"] = <"C3362CD4E1C6A0A7484CBD220AA6A306">
+		["build_uid"] = <"a148404b-53c7-44fa-b5e8-6f84e04863d0">
+		["revision"] = <"1.1.3">
 	>
 
 definition
-	OBSERVATION[at0000] matches {    -- Body surface area
+	OBSERVATION[at0000] matches {	-- Body surface area
 		data matches {
-			HISTORY[at0001] matches {    -- Event Series
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {    -- Tree
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {1..*; unordered} matches {
-									ELEMENT[at0004] matches {    -- Body Surface Area
+									ELEMENT[at0004] matches {	-- Body Surface Area
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::335]>
@@ -128,7 +149,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0019] occurrences matches {0..1} matches {    -- Comment
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -137,9 +158,9 @@ definition
 							}
 						}
 						state matches {
-							ITEM_TREE[at0020] matches {    -- Tree
+							ITEM_TREE[at0020] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0021] occurrences matches {0..1} matches {    -- Confounding factors
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Confounding factors
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -152,41 +173,41 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0005] matches {    -- Tree
+			ITEM_TREE[at0005] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0009] occurrences matches {0..1} matches {    -- Method
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Method
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0010,    -- System entry
-									at0011]    -- Manual entry
+									at0010, 	-- System entry
+									at0011]	-- Manual entry
 								}
 							}
 						}
 					}
-					ELEMENT[at0006] occurrences matches {0..1} matches {    -- Formula
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Formula
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0012,    -- Dubois and Dubois
-									at0013,    -- Mosteller
-									at0014,    -- Haycock
-									at0015,    -- Gehan and George
-									at0016,    -- Boyd
-									at0017,    -- Fujimoto
-									at0018]    -- Takihara
+									at0012, 	-- Dubois and Dubois
+									at0013, 	-- Mosteller
+									at0014, 	-- Haycock
+									at0015, 	-- Gehan and George
+									at0016, 	-- Boyd
+									at0017, 	-- Fujimoto
+									at0018]	-- Takihara
 								}
 							}
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0008] occurrences matches {0..*} matches {    -- Device
+					allow_archetype CLUSTER[at0008] occurrences matches {0..*} matches {	-- Device
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1/}
 					}
-					allow_archetype CLUSTER[at0007] occurrences matches {0..*} matches {    -- Extension
+					allow_archetype CLUSTER[at0007] occurrences matches {0..*} matches {	-- Extension
 						include
 							archetype_id/value matches {/.*/}
 					}
@@ -194,6 +215,8 @@ definition
 			}
 		}
 	}
+
+
 
 ontology
 	term_definitions = <
@@ -485,6 +508,103 @@ ontology
 					text = <"Konfunderende faktorer">
 					description = <"Problemer eller faktorer som kan ha innvirkning på målingen eller beregningen av kroppsoverflate.">
 					comment = <"For eksempel: amputasjoner, eller hudsykdommer.">
+				>
+			>
+		>
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Körperoberfläche">
+					description = <"Die gemessene oder berechnete Oberfläche des menschlichen Körpers.">
+					comment = <"Wird auch als BSA oder KOF bezeichnet.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Beliebiges Ereignis">
+					description = <"Standardwert, ein undefinierter/s Zeitpunkt oder Intervallereignis, das explizit im Template oder zur Laufzeit der Anwendung definiert werden kann.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Körperoberfläche">
+					description = <"Die gemessene oder berechnete Oberfläche des menschlichen Körpers.">
+					comment = <"Zum Beispiel: \"1,81 m2\"">
+				>
+				["at0005"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"Formel">
+					description = <"Formel, die verwendet wurde um die KOF bzw. BSA zu berechnen.">
+					comment = <"Zum Beispiel: Mosteller, DuBois und DuBois, Haycock und Boyd.">
+				>
+				["at0007"] = <
+					text = <"Erweiterungen">
+					description = <"Zusätzliche Informationen, die zur Erfassung lokaler Inhalte oder zur Anpassung an andere Referenzmodelle/ Formalismen erforderlich sind.">
+					comment = <"Zum Beispiel: Lokale Informationsanforderungen oder zusätzliche Metadaten, um Verknüpfungen mit FHIR oder CIMI Äquivalenten herzustellen.">
+				>
+				["at0008"] = <
+					text = <"Gerät">
+					description = <"Das Gerät, das für die Messung oder Abschätzung der Körperoberfläche verwendet wurde.">
+				>
+				["at0009"] = <
+					text = <"Methode">
+					description = <"Die Methode, mit der die Körperoberfläche im klinischen System erfasst wurde.">
+				>
+				["at0010"] = <
+					text = <"Systemeingabe">
+					description = <"Die Fläche wurde automatisch durch das klinische System und ohne manuelles Eingreifen des Klinikers erfasst.">
+				>
+				["at0011"] = <
+					text = <"Manueller Eintrag">
+					description = <"Die Fläche wurde manuell durch den Kliniker erfasst.">
+				>
+				["at0012"] = <
+					text = <"DuBois und DuBois">
+					description = <"Die Formel nach DuBois und DuBois (DuBois-Formel) wurde verwendet um die Körperoberfläche zu berechnen.">
+				>
+				["at0013"] = <
+					text = <"Mosteller">
+					description = <"Die Mosteller-Formel wurde verwendet, um die Körperoberfläche zu berechnen.">
+				>
+				["at0014"] = <
+					text = <"Haycock">
+					description = <"Die Haycock-Formel wurde verwendet, um die Körperoberfläche zu berechnen.">
+				>
+				["at0015"] = <
+					text = <"Gehan und George">
+					description = <"Die Gehan-George-Formel wurde verwendet, um die Körperoberfläche zu berechnen.">
+				>
+				["at0016"] = <
+					text = <"Boyd">
+					description = <"Die Boyd-Formel wurde verwendet, um die Körperoberfläche zu berechnen.">
+				>
+				["at0017"] = <
+					text = <"Fujimoto">
+					description = <"Die Fujimoto-Formel wurde verwendet, um die Körperoberfläche zu berechnen.">
+				>
+				["at0018"] = <
+					text = <"Takihara">
+					description = <"Die Takihara-Formel wurde verwendet, um die Körperoberfläche zu berechnen.">
+				>
+				["at0019"] = <
+					text = <"Kommentar">
+					description = <"Sonstige Informationen über die Messung, die in keinem anderen Feld erfasst wurden.">
+				>
+				["at0020"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0021"] = <
+					text = <"Störfaktoren">
+					description = <"Aufzeichnung aller Probleme oder Faktoren, die sich auf die Messung oder Berechnung der Körperoberfläche auswirken können.">
+					comment = <"Zum Beispiel: Feststellung von Gliedmaßenamputationen; oder Hautkrankheiten.">
 				>
 			>
 		>
