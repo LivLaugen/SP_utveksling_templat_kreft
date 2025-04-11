@@ -1,0 +1,50 @@
+archetype (adl_version=1.4; uid=bea9bae8-e2d7-3b68-8257-e9efadbfd602)
+	openEHR-EHR-CLUSTER.oncology_aql_support_dips.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"0">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"04CDC10BFAD46C8343A0A7B3467DE652">
+		["build_uid"] = <"604502b3-d3e7-3dfe-9298-dbe0258bee2b">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Onkologi AQL hjelpefelt
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- AQL krefttype
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Onkologi AQL hjelpefelt">
+					description = <"">
+				>
+				["at0001"] = <
+					text = <"AQL krefttype">
+					description = <"Felt til bruk for gjenbruk av krefttype fra startskjema onkologi. ">
+				>
+			>
+		>
+	>
