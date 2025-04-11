@@ -1,9 +1,8 @@
-archetype (adl_version=1.4; uid=f65d66d0-3bec-4612-92ae-f438e0496fa5)
+﻿archetype (adl_version=1.4; uid=4d96ccdf-bb48-4dbb-9fd2-580dcde5dcd1)
 	openEHR-EHR-EVALUATION.substance_use_summary.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Substance use summary
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -16,21 +15,17 @@ language
 			>
 		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2020-02-13">
 		["name"] = <"Heather Leslie">
 		["organisation"] = <"Atomica Informatics">
 		["email"] = <"heather.leslie@atomicainformatics.com">
+		["date"] = <"2020-02-13">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Marit Alice Venheim, Helse Vest IKT, Norway (Nasjonal IKT redaktør)","Vebjørn Arntzen, Oslo University Hospital, Norway (openEHR Editor)","Silje Ljosland Bakke, Helse Vest IKT AS, Norway (openEHR Editor)","SB Bhattacharyya, Bhattacharyyas Clinical Records Research & Informatics LLP, India","Randi Brendberg, Helse Nord RHF, Norway","Hugo Claudio Briceño García, Catsalut, Spain","Clara Calleja Vega, CatSalut. Servei Català de la Salut., Spain","Fatemeh Chalabianloo, Helse Bergen, Norway","Julio de Sosa, Servei Català de la Salut, Spain","Giovanni Delussu, crs4, Italy","Gunn Elin Blakkisrud, DIPS ASA, Norway","Kåre Flø, DIPS ASA, Norway","Grant Forrest, Lunaria Ltd, United Kingdom","Astrid Gjelstad, Antidoping Norge, Norway","Rosane Gotardo, Systema Ltda., Brazil","Atle Hansen, Universitetssykehuset Nord-Norge, Norway","Amanda Herbrand, University Hospital Basel, Switzerland","Evelyn Hovenga, EJSH Consulting, Australia","Mika Kiviaho, Tietoevry, Finland","Peter Krajci, OUS, Norway","Ronald Krawec, Alberta Health Services, Canada","Anjali Kulkarni, Karkinos, India","Jörgen Kuylenstierna, eWeave AB, Sweden","michel laji!, Karolinska Institutet, Sweden","Liv Laugen, Oslo universitetssykehus, Norway (Nasjonal IKT redaktør)","Heather Leslie, Atomica Informatics, Australia (openEHR Editor)","June Marie Knappskog, Helse Nord IKT AS, Norway (Nasjonal IKT redaktør), Norway","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom","John Meredith, openEHR International, United Kingdom","Christine Mikalsen, Helse Nord IKT, Norway","Laura Moral Lopez, Sistema de Salut de Catalunya, Spain","Mikael Nyström, Cambio Healthcare Systems AB, Sweden","Jayashree Panickar, Karolinska Institute, Sweden","Mari Sandlund, Oslo Universitetssykehus, avdeling for teknologi og e-helse, Norway","Benjamin Senst, Germany","Ingrid Skard, DIPS AS, Norway","Norwegian Review Summary, Norwegian Public Hospitals, Norway","Erik Sundvall, Karolinska Institutet + Karolinska University Hospital, Region Stockholm + Linköping University, Sweden","Venkatesh Thoppae, Dedalus, United Kingdom","John Tore Valand, Helse Vest IKT, Norway (Nasjonal IKT redaktør)">
 	details = <
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å registrere et sammendrag om bruksmønsteret individet vanligvis har av en spesifikk substans eller klasse av substanser som kan ha skadelige effekter på individets helse eller sosiale velferd.">
-			keywords = <"stoff","avhengighet","misbruk","doping","rus","narkotika","vanedannende","prestasjonsfremmende","anabole steroider">
 			use = <"Brukes for å registrere et sammendrag om bruksmønsteret individet vanligvis har av en spesifikk substans eller klasse av substanser som kan ha skadelige effekter på individets helse eller sosiale velferd.
 
 Denne arketypen har blitt utformet som et rammeverk for objektivt å kunne dokumentere bruk eller administrasjon av en enkelt substans. Selv om arketypen støtter å kunne identifisere misbruk og avhengighet, er den ikke utelukkende ment for det formålet.
@@ -67,6 +62,7 @@ Clusteret \"Episode\" gjør det mulig å registrere detaljer innen en spesifiser
 Damping (\"Vaping\") av substanser er et konsept som krever fokus både på adferd og de substansene som inhaleres. I en slik kontekst, bruk denne arketypen for å registrere mengde av identifiserte ingredienser i væsken som fordampes, som nikotin, og bruk arketypen EVALUATION.vaping_summary for selve dampeadferden. I noen tilfeller er det nødvendig å bruke begge arketypene.
 
 Bruk en egen instans av denne arketypen for å registrere hver enkelt substans.">
+			keywords = <"stoff", "avhengighet", "misbruk", "doping", "rus", "narkotika", "vanedannende", "prestasjonsfremmende", "anabole steroider">
 			misuse = <"Skal ikke brukes til å registrere et sammendrag om tobakksbruk. Bruk EVALUATION.tobacco_smoking_summary (Røykeanamnese) eller EVALUATION.smokeless_tobacco_summary (Røykfri tobakkanamnese) til dette formålet.
 
 Skal ikke brukes til å registrere et sammendrag om damping (vaping). Bruk EVALUATION.vaping_summary eller lignende til dette formålet.
@@ -75,7 +71,7 @@ Skal ikke brukes til å registrere et sammendrag om alkoholbruk. Bruk EVALUATION
 
 Skal ikke brukes for å registrere et sammendrag om, eller monitorere samlet dose av et legemiddel. Bruk EVALUATION.medication_summary (Legemiddelsammendrag) til dette formålet.
 
-Skal ikke brukes til å registrere informasjon om den faktiske bruken av substansen i en spesifisert tidsperiode, for eksempel en daglig registrering. Bruk arketypen OBSERVATION.substance_use til dette formålet.
+Skal ikke brukes til å registrere informasjon om den faktiske bruken av substansen på en gitt tid eller i et tidsintervall, som for eksempel et gjennomsnittlig forbruk i en spesifisert periode eller i en daglig registrering. Bruk arketypen OBSERVATION.substance_use til dette formålet.
 
 Skal ikke brukes til å registrere feilmedisinering eller eksponering av en substans eller medikasjon, overdose eller forgiftninger. Bruk en av arketypene som handler om overfølsomhetsreaksjon eller eksponering til dette formålet.
 
@@ -86,8 +82,6 @@ Skal ikke brukes til å registrere informasjon om legemidler som er gitt under k
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record summary or persistent information about the typical use of a specific substance or class of substances that may harm an individual's health or social well-being.">
-			keywords = <"drugs, addiction, abuse, doping, narcotics, performance enhancing, steroids", ...>
-			copyright = <"© Nasjonal IKT HF, openEHR Foundation">
 			use = <"Use to record summary or persistent information about the typical use of a specific substance or class of substances that may harm an individual's health or social well-being.
 
 This archetype has been designed as a framework for objectively documenting the use or administration of a single substance. While it supports the recognition of abuse and dependence, it is not intended exclusively for this purpose.
@@ -122,25 +116,29 @@ The 'Episode' Cluster allows the recording of details within a specified period 
 Vaping is a complex concept that requires attention to both the behaviour and the substances inhaled. In that context, use this archetype to record amounts of clinically significant ingredients of vaping liquid, such as 'Nicotine', and use EVALUATION.vaping_summary to record the patterns of vaping behaviour. In some cases, both archetypes may be required.
 
 Use a separate instance of this archetype to record each substance.">
-			misuse = <"Not to be used to record summary or persistent information about tobacco smoking - use EVALUATION.tobacco_smoking_summary for this purpose.
+			keywords = <"drugs, addiction, abuse, doping, narcotics, performance enhancing, steroids", ...>
+			misuse = <"Not to be used to record summary or persistent information about tobacco smoking. Use EVALUATION.tobacco_smoking_summary for this purpose.
 
-Not to be used to record summary or persistent information about smokeless tobacco use - use EVALUATION.smokeless_tobacco_summary for this purpose.
+Not to be used to record summary or persistent information about smokeless tobacco use. Use EVALUATION.smokeless_tobacco_summary for this purpose.
 
-Not to be used to record the summary or persistent information about vaping behaviour - use an EVALUATION.vaping_summary or similar, yet to be developed.
+Not to be used to record the summary or persistent information about vaping behaviour. Use an EVALUATION.vaping_summary or similar, yet to be developed.
 
-Not to be used to record summary or persistent information about alcohol consumption - use EVALUATION.alcohol_use_summary for this purpose.
+Not to be used to record summary or persistent information about alcohol consumption. Use EVALUATION.alcohol_use_summary for this purpose.
 
-Not to be used to record the summary or persistent information about, or monitor the cumulative dose of, a medication - use EVALUATION.medication_summary for this purpose.
+Not to be used to record the summary or persistent information about, or monitor the cumulative dose of, a medication. Use EVALUATION.medication_summary for this purpose.
 
-Not to be used to record event-or period-based information about substance use, such as actual daily use or the average use over a specified period of time - use the OBSERVATION.substance_use archetype for this purpose.
+Not to be used to record information about actual substance use at or during a specified point or interval of time, such as daily or average use over a specified period of time, or a diary of use. Use the OBSERVATION.substance_use archetype for this purpose..
 
 Not to be used to record accidental administration of, or exposure to, a substance or medication, overdoses or poisonings, etc. Use an Adverse event archetype for this purpose.
 
 Not to be used to record answers to pre-defined screening questions about substance use. Use OBSERVATION.substance_use_screening archetype for this purpose.
 
 Not to be used for recording information about appropriate medication use under clinical supervision, for recommended therapeutic intent and at appropriate dosages. Use an appropriate medication archetype for this purpose.">
+			copyright = <"© Nasjonal IKT HF, openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Marit Alice Venheim, Helse Vest IKT, Norway (Nasjonal IKT redaktør)", "Vebjørn Arntzen, Oslo University Hospital, Norway (openEHR Editor)", "Silje Ljosland Bakke, Helse Vest IKT AS, Norway (openEHR Editor)", "SB Bhattacharyya, Bhattacharyyas Clinical Records Research & Informatics LLP, India", "Randi Brendberg, Helse Nord RHF, Norway", "Hugo Claudio Briceño García, Catsalut, Spain", "Clara Calleja Vega, CatSalut. Servei Català de la Salut., Spain", "Fatemeh Chalabianloo, Helse Bergen, Norway", "Julio de Sosa, Servei Català de la Salut, Spain", "Giovanni Delussu, crs4, Italy", "Gunn Elin Blakkisrud, DIPS ASA, Norway", "Kåre Flø, DIPS ASA, Norway", "Grant Forrest, Lunaria Ltd, United Kingdom", "Astrid Gjelstad, Antidoping Norge, Norway", "Rosane Gotardo, Systema Ltda., Brazil", "Atle Hansen, Universitetssykehuset Nord-Norge, Norway", "Amanda Herbrand, University Hospital Basel, Switzerland", "Evelyn Hovenga, EJSH Consulting, Australia", "Mika Kiviaho, Tietoevry, Finland", "Peter Krajci, OUS, Norway", "Ronald Krawec, Alberta Health Services, Canada", "Anjali Kulkarni, Karkinos, India", "Jörgen Kuylenstierna, eWeave AB, Sweden", "michel laji!, Karolinska Institutet, Sweden", "Liv Laugen, Oslo universitetssykehus, Norway (Nasjonal IKT redaktør)", "Heather Leslie, Atomica Informatics, Australia (openEHR Editor)", "June Marie Knappskog, Helse Nord IKT AS, Norway (Nasjonal IKT redaktør), Norway", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom", "John Meredith, openEHR International, United Kingdom", "Christine Mikalsen, Helse Nord IKT, Norway", "Laura Moral Lopez, Sistema de Salut de Catalunya, Spain", "Mikael Nyström, Cambio Healthcare Systems AB, Sweden", "Jayashree Panickar, Karolinska Institute, Sweden", "Mari Sandlund, Oslo Universitetssykehus, avdeling for teknologi og e-helse, Norway", "Benjamin Senst, Germany", "Ingrid Skard, DIPS AS, Norway", "Norwegian Review Summary, Norwegian Public Hospitals, Norway", "Erik Sundvall, Karolinska Institutet + Karolinska University Hospital, Region Stockholm + Linköping University, Sweden", "Venkatesh Thoppae, Dedalus, United Kingdom", "John Tore Valand, Helse Vest IKT, Norway (Nasjonal IKT redaktør)">
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
@@ -148,9 +146,9 @@ Not to be used for recording information about appropriate medication use under 
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"E01A4B0AC9649F318C3C91C8F0946D51">
-		["build_uid"] = <"ec7b597b-e013-429c-a515-d2114a0fb8bb">
-		["revision"] = <"1.0.0">
+		["MD5-CAM-1.0.1"] = <"871F6A0869B1769754FFE382C7D24243">
+		["build_uid"] = <"b726155f-9bef-4199-af5a-cdea40e38d22">
+		["revision"] = <"1.0.1">
 	>
 
 definition
@@ -371,6 +369,7 @@ definition
 			}
 		}
 	}
+
 
 ontology
 	term_definitions = <
