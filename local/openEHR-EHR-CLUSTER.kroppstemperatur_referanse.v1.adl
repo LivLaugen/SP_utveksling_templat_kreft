@@ -1,0 +1,84 @@
+archetype (adl_version=1.4; uid=d217b2b6-c671-3c89-b7db-196303422578)
+	openEHR-EHR-CLUSTER.kroppstemperatur_referanse.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2020-06-10">
+		["name"] = <"Morten Pavicevic Hørthe">
+		["organisation"] = <"DIPS AS">
+		["email"] = <"mho@dips.no">
+	>
+	lifecycle_state = <"0">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å lagre referansedata relatert til gjenbruk av data fra godkjent temperaturarketype">
+			use = <"For å lagre referansedata relatert til gjenbruk av data fra godkjent temperaturarketype">
+			misuse = <"Ingen andre formål enn beskrevet over. Spesielt viktig er at arketypen aldri brukes til å registrere nye data som egentlig skal registreres i godkjent arketype for temperatur">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"adbb0488ad66a05ef9800ff357caf532">
+		["build_uid"] = <"c25b8b66-34f9-3d47-ab57-28ac2cc6d41c">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Temperatur referanse
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] matches {    -- Temperatur
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::127]>
+						list = <
+							["1"] = <
+								units = <"Cel">
+								magnitude = <|0.0..100.0|>
+								precision = <|1|>
+							>
+						>
+					>
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Time
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Målested
+				value matches {
+					DV_CODED_TEXT matches {*}
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Temperatur referanse">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Temperatur">
+					description = <"Målt kroppstemperatur som uttrykk for kjernetemperatur.">
+				>
+				["at0002"] = <
+					text = <"Time">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Målested">
+					description = <"">
+				>
+			>
+		>
+	>
