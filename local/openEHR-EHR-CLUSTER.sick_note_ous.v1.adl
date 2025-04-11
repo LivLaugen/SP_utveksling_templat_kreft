@@ -1,0 +1,147 @@
+archetype (adl_version=1.4; uid=f5f48552-a60e-484f-ad23-ffd3c33c8b97)
+	openEHR-EHR-CLUSTER.sick_note_ous.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			author = <
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2023-04-28">
+		["name"] = <"Vebjørn Arntzen">
+		["organisation"] = <"Oslo University Hospital">
+		["email"] = <"varntzen@ous-hf.no">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å registrere informasjon om en sykemelding til en person.">
+			copyright = <"© openEHR Foundation, Nasjonal IKT HF">
+			use = <"Bruk for å registrere informasjon om en sykemelding til en person.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record information about a sick note of an individual.">
+			copyright = <"© openEHR Foundation, Nasjonal IKT HF">
+			use = <"Use to record details about a sick note of an individual, including start and end date.
+
+This archetype has been designed to allow to mark start- and eventually end date when an individual has a medical condition where there are indications of temporal leave from their job. It is intended to be inserted in the Additional details SLOT in CLUSTER.occupation._record or OBSERVATION.occupation_summary, or other archetypes where clinically relevant. An ongoing sickness leave can be assumed if there is a start date and no end date.
+
+It the individuals possess multiple jobs, and it is needed to differentiate a graded sickness leave between them, use a separate instance of this archetype for each job.">
+			misuse = <"Not to be used to make a medical certificate to authorities to underpin sickness benefit. Use appropriate ADMIN Entry archetypes for this purpose.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["references"] = <"Avgrenet fra: <Legg til en referanse til den originale ressursen her>">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"a34cf81e65cbffdb2d6c05173a76feb4">
+		["build_uid"] = <"f6c7defb-513d-47d5-9a9c-3e473134f9f0">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- sick_note_ous
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Description
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Percentage
+				value matches {
+					DV_PROPORTION matches {
+						type matches {2}
+					}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Start date
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Length
+				value matches {
+					DV_DURATION matches {*}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- End date
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"sick_note_ous">
+					description = <"Information about a sick note of an individual.">
+				>
+				["at0001"] = <
+					text = <"Length">
+					description = <"The duration of the period the individual has been on sick leave.">
+				>
+				["at0002"] = <
+					text = <"Description">
+					description = <"Narrative description of the individuals sick note.">
+				>
+				["at0003"] = <
+					text = <"Percentage">
+					description = <"The percentage or portion of full time the individual is on sick leave.">
+				>
+				["at0004"] = <
+					text = <"Start date">
+					description = <"The start date of the sick leave.">
+				>
+				["at0005"] = <
+					text = <"End date">
+					description = <"The end date of the sick leave.">
+				>
+			>
+		>
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sykemelding">
+					description = <" Informasjon om en sykemelding til et individ.">
+				>
+				["at0001"] = <
+					text = <"Varighet">
+					description = <"Varigheten av sykemeldinsperioden til individet.">
+				>
+				["at0002"] = <
+					text = <"Beskrivelse">
+					description = <"Fritekstlig beskrivelse av et individs sykemelding.">
+				>
+				["at0003"] = <
+					text = <"Prosentdel">
+					description = <"Prosentandel eller del av heltid individet er sykmeldt.">
+				>
+				["at0004"] = <
+					text = <"Startdato">
+					description = <"Startdatoen for sykemeldingen.">
+				>
+				["at0005"] = <
+					text = <"Sluttdato">
+					description = <"Sluttdato for sykemeldingen.">
+				>
+			>
+		>
+	>
