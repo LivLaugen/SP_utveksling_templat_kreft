@@ -1,0 +1,423 @@
+= Generell_Innkomst_kreft
+
+
+== Metadata
+
+
+TemplateId:: Oncology-General-Reception-Journal_v5
+
+
+Archetype:: openEHR-EHR-COMPOSITION.encounter.v1
+
+
+
+
+:toc:
+
+
+
+
+// Not supported rmType COMPOSITION
+== EVENT_CONTEXT
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*EVENT_CONTEXT* + 
+EVENT_CONTEXT: __
+5+a|*Blodtrykk referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.blodtrykk_referanse.v1_
+|at0001| 0..1| DV_QUANTITY | Systolisk
+|
+|at0002| 0..1| DV_QUANTITY | Diastolisk
+|
+|at0003| 0..1| DV_DATE_TIME | Time
+|
+5+a|*Høyde/Lengde referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.hoyde_referanse.v1_
+|at0003| 0..1| DV_QUANTITY | Høyde/Lengde
+|
+|at0002| 0..1| DV_DATE_TIME | Time
+|
+5+a|*kroppsmasseindex referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.kroppsmasseindex_referanse.v1_
+|at0001| 0..1| DV_QUANTITY | Kroppsmasseindex
+|
+|at0002| 0..1| DV_DATE_TIME | Time
+|
+5+a|*Kroppsoverflate referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.kroppsoverflate_referanse.v1_
+|at0001| 0..1| DV_QUANTITY | Kroppsoverflate
+|
+|at0002| 0..1| DV_DATE_TIME | Time
+|
+5+a|*Pulse referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.pulse_referanse.v1_
+|at0001| 0..1| DV_QUANTITY | Pulsfrekvens
+|
+|at0002| 0..1| DV_DATE_TIME | Time
+|
+5+a|*Pulsoksymetri referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.pulsoksymetri_referanse.v1_
+// Not supported rmType DV_PROPORTION
+|at0003| 0..1| DV_DATE_TIME | Time
+|
+5+a|*Respirasjon referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.respirasjon_referanse.v1_
+|at0001| 0..1| DV_QUANTITY | Frekvens
+|
+|at0002| 0..1| DV_DATE_TIME | Time
+|
+5+a|*Temperatur referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.kroppstemperatur_referanse.v1_
+|at0001| 1..1| DV_QUANTITY | Temperatur
+|
+|at0002| 0..1| DV_DATE_TIME | Time
+|
+5+a|*Vekt referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.vekt_referanse.v1_
+|at0003| 0..1| DV_QUANTITY | Kroppsvekt
+|
+|at0002| 0..1| DV_DATE_TIME | Time
+|
+|====
+== Kontaktårsak
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kontaktårsak* + 
+EVALUATION: _openEHR-EHR-EVALUATION.reason_for_encounter.v1_
+|at0004| 0..1| DV_TEXT | Klinisk kontaktårsak
+a|
+
+
+Koding av "Klinisk problemstilling" med en terminologi foretrekkes når mulig. Kliniske årsaker kan omfatte helseproblemer, symptomer, eller fysiske sykdomstegn. Eksempler: Helseproblemer - ønske om å slutte å røyke eller vold i hjemmet, symptomer - magesmerter eller kortpusthet, fysiske sykdomstegn - endret bevissthetsnivå. "Hovedproblemstilling" kan bli benyttet som et synonym for "Klinisk kontaktårsak" i templater.
+|====
+== Familieanamnese
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Familieanamnese* + 
+EVALUATION: _openEHR-EHR-EVALUATION.family_history.v1_
+|at0002| 0..1| DV_TEXT | Familie/hereditet
+a|
+
+
+Bruk dette feltet for å registrere et sammmendrag eller konklusjon, eller for å importere tekstlige data fra eksisterende/tidligere kliniske system.
+|====
+== Aktuelt/Anamnese
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Aktuelt/Anamnese* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.story.v1_
+// Not supported rmType POINT_EVENT
+|at0004| 0..1| DV_TEXT | Aktuelt/Anamnese
+a|
+5+a|*Symptom/Sykdomstegn* + 
+CLUSTER: _openEHR-EHR-CLUSTER.symptom_sign.v2_
+|at0001| 1..1| DV_TEXT | Navn på symptom/sykdomstegn
+a|
+
+
+Navnet på symptom/sykdomstegn bør kodes med en terminologi om mulig.
+|at0002| 0..1| DV_TEXT | Beskrivelse
+a|
+
+
+Eksempel: "Svimmelhet med rotasjonsfølelse og av og til besvimelsesfølelse. Hurtig bevegelse fra sittende eller liggende til stående stilling virker å være en utløsende faktor. Opptrer typisk flere ganger daglig, og varer i ca et halvt til ett minutt hver gang. Å sette eller legge seg ned virker lindrende."
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+|====
+== Naturlige funksjoner
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Naturlige funksjoner* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.progress_note.v1_
+|at0004| 0..1| DV_TEXT | Naturlige funksjoner
+a|
+|====
+== Medikamenter (husk legemiddelsamstemming, medikamenter skal oppdateres i kurve)
+== Kartleggingsspørsmål om legemidler
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartleggingsspørsmål om legemidler* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.medication_screening.v1_
+
+
+Svarene kan være selvrapporterte.
+// Not supported rmType POINT_EVENT
+|at0040| 0..1| DV_CODED_TEXT | Kartleggingsformål
+a|
+* medikamenter (no.onk.kart.medikamenter: MED)
+
+
+Dette dataelementet er ment for å sette en kontekst for spørsmålene om man senere ønsker å gjøre spørringer på dataene. Det er ikke forventet at dette dataelementet skal være synlig for en bruker av skjemaet, men kun tilgjengelig i de lagrede dataene. 
+For eksempel: "Preoperativ screening" eller navnet på det faktiske spørreskjemaet eller screening for tidligere bruk av en legemiddelklasse, som bisfosfonater.
+|at0043| 0..1| DV_TEXT | Beskrivelse av medikamenter ved innkomst
+a|
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+|====
+== Kartlegging om allergi/cave - føres inn i kritisk info
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartlegging om allergi/cave - føres inn i kritisk info* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.problem_screening.v1_
+
+
+Svarene kan være selvrapporterte.
+// Not supported rmType EVENT
+|at0034| 0..1| DV_CODED_TEXT | Kartleggingsformål
+a|
+* Cave (no.onk.kart.cave: CAVE)
+
+
+Dette dataelementet er ment for å sette en kontekst for spørsmålene, dersom man senere ønsker å gjøre spørringer på dataene. Det er ikke forventet at dette dataelementet skal være synlig for en bruker av skjemaet, men kun tilgjengelig i de lagrede dataene. For eksempel: "Preoperativ screening" eller navnet på det faktiske spørreskjemaet.
+|at0028| 0..1| DV_CODED_TEXT | Har pasienten noen kjente allergier?
+a|
+* at0031 -> Ja 
+* at0032 -> Nei 
+* at0033 -> Usikker 
+
+
+Navnet på dataelementet kan omformuleres til det spesifikke spørsmålet i et templat eller brukergrensesnitt. Det foreslåtte verdisettet kan tilpasses/endres i det enkelte bruksområde ved å benytte de alternative datatypene DV_TEXT eller DV_BOOLEAN.
+|at0028| 0..1| DV_BOOLEAN | Det er registrert i kritisk info til pasienten.
+|
+
+
+Navnet på dataelementet kan omformuleres til det spesifikke spørsmålet i et templat eller brukergrensesnitt. Det foreslåtte verdisettet kan tilpasses/endres i det enkelte bruksområde ved å benytte de alternative datatypene DV_TEXT eller DV_BOOLEAN.
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+|====
+== ECOG funksjonsstatus
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*ECOG funksjonsstatus* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.ecog.v1_
+|at0004| 1..1| DV_ORDINAL | ECOG funksjonsstatus
+a|
+* 0 - Asymptomatisk I stand til å utføre enhver normal aktivitet uten begrensning.
+* 1 - Symptomatisk, fullt oppegående Ikke i stand til fysisk krevende aktivitet, men oppegående og i stand til å utføre lett arbeid.
+* 2 - Symptomatisk, sengeliggende <50 % av våken tid Oppegående og i stand til all egenpleie, men ikke i stand til noe arbeid; oppe og i bevegelse mer enn 50% av våken tid.
+* 3 - Symptomatisk, sengeliggende > 50 % av våken tid Bare i stand til begrenset egenpleie, bundet til seng eller stol > 50 % av våken tid.
+* 4 - Helt sengeliggende Helt hjelpetrengende; klarer ikke noen egenpleie; helt bundet til seng eller stol.
+* 5 - Død Pasienten er død.
+|at0013| 0..1| DV_TEXT | Kommentar
+a|
+|====
+== Status presens
+== Status presens fritekst
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Status presens fritekst* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.progress_note.v1_
+|at0004| 0..1| DV_TEXT | Status presens
+a|
+|====
+== Vitale målinger
+== Høyde/Lengde
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Høyde/Lengde* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.height.v2_
+
+
+Høyde måles stående og lengde liggende.
+// Not supported rmType POINT_EVENT
+|at0004| 1..1| DV_QUANTITY | Høyde (cm)
+|
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+|====
+== Kroppsvekt
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kroppsvekt* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.body_weight.v2_
+// Not supported rmType POINT_EVENT
+|at0004| 1..1| DV_QUANTITY | Vekt (kg)
+|
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+|====
+== Kroppsmasseindeks
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kroppsmasseindeks* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.body_mass_index.v2_
+|at0004| 1..1| DV_QUANTITY | Kroppsmasseindeks
+|
+|====
+== Kroppstemperatur
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kroppstemperatur* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.body_temperature.v2_
+// Not supported rmType POINT_EVENT
+|at0004| 1..1| DV_QUANTITY | Temperatur (°C)
+|
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+|====
+== Pulsoksymetri
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Pulsoksymetri* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.pulse_oximetry.v1_
+// Not supported rmType POINT_EVENT
+// Not supported rmType DV_PROPORTION
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+|====
+== Åndedrett
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Åndedrett* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.respiration.v2_
+// Not supported rmType POINT_EVENT
+|at0004| 0..1| DV_QUANTITY | Respirasjonsfrekvens (/min)
+|
+|at0005| 0..1| DV_CODED_TEXT | tester
+a|
+* at0006 -> Regelmessig 
+* at0007 -> Uregelmessig 
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+|====
+== Blodtrykk
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Blodtrykk* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.blood_pressure.v2_
+
+
+Vanligvis brukes begrepet "blodtrykk" om måling av brakialt arterietrykk i overarmen.
+// Not supported rmType POINT_EVENT
+|at0004| 0..1| DV_QUANTITY | Systolisk blodtrykk
+|
+|at0005| 0..1| DV_QUANTITY | Diastolisk blodtrykk
+|
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+|====
+== Puls/Hjertefrekvens
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Puls/Hjertefrekvens* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.pulse.v2_
+// Not supported rmType POINT_EVENT
+|at0004| 0..1| DV_QUANTITY | Hjertefrekvens (/min)
+|
+
+
+Det er spesifisert begrensninger i navn for å gjøre det lettere å eksplisitt merke dette elementet som Pulsfrekvens eller Hjertefrekvens ved behov.
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+|====
+== Kroppsoverflate
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kroppsoverflate* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.body_surface_area.v1_
+
+
+Refereres også til som BSA (body surface area).
+// Not supported rmType EVENT
+|at0004| 1..1| DV_QUANTITY | Kroppsoverflate
+|
+
+
+For eksempel: "1,81 m²".
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+|at0009| 0..1| DV_CODED_TEXT | Metode
+a|
+* at0010 -> Automatisk registrering 
+* at0011 -> Manuell registrering 
+|at0006| 0..1| DV_CODED_TEXT | Formel
+a|
+* at0012 -> Dubois og Dubois 
+* at0013 -> Mosteller 
+* at0014 -> Haycock 
+* at0015 -> Gehan og George 
+* at0016 -> Boyd 
+* at0017 -> Fujimoto 
+* at0018 -> Takihara 
+
+
+For eksempel: Mosteller, DuBois og DuBois, Haycock og Boyd.
+|====
+== Fysisk undersøkelse
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Fysisk undersøkelse* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.exam.v1_
+|at0004| 0..1| DV_TEXT | Fysiske undersøkelser
+a|
+
+
+Kan anvendes til å registrere en tekstlig sammenfatning av en komplett klinisk undersøkelse eller nøkkelfunn ved den kliniske undersøkelsen, som vil bli understøttet av strukturerte data. Dette dataelementet kan brukes for å fange opp "legacy data" som ikke er tilgjengelig i et strukturert format. Detaljer om spesifikt strukturert funn inkluderes ved å bruke CLUSTER-arketyper i "Examination Detail" SLOT.
+|====
+== Supplerende undersøkelser
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Supplerende undersøkelser* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.progress_note.v1_
+|at0004| 0..1| DV_TEXT | Resyme ved supplerende undersøkelser
+a|
+|====
+== Oppsummering, vurdering og tiltak
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Oppsummering, vurdering og tiltak* + 
+EVALUATION: _openEHR-EHR-EVALUATION.clinical_synopsis.v1_
+|at0002| 1..1| DV_TEXT | Oppsummering, vurdering og tiltak
+a|
+|====
+== Tentativ diagnose/differensialdiagnose
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Tentativ diagnose/differensialdiagnose* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.progress_note.v1_
+|at0004| 0..1| DV_TEXT | Tentativ diagnose/differensialdiagnose
+a|
+|====
+== Sammendrag av innkomst (autogenerert)
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Sammendrag av innkomst (autogenerert)* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.progress_note.v1_
+|at0004| 0..1| DV_TEXT | Sammendrag av innkomst
+a|
+|====
+== Gjenbruk av sosialt,stimulansia og komorbiditet
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Gjenbruk av sosialt,stimulansia og komorbiditet* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.progress_note.v1_
+|at0004| 0..1| DV_TEXT | Tidfestet fritekst
+a|
+|====
+// Not supported rmType CODE_PHRASE
+// Not supported rmType CODE_PHRASE
+// Not supported rmType PARTY_PROXY

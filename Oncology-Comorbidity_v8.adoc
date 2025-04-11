@@ -1,0 +1,229 @@
+= Klinisk kontakt
+
+
+== Metadata
+
+
+TemplateId:: Oncology-Comorbidity_v8
+
+
+Archetype:: openEHR-EHR-COMPOSITION.encounter.v1
+
+
+
+
+:toc:
+
+
+
+
+// Not supported rmType COMPOSITION
+== EVENT_CONTEXT
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*EVENT_CONTEXT* + 
+EVENT_CONTEXT: __
+5+a|*Onkologi AQL hjelpefelt* + 
+CLUSTER: _openEHR-EHR-CLUSTER.oncology_aql_support_dips.v1_
+|at0001| 0..1| DV_TEXT | AQL krefttype
+a|
+5+a|*Template versjonsinformasjon* + 
+CLUSTER: _openEHR-EHR-CLUSTER.template_semver_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Navn
+a|
+* Oncology-Comorbidity (no.dips.TemplateMetadata.Classification: TM3)
+5+a|*Semver* + 
+CLUSTER: _at0003_
+|at0004| 0..1| DV_COUNT | Major
+|
+|====
+== Komorbiditet_utredning
+== Kartlegging komorbiditet
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartlegging komorbiditet* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.problem_screening.v1_
+
+
+Svarene kan være selvrapporterte.
+|at0034| 0..1| DV_CODED_TEXT | Kartleggingsformål
+a|
+* Komorbiditet (no.onk.screening.problem: kom)
+
+
+Dette dataelementet er ment for å sette en kontekst for spørsmålene, dersom man senere ønsker å gjøre spørringer på dataene. Det er ikke forventet at dette dataelementet skal være synlig for en bruker av skjemaet, men kun tilgjengelig i de lagrede dataene. For eksempel: "Preoperativ screening" eller navnet på det faktiske spørreskjemaet.
+|at0028| 0..1| DV_CODED_TEXT | Har pasient kjent komorbiditet?
+a|
+* at0031 -> Ja 
+* at0032 -> Nei 
+* at0033 -> Ukjent 
+
+
+Navnet på dataelementet kan omformuleres til det spesifikke spørsmålet i et templat eller brukergrensesnitt. Det foreslåtte verdisettet kan tilpasses/endres i det enkelte bruksområde ved å benytte de alternative datatypene DV_TEXT eller DV_BOOLEAN.
+|at0043| 0..1| DV_TEXT | Overordnet merknad komorbiditet
+a|
+|====
+== Gruppering ICD10 kapittel
+== Forholdsregel
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Forholdsregel* + 
+EVALUATION: _openEHR-EHR-EVALUATION.precaution.v1_
+|at0002| 1..1| DV_CODED_TEXT | Tilstand: Hovedkapitler ICD-10
+a|
+* Infeksjonssykdommer og parasittsykdommer, visse sykd. (Kap.I; A00-B99) (no.icd10.kapitler: I)
+* Svulster (Kap.II; C00-D48) (no.icd10.kapitler: II)
+* Blodsykdommer og sykdom i bloddannende organer og visse tilstander som angår immunsystemet (Kap.III; D50-D89) (no.icd10.kapitler: III)
+* Endokrine sykdommer, ernæringssykdommer og metabolske forstyrrelser (Kap.IV; E00-E90) (no.icd10.kapitler: IV)
+* Psykiske lidelser og atferdsforstyrrelser (Kap.V; F00-F99) (no.icd10.kapitler: V)
+* Nervesystemet, sykdommer (Kap.VI; G00-G99) (no.icd10.kapitler: VI)
+* Øyet og øyets omgivelser, sykdommer (Kap.VII; H00-H59) (no.icd10.kapitler: VII)
+* Øre og ørebensknute (processus mastoideus), sykdommer (Kap.VIII; H60-H95) (no.icd10.kapitler: VIII)
+* Sirkulasjonssystemet, sykdommer (Kap.IX; I00-I99) (no.icd10.kapitler: IX)
+* Åndedrettssystemet, sykdommer (Kap.X; J00-J99) (no.icd10.kapitler: X)
+* Fordøyelsessystemet, sykdommer (Kap.XI; K00-K93) (no.icd10.kapitler: XI)
+* Hud og underhud, sykdommer (Kap.XII; L00-L99) (no.icd10.kapitler: XII)
+* Muskel-skjelettsystemet og bindevev, sykdommer (Kap.XIII; M00-M99) (no.icd10.kapitler: XIII)
+* Urin- og kjønnsorganer, sykdommer (Kap.XIV; N00-N99) (no.icd10.kapitler: XIV)
+* Svangerskap, fødsel og barseltid (Kap.XV; O00-O99) (no.icd10.kapitler: XV)
+* Perinatalperioden  - visse tilstander som oppstår (Kap.XVI; P00-P96) (no.icd10.kapitler: XVI)
+* Medfødte misdannelser, deformiteter og kromosomavvik (Kap.XVII; Q00-Q99) (no.icd10.kapitler: XVII)
+* Symptomer, tegn, unormale kliniske funn og laboratoriefunn, ikke klassifisert annet sted (Kap.XVIII; R00-R99) (no.icd10.kapitler: XVIII)
+* Skader, forgiftninger og visse andre konsekvenser av ytre årsaker (Kap.XIX; S00-T98) (no.icd10.kapitler: XIX)
+
+
+Koding av tilstanden med en terminologi er ønskelig, dersom mulig.
+|at0003| 0..1| DV_TEXT | Detaljer
+a|
+
+
+Dette dataelementet kan dersom ønskelig lenkes til en diagnose, testresultat eller legemiddelordinering ved hjelp av en URI (spesifisert i referansemodellen) for å oppgi rasjonalet eller evidensen for forholdsregelen. NB: Siden URI-lenken kan være utilgjengelige fra en melding eller et mottakende system, er det ønskelig at en fritekstbeskrivelse av underlaget registreres eksplisitt.
+|at0004| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+|====
+== ICD10
+== Forholdsregel
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Forholdsregel* + 
+EVALUATION: _openEHR-EHR-EVALUATION.precaution.v1_
+|at0002| 1..1| DV_TEXT | Tilstand: ICD-10
+a|
+
+
+Koding av tilstanden med en terminologi er ønskelig, dersom mulig.
+|at0003| 0..1| DV_TEXT | Detaljer
+a|
+
+
+Dette dataelementet kan dersom ønskelig lenkes til en diagnose, testresultat eller legemiddelordinering ved hjelp av en URI (spesifisert i referansemodellen) for å oppgi rasjonalet eller evidensen for forholdsregelen. NB: Siden URI-lenken kan være utilgjengelige fra en melding eller et mottakende system, er det ønskelig at en fritekstbeskrivelse av underlaget registreres eksplisitt.
+|at0004| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+|====
+== Charlson Comorbidity Index (CCI)
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Charlson Comorbidity Index (CCI)* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.charlson_comorbidity_index.v2_
+|at0061| 0..1| DV_ORDINAL | Aldersgruppe
+a|
+* 0 - <50 år 
+* 1 - 50-59 år 
+* 2 - 60-69 år 
+* 3 - 70-79 år 
+* 4 - ≥80 år 
+|at0012| 0..1| DV_ORDINAL | Myokardinfarkt
+a|
+* 0 - Nei 
+* 1 - Ja Tidligere diagnostisert eller sannsynlig hjerteinfarkt (EKG-forandringer og/eller enzymforandringer).
+|at0009| 0..1| DV_ORDINAL | Kronisk hjertesvikt
+a|
+* 0 - Nei 
+* 1 - Ja Anstrengelsesdyspné eller paroksysmal nattlig dyspné og har respondert symptomatisk (eller ved fysisk undersøkelse) på digitalis, diuretika eller midler som reduserer afterload.
+|at0006| 0..1| DV_ORDINAL | Perifere vaskulære sykdommer
+a|
+* 0 - Nei 
+* 1 - Ja Claudicatio intermittens, tidligere bypass på grunn av arteriell insuffisiens, tidligere gangren eller akutt arteriell insuffisiens, ubehandlet thorakalt og/eller abdominalt aneurisme (≥6 cm).
+|at0015| 0..1| DV_ORDINAL | Cerebrovaskulær hendelse
+a|
+* 0 - Nei 
+* 1 - Ja Cerebrovaskulær hendelse (CVA) eller transitorisk iskemisk anfall (TIA).
+|at0018| 0..1| DV_ORDINAL | Demens
+a|
+* 0 - Nei 
+* 1 - Ja Demens eller kronisk kognitiv svikt.
+|at0021| 0..1| DV_ORDINAL | Kronisk lungesykdom
+a|
+* 0 - Nei 
+* 1 - Ja Mild, moderat eller alvorlig kronisk lungesykdom.
+|at0024| 0..1| DV_ORDINAL | Ulcussykdom
+a|
+* 0 - Nei 
+* 1 - Ja Enhver behandling av magesårsykdom, blødende magesår, eller tidligere transfusjonskrevende behandling av gastrointestinal blødning.
+|at0027| 0..1| DV_ORDINAL | Leversykdom
+a|
+* 0 - Ingen 
+* 1 - Mild Cirrhose uten portal hypertensjon eller kronisk hepatitt.
+* 3 - Moderat til alvorlig Moderat: Cirrhose med portal hypertensjon, men uten blødning. Alvorlig: Cirrhose med portal hypertensjon og variceblødning.
+|at0030| 0..1| DV_ORDINAL | Bindevevssykdom
+a|
+* 0 - Nei 
+* 1 - Ja 
+|at0033| 0..1| DV_ORDINAL | Diabetes
+a|
+* 0 - Ingen eller diettkontrollert 
+* 1 - Ukomplisert Diabetes behandlet med insulin eller orale hypoglykemiske midler, men ikke diett alene.
+* 2 - Organskade Diabetes med endeorganskade.
+|at0036| 0..1| DV_ORDINAL | Hemiplegi
+a|
+* 0 - Nei 
+* 2 - Ja 
+|at0039| 0..1| DV_ORDINAL | Moderat til alvorlig nyresykdom
+a|
+* 0 - Nei 
+* 2 - Ja Moderat: kreatinin >3 mg/dL (0,27 mmol/L). Alvorlig: i dialyse, er transplantert, har uremi.
+|at0045| 0..1| DV_ORDINAL | Solid svulst
+a|
+* 0 - Ingen 
+* 2 - Lokalisert Solid tumor uten dokumenterte metastaser.
+* 6 - Metastatisk Metastatisk solid tumor.
+|at0047| 0..1| DV_ORDINAL | Leukemi
+a|
+* 0 - Nei 
+* 2 - Ja 
+|at0050| 0..1| DV_ORDINAL | Lymfom
+a|
+* 0 - Nei 
+* 2 - Ja 
+|at0060| 0..1| DV_ORDINAL | AIDS
+a|
+* 0 - Nei 
+* 6 - Ja Bekreftet AIDS eller sannsynlig AIDS ved for eksempel påvist AIDS-relatert tilstand.
+|at0072| 0..1| DV_COUNT | CCI totalskår
+|
+|====
+== Tidfestet fritekst
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Tidfestet fritekst* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.progress_note.v1_
+// Not supported rmType EVENT
+|at0004| 0..1| DV_TEXT | Tidfestet fritekst
+a|
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Sammendrag av komorbiditet (no.dips.Freetext.Classification: 10-SammendragAvKomorbiditet)
+|====
+// Not supported rmType CODE_PHRASE
+// Not supported rmType CODE_PHRASE
+// Not supported rmType PARTY_PROXY

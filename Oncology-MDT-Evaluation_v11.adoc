@@ -1,0 +1,256 @@
+= Oncology-MDT-Evaluation
+
+
+== Metadata
+
+
+TemplateId:: Oncology-MDT-Evaluation_v11
+
+
+Archetype:: openEHR-EHR-COMPOSITION.request.v1
+
+
+
+
+:toc:
+
+
+
+
+// Not supported rmType COMPOSITION
+== EVENT_CONTEXT
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*EVENT_CONTEXT* + 
+EVENT_CONTEXT: __
+5+a|*Template versjonsinformasjon* + 
+CLUSTER: _openEHR-EHR-CLUSTER.template_semver_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Navn
+a|
+* Oncology-MDT-Evaluation (TemplateVersionNameMDT: Eva02)
+5+a|*Semver* + 
+CLUSTER: _at0003_
+|at0004| 0..1| DV_COUNT | Major
+|
+|at0005| 0..1| DV_COUNT | Minor
+|
+|at0006| 0..1| DV_COUNT | Patch
+|
+|====
+== MDT
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*MDT* + 
+INSTRUCTION: _openEHR-EHR-INSTRUCTION.service_request.v1_
+// Not supported rmType ACTIVITY
+|at0121| 1..1| DV_TEXT | Tjenestenavn
+a|
+
+
+Koding av tjenestenavnet med et kodeverk er ønskelig, dersom tilgjengelig. For eksempel: "henvisning" til en endokrinolog for diabetesoppfølging.
+|at0148| 0..1| DV_CODED_TEXT | Tjenestetype
+a|
+* multidisiplinært teammøte (SNOMED-CT: 312384001)
+
+
+Koding av tjenestetypen med et kodeverk er ønskelig, dersom tilgjengelig. Dersom "Tjenestenavn" er kodet kan dette elementet i noen tilfeller utledes fra koden. For eksempel klinisk biokjemi eller mikrobiologisk laboratorium, ultralyd eller CT.
+|at0064| 0..1| DV_TEXT | Årsaksbeskrivelse
+a|
+
+
+For eksempel "Pasientens diabetes har i det siste blitt vanskeligere å stabilisere, og nyrefunksjonen er under forverring".
+|at0152| 0..1| DV_CODED_TEXT | Klinisk indikasjon
+a|
+* Sarkom (SNOMED-CT: 1187396000)
+* Myelomatose (SNOMED-CT: 109989006)
+* Blærekreft (SNOMED-CT: 399326009)
+* Brystkreft (SNOMED-CT: 254837009)
+* Bukspyttkjertelkreft (SNOMED-CT: 363418001)
+* Eggstokkreft (ovarial) (SNOMED-CT: 363443007)
+* Malignt melanom (SNOMED-CT: 372244006)
+* Galleveiskreft (SNOMED-CT: 126853008)
+* Hjernekreft (SNOMED-CT: 126952004)
+* Hode- halskreft (SNOMED-CT: 255055008)
+* Akutt leukemi (SNOMED-CT: 91855006)
+* Kronisk lymfatisk leukemi (KLL) (SNOMED-CT: 92814006)
+* Primær leverkreft (HCC) (SNOMED-CT: 93870000)
+* Livmorhalskreft (cervix) (SNOMED-CT: 363354003)
+* Livmorkreft (endometrie) (SNOMED-CT: 371973000)
+* Lungekreft (SNOMED-CT: 363358000)
+* Lymfomer (SNOMED-CT: 118600007)
+* Nevroendokrine svulster (SNOMED-CT: 255046005)
+* Nyrekreft (SNOMED-CT: 363518003)
+* Peniskreft (SNOMED-CT: 363516004)
+* Prostatakreft (SNOMED-CT: 399068003)
+* Skjoldbruskkjertelkreft (SNOMED-CT: 363478007)
+* Kreft i spiserør og magesekk (SNOMED-CT: 255078002)
+* Testikkelkreft (SNOMED-CT: 363449006)
+* Tykk- og endetarmskreft (SNOMED-CT: 781382000)
+
+
+For eksempel "angina" eller "diabetes mellitus type 1". Koding av indikasjonen med et kodeverk er ønskelig, dersom tilgjengelig. Dette dataelementet tillater flere forekomster.
+|at0065| 0..1| DV_TEXT | Hensikt
+a|
+
+
+For eksempel kan en henvisning til en spesialist ha som hensikt at spesialisten tar over oppfølgingsansvaret for pasienten, eller det kan være å få en second opinion for behandlingsmuligheteter. Koding av hensikten med et kodeverk er ønskelig, dersom tilgjengelig. Dette dataelementet tillater flere forekomster, for å gjøre det mulig for brukeren å registrere flere svar om nødvendig.
+|at0040| 0..1| DV_DATE_TIME | Tid/dato for neste MDT
+|
+
+
+Dette dataelementet tillater registrering av timing for én tjeneste, enten som dato/tid, intervall av dato/tid, eller som en tekstbeskrivelsen som kan understøtte "neste tilgjengelige". I praksis vil klinikere ofte tenke i omtrentlig timing, for eksempel "revurdering om 3 måneder, 6 måneder eller 12 måneder. Siden kliniske systemer trenger mer eksakte tidsangivelser, vil "3 måneder" som regel konverteres til en eksakt dato 3 måneder fra registreringsdatoen, og lagres i dette dataelementet. Dersom det er behov for kompleks timing eller sekvenser av timing, bruk arketypen CLUSTER.service_direction i SLOTet "Kompleks timing". I disse tilfellene blir dette dataelementet redundant.
+5+a|*Mdt tilleggsinformasjon dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.mdt_tilleggsinformasjon_dips.v1_
+|at0001| 0..1| DV_BOOLEAN | Pasienten skal møte fysisk i MDT møte
+|
+|at0002| 0..1| DV_TEXT | Hvem informerer pasienten om konklusjonen fra møtet
+a|
+5+a|*Enkeltdeltagere* + 
+CLUSTER: _at0004_
+|at0005| 0..1| DV_TEXT | Rolle
+a|
+|at0006| 0..1| DV_TEXT | Navn
+a|
+|at0003| 0..1| DV_TEXT | Sammendrag av deltagere
+a|
+|at0007| 0..1| DV_TEXT | Hvor følges pasienten opp videre
+a|
+|at0076| 0..1| DV_BOOLEAN | Supplerende informasjon
+|
+
+
+Registrer som SANN dersom ytterligere informasjon er identifisert, og vil bli ettersendt når den er tilgjengelig. For eksempel: ufullstendige prøvesvar.
+|at0078| 0..1| DV_TEXT | Informasjonsbeskrivelse
+a|
+|at0150| 0..1| DV_TEXT | Kommentar
+a|
+// Not supported rmType DV_PARSABLE
+// Not supported rmType STRING
+|at0127| 0..1| DV_CODED_TEXT | Rekvisisjonsstatus
+a|
+* Godtatt (SNOMED-CT: 385645004)
+* Avvist (SNOMED-CT: 385647007)
+
+
+Status brukes for å vise om dette er den primære forespørselen, en endring eller supplerende informasjon. Koding med en terminologi foretrekkes, der det er mulig.
+|undefined| 0..1| DV_DATE_TIME | expiry_time
+|
+|====
+== MDT
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*MDT* + 
+ACTION: _openEHR-EHR-ACTION.service.v1_
+|at0011| 0..1| DV_TEXT | Tjenestenavn
+a|
+
+
+For eksempel "Sarkom MDT-møte" eller "Henvisning til fysioterapi". Koding av det spesifikke tjenestenavnet med en terminologi foretrekkes, der det er mulig.
+|at0014| 0..1| DV_CODED_TEXT | Tjenestetype
+a|
+* multidisiplinært teammøte (SNOMED-CT: 312384001)
+
+
+For eksempel "MDT-møte" eller "Henvisning".
+|at0013| 0..1| DV_TEXT | Beskrivelse
+a|
+// Not supported rmType ELEMENT
+|| 0..1| DV_DATE_TIME | undefined
+// date_time_value -  /content[openEHR-EHR-ACTION.service.v1,'MDT']/description[at0001]/items[at0032]/value
+|
+// Not supported rmType DV_INTERVAL<DV_DATE_TIME>
+|| 1..1| DV_DATE_TIME | undefined
+// lower -  /content[openEHR-EHR-ACTION.service.v1,'MDT']/description[at0001]/items[at0032]/value/lower
+|
+|| 1..1| DV_DATE_TIME | undefined
+// upper -  /content[openEHR-EHR-ACTION.service.v1,'MDT']/description[at0001]/items[at0032]/value/upper
+|
+|| 0..1| DV_DURATION | undefined
+// duration_value -  /content[openEHR-EHR-ACTION.service.v1,'MDT']/description[at0001]/items[at0032]/value
+|
+// Not supported rmType DV_INTERVAL<DV_DURATION>
+|| 1..1| DV_DURATION | undefined
+// lower -  /content[openEHR-EHR-ACTION.service.v1,'MDT']/description[at0001]/items[at0032]/value/lower
+|
+|| 1..1| DV_DURATION | undefined
+// upper -  /content[openEHR-EHR-ACTION.service.v1,'MDT']/description[at0001]/items[at0032]/value/upper
+|
+|| 0..1| DV_TEXT | undefined
+// text_value -  /content[openEHR-EHR-ACTION.service.v1,'MDT']/description[at0001]/items[at0032]/value
+a|
+|at0025| 0..1| DV_DATE_TIME | Planlagt dato/tid
+|
+
+
+Elementet skal kun brukes i forbindelse med prosesstrinnet "Tjeneste tidfestet".
+|at0012| 0..1| DV_CODED_TEXT | Årsak
+a|
+* Sarkom (SNOMED-CT: 1187396000)
+* Myelomatose (SNOMED-CT: 109989006)
+* Blærekreft (SNOMED-CT: 399326009)
+* Brystkreft (SNOMED-CT: 254837009)
+* Bukspyttkjertelkreft (SNOMED-CT: 363418001)
+* Eggstokkreft (ovarial) (SNOMED-CT: 363443007)
+* Malignt melanom (SNOMED-CT: 372244006)
+* Galleveiskreft (SNOMED-CT: 126853008)
+* Hjernekreft (SNOMED-CT: 126952004)
+* Hode- halskreft (SNOMED-CT: 255055008)
+* Akutt leukemi (SNOMED-CT: 91855006)
+* Kronisk lymfatisk leukemi (KLL) (SNOMED-CT: 92814006)
+* Primær leverkreft (HCC) (SNOMED-CT: 93870000)
+* Livmorhalskreft (cervix) (SNOMED-CT: 363354003)
+* Livmorkreft (endometrie) (SNOMED-CT: 371973000)
+* Lungekreft (SNOMED-CT: 363358000)
+* Lymfomer (SNOMED-CT: 118600007)
+* Nevroendokrine svulster (SNOMED-CT: 255046005)
+* Nyrekreft (SNOMED-CT: 363518003)
+* Peniskreft (SNOMED-CT: 363516004)
+* Prostatakreft (SNOMED-CT: 399068003)
+* Skjoldbruskkjertelkreft (SNOMED-CT: 363478007)
+* Kreft i spiserør og magesekk (SNOMED-CT: 255078002)
+* Testikkelkreft (SNOMED-CT: 363449006)
+* Tykk- og endetarmskreft (SNOMED-CT: 781382000)
+
+
+For eksempel årsaken til at tjenesten ble avlyst eller satt på vent. Det er ikke nødvendig å registrere en årsak for hvert prosesstrinn når forløpet går som planlagt. Dette dataelementet er ment for å kunne registrere årsaken til avvik fra et typisk forløp, som for eksempel "Utsatt" med årsaken "Pasienten hadde feber", eller "Avlyst" med årsaken "Pasienten ombestemte seg". Merk: Den kliniske indikasjonen for at tjenesten er ordinert kan registreres i arketypen INSTRUCTION.service_request (Helsetjenesteforespørsel).
+5+a|*Mdt tilleggsinformasjon dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.mdt_tilleggsinformasjon_dips.v1_
+|at0001| 0..1| DV_BOOLEAN | Pasienten skal møte fysisk i MDT møte
+|
+|at0002| 0..1| DV_TEXT | Hvem informerer pasienten om konklusjonen fra møtet
+a|
+5+a|*Enkeltdeltagere* + 
+CLUSTER: _at0004_
+|at0005| 0..1| DV_TEXT | Rolle
+a|
+|at0006| 0..1| DV_TEXT | Navn
+a|
+|at0003| 0..1| DV_TEXT | Sammendrag av deltagere
+a|
+|at0007| 0..1| DV_TEXT | Hvor følges pasienten opp videre
+a|
+|at0028| 0..1| DV_TEXT | Resultat
+a|
+// Not supported rmType ELEMENT
+// Not supported rmType DV_IDENTIFIER
+|| 0..1| DV_TEXT | undefined
+// text_value -  /content[openEHR-EHR-ACTION.service.v1,'MDT']/protocol[at0015]/items[at0016]/value
+a|
+// Not supported rmType ELEMENT
+// Not supported rmType DV_IDENTIFIER
+|| 0..1| DV_TEXT | undefined
+// text_value -  /content[openEHR-EHR-ACTION.service.v1,'MDT']/protocol[at0015]/items[at0018]/value
+a|
+5+a|*deltager dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.deltagere_dips.v1_
+|at0002| 0..*| DV_TEXT | Enkelt deltagere
+a|
+|at0001| 0..1| DV_TEXT | Komplett deltagerliste
+a|
+|====
+// Not supported rmType CODE_PHRASE
+// Not supported rmType CODE_PHRASE
+// Not supported rmType PARTY_PROXY

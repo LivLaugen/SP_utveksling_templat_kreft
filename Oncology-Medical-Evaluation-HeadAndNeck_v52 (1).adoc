@@ -1,0 +1,2200 @@
+= Oncology-Medical-Evaluation-HodeHals
+
+
+== Metadata
+
+
+TemplateId:: Oncology-Medical-Evaluation-HeadAndNeck_v52
+
+
+Archetype:: openEHR-EHR-COMPOSITION.request.v1
+
+
+
+
+:toc:
+
+
+
+
+// Not supported rmType COMPOSITION
+== EVENT_CONTEXT
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*EVENT_CONTEXT* + 
+EVENT_CONTEXT: __
+5+a|*Template versjonsinformasjon* + 
+CLUSTER: _openEHR-EHR-CLUSTER.template_semver_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Navn
+a|
+* Oncology-Medical-Evaluation (TemplateVersionNameMDT: Eval01)
+5+a|*Semver* + 
+CLUSTER: _at0003_
+|at0004| 0..1| DV_COUNT | Major
+|
+|at0005| 0..1| DV_COUNT | Minor
+|
+|at0006| 0..1| DV_COUNT | Patch
+|
+|====
+== Administrative aktiviteter
+== Hode og Halskreft mdt oppmelding templat
+== Problem/diagnose (inkl TNM)
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Problem/diagnose (inkl TNM)* + 
+EVALUATION: _openEHR-EHR-EVALUATION.problem_diagnosis.v1_
+
+
+Det er i praksis ikke lett å oppnå et klart skille mellom et problem og en diagnose. I klinisk dokumentasjon med denne arketypen ses problem og diagnose som et kontinuum, med økende krav til detaljer og støttende evidens for å underbygge en diagnose.
+|at0002| 1..1| DV_TEXT | Problem/diagnosenavn
+a|
+
+
+Koding av navnet på problemet eller diagnosen med en terminologi er foretrukket, der det er mulig.
+5+a|*Anatomisk lokalisering* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+|at0001| 1..1| DV_CODED_TEXT | Navn på kroppssted
+a|
+* Structure of head and/or neck (body structure) (SNOMED-CT: 774007)
+
+
+Dette dataelementet er det eneste obligatoriske dataelementet i arketypen og bør brukes som det primære dataelementet for registrering av en anatomisk lokalisering. Det er sterkt anbefalt at "Navn på kroppssted" registreres så anatomisk spesifikt som mulig. For eksempel; registrer "øvre øyelokk" heller enn "øyelokk" med "øvre" som kvalifikator; "femte ribben" heller enn "ribben" med en numerisk kvalifikator. Bruk de andre dataelementene for lateralitet, aspekt, region og anatomisk linje for å gi mer detaljer. Dette dataelementet bør kodes med en terminologi som kan assistere beslutningsstøtte dersom mulig - en passende terminologi for bruk her kunne omfatte individuelle konsepter eller lister av prekoordinerte termer. Fritekst bør kun brukes hvis det ikke finnes en passende terminologi. 
+
+Dersom navn på kroppssted er oppgitt i arketypen som denne arketypen er nøstet inn i, kan dette dataelementet være redundant. Imidlertid kan det være fornuftig å dobbeltregistrere navnet på kroppstedet for å støtte semantiske spørringer basert på denne arketypen i stedet for i arketypen den er nøstet inn i.
+|at0065| 0..*| DV_CODED_TEXT | Anatomisk orienteringspunkt
+a|
+* Høyre (SNOMED-CT: 24028007)
+* Venstre (SNOMED-CT: 7771000)
+* Høyre og venstre (SNOMED-CT: 51440002)
+* Ukjent (SNOMED-CT: 261665006)
+* Midtlinje (SNOMED-CT: 399488007)
+
+
+Brukes til å øke presisjonen ved spesifisering av kroppsstedet, dersom påkrevd. For eksempel den øvre høyre kvadranten eller McBurneys punkt på bukveggen, eller interfalangealleddet på stortåen. Dersom dataelementet "Navn på kroppssted" er registrert ved hjelp av prekoordinerte termer som omfatter det spesifikke stedet er dette dataelementet overflødig.
+|at0003| 0..1| DV_DATE_TIME | Dato/tid for klinisk bekreftelse
+|
+
+
+Delvise datoer er tillatt. Dersom individet er under ett år gammel, må komplett dato eller som et minimum måned og år oppgis for å muliggjøre presise beregninger av alder, f.eks. ved bruk i beslutningsstøttesystemer. Data registrert eller importert som "alder ved tidspunkt når diagnosen stilles" bør konverteres til en dato ved hjelp av individets fødselsdato.
+5+a|*Oncology problem details dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.oncology_problem_details_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Multiple primærtumorer
+a|
+* Multiple primærtumorer (SNOMED-CT: 109359008)
+|at0002| 0..1| DV_TEXT | Beskrivelse
+a|
+5+a|*TNM-klassifikasjon klinisk* + 
+CLUSTER: _openEHR-EHR-CLUSTER.tnm.v1_
+
+
+Betegnes som TNM eller cTNM.
+|at0003| 0..1| DV_CODED_TEXT | Primærtumor (T)
+a|
+* cT0 (SNOMED-CT: 1228882005)
+* cTis (SNOMED-CT: 1228884006)
+* cT1 (SNOMED-CT: 1228889001)
+* cT1a (SNOMED-CT: 1228893007)
+* cT1b (SNOMED-CT: 1228895000)
+* cT2 (SNOMED-CT: 1228929004)
+* cT3 (SNOMED-CT: 1228938002)
+* cT4 (SNOMED-CT: 1228944003)
+* cT4a (SNOMED-CT: 1228945002)
+* cT4b (SNOMED-CT: 1228946001)
+* cTX (SNOMED-CT: 1222604002)
+
+
+Kodes med en T-kode som passer for tumortypen og den anatomiske lokaliseringen, for eksempel "T1" eller "T3". Fremkommer i "TNM-vurdering" som "T" eller "cT".
+|at0004| 0..1| DV_CODED_TEXT | Regionale lymfeknuter (N)
+a|
+* cN0 (SNOMED-CT: 1229967007)
+* cN1 (SNOMED-CT: 1229973008)
+* cN1a (SNOMED-CT: 1229975001)
+* cN1b (SNOMED-CT: 1229976000)
+* cN2 (SNOMED-CT: 1229978004)
+* cN2a (SNOMED-CT: 1229981009)
+* cN2b (SNOMED-CT: 1229982002)
+* cN2c (SNOMED-CT: 1229983007)
+* cN3 (SNOMED-CT: 1229984001)
+* cN3a (SNOMED-CT: 1229985000)
+* cN3b (SNOMED-CT: 1229986004)
+* cNX (SNOMED-CT: 1229966003)
+
+
+Kodes med en N-kode som passer for tumortypen og den anatomiske lokaliseringen, for eksempel "NX" eller "cN2". Fremkommer i "TNM-vurdering" som "N" eller "cN".
+|at0005| 0..1| DV_CODED_TEXT | Fjernmetastase (M)
+a|
+* cM0 (SNOMED-CT: 1229901006)
+* cM1 (SNOMED-CT: 1229903009)
+* cMX (SNOMED-CT: 27167007)
+
+
+Kodes med en M-kode som passer for tumortypen og den anatomiske lokaliseringen, for eksempel "M1", "cM1a", "M1 PUL" eller or "cM0". Fremkommer i "TNM-vurdering" som "M" eller "cM".
+|at0027| 0..1| DV_BOOLEAN | Residiv (r)
+|
+
+
+Angis ved å legge til prefikset "r" i "TNM-vurdering".
+|at0030| 0..1| DV_TEXT | TNM-vurdering
+a|
+|at0032| 0..1| DV_CODED_TEXT | TNM-utgave
+a|
+* AJCC TNM Versjon 8 (AJCC-TNM-VERSION: Edition8)
+* AJCC TNM Versjon 9 (AJCC-TNM-VERSION: Edition9)
+5+a|*TNM-klassifikasjon patologi* + 
+CLUSTER: _openEHR-EHR-CLUSTER.tnm-pathological.v1_
+
+
+Betegnes som pTNM.
+|at0003.1| 0..1| DV_CODED_TEXT | Primærtumor (pT)
+a|
+* pT0 (SNOMED-CT: 1228951007)
+* pTis (SNOMED-CT: 1228953005)
+* pT1 (SNOMED-CT: 1228957006)
+* pT1a (SNOMED-CT: 1228959009)
+* pT1b (SNOMED-CT: 1228962007)
+* pT2 (SNOMED-CT: 1229852009)
+* pT3 (SNOMED-CT: 1229859000)
+* pT4 (SNOMED-CT: 1229864001)
+* pT4a (SNOMED-CT: 1229865000)
+* pT4b (SNOMED-CT: 1229866004)
+* pTX (SNOMED-CT: 1228950008)
+
+
+Kodes med en T-kode som passer for tumortypen og den anatomiske lokaliseringen, for eksempel "pT1" eller "pT3". Fremkommer i "TNM-vurdering" som "pT".
+|at0004.1| 0..1| DV_CODED_TEXT | Regionale lymfeknuter (pN)
+a|
+* pN0 (SNOMED-CT: 1229947003)
+* pN1 (SNOMED-CT: 1229951001)
+* pN1a (SNOMED-CT: 1229954009)
+* pN1b (SNOMED-CT: 1229955005)
+* pN2 (SNOMED-CT: 1229957002)
+* pN2a (SNOMED-CT: 1229959004)
+* pN2b (SNOMED-CT: 1229960009)
+* pN2c (SNOMED-CT: 1229961008)
+* pN3 (SNOMED-CT: 1229962001)
+* pN3a (SNOMED-CT: 1229963006)
+* pN3b (SNOMED-CT: 1229964000)
+* pNX (SNOMED-CT: 1229945006)
+
+
+Kodes med en N-kode som passer for tumortypen og den anatomiske lokaliseringen, for eksempel "pNX" eller "pN2". Fremkommer i "TNM-vurdering" som "pN".
+|at0005.1| 0..1| DV_CODED_TEXT | Fjernmetastase (pM)
+a|
+* pM0 (SNOMED-CT: 30893008)
+* pM1 (SNOMED-CT: 1229916009)
+* pMX (SNOMED-CT: 27167007)
+
+
+Kodes med en M-kode som passer for tumortypen og den anatomiske lokaliseringen, for eksempel "pM1. Fremkommer i "TNM-vurdering" som "pM".
+|at0027| 0..1| DV_BOOLEAN | Residiv (r)
+|
+
+
+Angis ved å legge til prefikset "r" i "TNM-vurdering".
+|at0030.1| 0..1| DV_TEXT | pTNM-vurdering
+a|
+|at0032| 0..1| DV_CODED_TEXT | TNM-utgave
+a|
+* AJCC TNM Versjon 8 (AJCC-TNM-VERSION: Edition8)
+* AJCC TNM Versjon 9 (AJCC-TNM-VERSION: Edition9)
+|at0069| 0..1| DV_TEXT | Kommentar diagnose/TNM
+a|
+|at0070| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+|====
+== Lymfeknutemetastase
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Lymfeknutemetastase* + 
+EVALUATION: _openEHR-EHR-EVALUATION.problem_diagnosis.v1_
+
+
+Det er i praksis ikke lett å oppnå et klart skille mellom et problem og en diagnose. I klinisk dokumentasjon med denne arketypen ses problem og diagnose som et kontinuum, med økende krav til detaljer og støttende evidens for å underbygge en diagnose.
+|at0002| 1..1| DV_CODED_TEXT | Regional lymfeknutemetastase
+a|
+* Lymfeknutemetastase (disorder) (SNOMED-CT: 94392001)
+
+
+Koding av navnet på problemet eller diagnosen med en terminologi er foretrukket, der det er mulig.
+5+a|*Utredningsmetode regionale lymfeknutemetastaser* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+|at0003| 0..1| DV_CODED_TEXT | Grunnlag
+a|
+* Reginoale lymfeknutemetastase (SNOMED-CT: 399374009)
+
+
+Det anbefales å kode "Funn" med en terminologi, der det er mulig. For eksempel "Mantoux test", "AFP nivå", "Tumorstørrelse", "Genetisk test", "BRCA1 test", "Histopatologisvar", "Fysisk funn", "Funn ved operasjon", "FIGO stadium", "Symptom", "Tumorgradering", "Klinisk inntrykk". Dersom grunnlaget er tilstrekkelig identifisert i "Resultat" eller "Strukturert resultat" kan dette elementet være overflødig, og har derfor blitt satt som valgfritt.
+|at0026| 0..1| DV_DATE_TIME | Dato/tid for klinisk relevans
+|
+|at0022| 0..*| DV_CODED_TEXT | Metode
+a|
+* Bildediagnostikk (SNOMED-CT: 363679005)
+* Cytologi (SNOMED-CT: 116147009)
+* Biopsi (SNOMED-CT: 86273004)
+* Fjerning av SN (SNOMED-CT: 443497002)
+* Reseksjon (SNOMED-CT: 65801008)
+* Annet (SNOMED-CT: 74964007)
+* Ukjent (SNOMED-CT: 69466000)
+
+
+Metoden bør vurderes kodet med en terminologi der dette er mulig. For eksempel fysisk undersøkelse, røntgen thorax, patologisvar, koloskopi.
+|at0001| 0..1| DV_TEXT | Spesifier annet
+a|
+|at0070| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+|====
+== Fjernmetastaser
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Fjernmetastaser* + 
+EVALUATION: _openEHR-EHR-EVALUATION.problem_diagnosis.v1_
+
+
+Det er i praksis ikke lett å oppnå et klart skille mellom et problem og en diagnose. I klinisk dokumentasjon med denne arketypen ses problem og diagnose som et kontinuum, med økende krav til detaljer og støttende evidens for å underbygge en diagnose.
+|at0002| 1..1| DV_CODED_TEXT | Fjernmetastaser
+a|
+* Metastase (disorder) (SNOMED-CT: 128462008)
+
+
+Koding av navnet på problemet eller diagnosen med en terminologi er foretrukket, der det er mulig.
+5+a|*Utredningsmetode fjernmetastaser* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+|at0003| 0..1| DV_CODED_TEXT | Grunnlag
+a|
+* Fjernmetastase (SNOMED-CT: 399409002)
+
+
+Det anbefales å kode "Funn" med en terminologi, der det er mulig. For eksempel "Mantoux test", "AFP nivå", "Tumorstørrelse", "Genetisk test", "BRCA1 test", "Histopatologisvar", "Fysisk funn", "Funn ved operasjon", "FIGO stadium", "Symptom", "Tumorgradering", "Klinisk inntrykk". Dersom grunnlaget er tilstrekkelig identifisert i "Resultat" eller "Strukturert resultat" kan dette elementet være overflødig, og har derfor blitt satt som valgfritt.
+|at0026| 0..1| DV_DATE_TIME | Dato/tid for klinisk relevans
+|
+|at0022| 0..*| DV_CODED_TEXT | Metode
+a|
+* Palpasjon (SNOMED-CT: 113011001)
+* Bildediagnostikk (SNOMED-CT: 363679005)
+* Cytologi (SNOMED-CT: 116147009)
+* Biopsi (SNOMED-CT: 86273004)
+* Reseksjon (SNOMED-CT: 65801008)
+* Annet (SNOMED-CT: 74964007)
+* Ukjent (SNOMED-CT: 69466000)
+
+
+Metoden bør vurderes kodet med en terminologi der dette er mulig. For eksempel fysisk undersøkelse, røntgen thorax, patologisvar, koloskopi.
+|at0001| 0..1| DV_TEXT | Spesifiser annet
+a|
+5+a|*M anatomisk lokalisajson Skjelett* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+|at0001| 1..1| DV_CODED_TEXT | Navn på kroppssted
+a|
+* Skjelett (SNOMED-CT: 113192009)
+
+
+Dette dataelementet er det eneste obligatoriske dataelementet i arketypen og bør brukes som det primære dataelementet for registrering av en anatomisk lokalisering. Det er sterkt anbefalt at "Navn på kroppssted" registreres så anatomisk spesifikt som mulig. For eksempel; registrer "øvre øyelokk" heller enn "øyelokk" med "øvre" som kvalifikator; "femte ribben" heller enn "ribben" med en numerisk kvalifikator. Bruk de andre dataelementene for lateralitet, aspekt, region og anatomisk linje for å gi mer detaljer. Dette dataelementet bør kodes med en terminologi som kan assistere beslutningsstøtte dersom mulig - en passende terminologi for bruk her kunne omfatte individuelle konsepter eller lister av prekoordinerte termer. Fritekst bør kun brukes hvis det ikke finnes en passende terminologi. 
+
+Dersom navn på kroppssted er oppgitt i arketypen som denne arketypen er nøstet inn i, kan dette dataelementet være redundant. Imidlertid kan det være fornuftig å dobbeltregistrere navnet på kroppstedet for å støtte semantiske spørringer basert på denne arketypen i stedet for i arketypen den er nøstet inn i.
+5+a|*M anatomisk lokalisajson Lever* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+|at0001| 1..1| DV_CODED_TEXT | Navn på kroppssted
+a|
+* Lever (SNOMED-CT: 10200004)
+
+
+Dette dataelementet er det eneste obligatoriske dataelementet i arketypen og bør brukes som det primære dataelementet for registrering av en anatomisk lokalisering. Det er sterkt anbefalt at "Navn på kroppssted" registreres så anatomisk spesifikt som mulig. For eksempel; registrer "øvre øyelokk" heller enn "øyelokk" med "øvre" som kvalifikator; "femte ribben" heller enn "ribben" med en numerisk kvalifikator. Bruk de andre dataelementene for lateralitet, aspekt, region og anatomisk linje for å gi mer detaljer. Dette dataelementet bør kodes med en terminologi som kan assistere beslutningsstøtte dersom mulig - en passende terminologi for bruk her kunne omfatte individuelle konsepter eller lister av prekoordinerte termer. Fritekst bør kun brukes hvis det ikke finnes en passende terminologi. 
+
+Dersom navn på kroppssted er oppgitt i arketypen som denne arketypen er nøstet inn i, kan dette dataelementet være redundant. Imidlertid kan det være fornuftig å dobbeltregistrere navnet på kroppstedet for å støtte semantiske spørringer basert på denne arketypen i stedet for i arketypen den er nøstet inn i.
+5+a|*M anatomisk lokalisajson Lunge* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+|at0001| 1..1| DV_CODED_TEXT | Navn på kroppssted
+a|
+* Lunge (SNOMED-CT: 39607008)
+
+
+Dette dataelementet er det eneste obligatoriske dataelementet i arketypen og bør brukes som det primære dataelementet for registrering av en anatomisk lokalisering. Det er sterkt anbefalt at "Navn på kroppssted" registreres så anatomisk spesifikt som mulig. For eksempel; registrer "øvre øyelokk" heller enn "øyelokk" med "øvre" som kvalifikator; "femte ribben" heller enn "ribben" med en numerisk kvalifikator. Bruk de andre dataelementene for lateralitet, aspekt, region og anatomisk linje for å gi mer detaljer. Dette dataelementet bør kodes med en terminologi som kan assistere beslutningsstøtte dersom mulig - en passende terminologi for bruk her kunne omfatte individuelle konsepter eller lister av prekoordinerte termer. Fritekst bør kun brukes hvis det ikke finnes en passende terminologi. 
+
+Dersom navn på kroppssted er oppgitt i arketypen som denne arketypen er nøstet inn i, kan dette dataelementet være redundant. Imidlertid kan det være fornuftig å dobbeltregistrere navnet på kroppstedet for å støtte semantiske spørringer basert på denne arketypen i stedet for i arketypen den er nøstet inn i.
+5+a|*M anatomisk lokalisajson CNS* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+|at0001| 1..1| DV_CODED_TEXT | Navn på kroppssted
+a|
+* CNS (sentralnervesystemet) (SNOMED-CT: 21483005)
+
+
+Dette dataelementet er det eneste obligatoriske dataelementet i arketypen og bør brukes som det primære dataelementet for registrering av en anatomisk lokalisering. Det er sterkt anbefalt at "Navn på kroppssted" registreres så anatomisk spesifikt som mulig. For eksempel; registrer "øvre øyelokk" heller enn "øyelokk" med "øvre" som kvalifikator; "femte ribben" heller enn "ribben" med en numerisk kvalifikator. Bruk de andre dataelementene for lateralitet, aspekt, region og anatomisk linje for å gi mer detaljer. Dette dataelementet bør kodes med en terminologi som kan assistere beslutningsstøtte dersom mulig - en passende terminologi for bruk her kunne omfatte individuelle konsepter eller lister av prekoordinerte termer. Fritekst bør kun brukes hvis det ikke finnes en passende terminologi. 
+
+Dersom navn på kroppssted er oppgitt i arketypen som denne arketypen er nøstet inn i, kan dette dataelementet være redundant. Imidlertid kan det være fornuftig å dobbeltregistrere navnet på kroppstedet for å støtte semantiske spørringer basert på denne arketypen i stedet for i arketypen den er nøstet inn i.
+5+a|*M anatomisk lokalisajson Fjerne lymfeknuter* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+|at0001| 1..1| DV_TEXT | Navn på kroppssted
+a|
+* Fjerne lymfeknuter
+
+
+Dette dataelementet er det eneste obligatoriske dataelementet i arketypen og bør brukes som det primære dataelementet for registrering av en anatomisk lokalisering. Det er sterkt anbefalt at "Navn på kroppssted" registreres så anatomisk spesifikt som mulig. For eksempel; registrer "øvre øyelokk" heller enn "øyelokk" med "øvre" som kvalifikator; "femte ribben" heller enn "ribben" med en numerisk kvalifikator. Bruk de andre dataelementene for lateralitet, aspekt, region og anatomisk linje for å gi mer detaljer. Dette dataelementet bør kodes med en terminologi som kan assistere beslutningsstøtte dersom mulig - en passende terminologi for bruk her kunne omfatte individuelle konsepter eller lister av prekoordinerte termer. Fritekst bør kun brukes hvis det ikke finnes en passende terminologi. 
+
+Dersom navn på kroppssted er oppgitt i arketypen som denne arketypen er nøstet inn i, kan dette dataelementet være redundant. Imidlertid kan det være fornuftig å dobbeltregistrere navnet på kroppstedet for å støtte semantiske spørringer basert på denne arketypen i stedet for i arketypen den er nøstet inn i.
+5+a|*M anatomisk lokalisajson Annet* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+|at0001| 1..1| DV_TEXT | Navn på kroppssted
+a|
+* Annet
+
+
+Dette dataelementet er det eneste obligatoriske dataelementet i arketypen og bør brukes som det primære dataelementet for registrering av en anatomisk lokalisering. Det er sterkt anbefalt at "Navn på kroppssted" registreres så anatomisk spesifikt som mulig. For eksempel; registrer "øvre øyelokk" heller enn "øyelokk" med "øvre" som kvalifikator; "femte ribben" heller enn "ribben" med en numerisk kvalifikator. Bruk de andre dataelementene for lateralitet, aspekt, region og anatomisk linje for å gi mer detaljer. Dette dataelementet bør kodes med en terminologi som kan assistere beslutningsstøtte dersom mulig - en passende terminologi for bruk her kunne omfatte individuelle konsepter eller lister av prekoordinerte termer. Fritekst bør kun brukes hvis det ikke finnes en passende terminologi. 
+
+Dersom navn på kroppssted er oppgitt i arketypen som denne arketypen er nøstet inn i, kan dette dataelementet være redundant. Imidlertid kan det være fornuftig å dobbeltregistrere navnet på kroppstedet for å støtte semantiske spørringer basert på denne arketypen i stedet for i arketypen den er nøstet inn i.
+|at0023| 0..1| DV_TEXT | Spesifiser annet
+a|
+
+
+For eksempel: Tilgrensende til leppens overgang fra slimhinne til hud; en tatovering dekker nedre halvdel av dette området.
+|at0070| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+|====
+== Anamnese
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Anamnese* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.story.v1_
+|at0004| 0..*| DV_TEXT | Anamnese
+a|
+|====
+== Patologi
+== Vevsprøver/cytologiprøver
+== Kartleggingsspørsmål om diagnostiske undersøkelser Patologi
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartleggingsspørsmål om diagnostiske undersøkelser Patologi* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.investigation_screening.v1_
+
+
+Svarene kan være selvrapporterte.
+|at0040| 0..1| DV_CODED_TEXT | Kartleggingsformål
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Dette dataelementet er ment for å sette en kontekst for samlingen av spørsmål/svar til bruk senere for å gjøre spørringer på dataene. Det er ikke forventet at dette dataelementet skal være synlig for en bruker av skjemaet, men kun tilgjengelig i de lagrede dataene. For eksempel: "Preoperativ screening" eller navnet på det faktiske spørreskjemaet.
+|at0027| 0..1| DV_CODED_TEXT | Er det tatt biopsi (vevs/celleprøve)?
+a|
+* at0028 -> Ja 
+* at0029 -> Nei 
+
+
+Navnet på dataelementet kan omformuleres til det spesifikke spørsmålet i et templat eller brukergrensesnitt. Det foreslåtte verdisettet kan tilpasses/endres i det enkelte bruksområde ved å benytte de alternative datatypene DV_TEXT eller DV_BOOLEAN
+|====
+== Analyseresultat patologi
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Analyseresultat patologi* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.laboratory_test_result.v1_
+|at0005| 1..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* Anatomisk patologisk prosedyre/undersøkelse (SNOMED-CT: 108257001)
+
+
+Undersøkelsesnavnet kan dekke ett enkelt resultat eller en gruppe av resultater. Undersøkelsesnavnet kan kodes med medisinsk kodeverk som for eksempel NLK (Norsk laboratoriekodeverk), LOINC, SNOMED CT eller lokale laboratoriekodeverk. Eksempler kan være "Glukose", "Elektrolytter", "Blodgass", "Differensialtelling", "Dyrkning", "Kortisol (morgen)" eller "histologi melanom". Navnet kan noen ganger inneholde typen prøvemateriale og/eller pasientstatus, for eksempel "fastende blodglukose" "Kalium i svette", eller inneholde annen informasjon, som "Kalium (PNA blodgass)".
+5+a|*Prøvemateriale* + 
+CLUSTER: _openEHR-EHR-CLUSTER.specimen.v1_
+
+
+For eksempel kroppsvev eller kroppsvæske.
+|at0029| 0..1| DV_CODED_TEXT | Type prøvemateriale
+a|
+* Celler (Cytologi) (NLK prøvemateriale: CE)
+* Vev (NLK prøvemateriale: VE)
+* Annet materiale (NLK prøvemateriale: XX)
+
+
+For eksempel venøst blod, bakteriekultur, celleprøve eller vevsprøve. Koding av prøvetypen med en terminologi er foretrukket, dersom mulig.
+|at0097| 0..1| DV_TEXT | Beskriv annet prøvemateriale
+a|
+
+
+For eksempel: fargen og viskositeten til en væske; formen til et solid vev; eller en beskrivelse av vevsfragmenter.
+|at0015| 0..1| DV_DATE_TIME | Prøvetakningsdato
+|
+
+
+Denne dato/tidsregistreringen vil primært registreres i forbindelse med INSTRUCTION-timing, ACTION-tid, eller OBSERVATION-tider. Imidlertid er dette en kritisk informasjonsbit, og det kan være nyttig å ha mulighet til å også knytte den direkte til prøvematerialet.
+|at0073| 0..1| DV_CODED_TEXT | Overordnet resultatstatus
+a|
+* Prøve tatt, venter på svar (PatLab_code_status_dips: 1)
+* Endelig svar (PatLab_code_status_dips: 2)
+
+
+Verdiene er valgt spesifikt for å samsvare med verdiene i HL7 FHIR-ressursen "Diagnostic report", som historisk sett kommer fra HL7 v2. Andre lokale koder eller termer kan brukes ved å bruke datatypen "Fri eller kodet tekst.
+
+Dette elementet kan repeteres for å understøtte bruksområdene der statuser for forskjellige aspekter av resultatet er delt opp i flere elementer. Et eksempel på dette er de norske standard labsvarmeldingene i HIS 1.4-standarden, der status for svaret og status for laboratorieprosessen håndteres separat.
+5+a|*Analyseresultat - P16* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_CODED_TEXT | Analysenavn - p16 (ICH)
+a|
+* p16 (CDKN2A) Immunfarging (PatLab_code_dips: p16 (IHC))
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_CODED_TEXT | p16 (IHC)
+a|
+* Positivt (SNOMED-CT: 10828004)
+* Negativt (SNOMED-CT: 260385009)
+* Usikker (inkonklusiv) (SNOMED-CT: 64957009)
+* Ikke undersøkt (SNOMED-CT: 385660001)
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat - HPV* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_CODED_TEXT | Analysenavn - HPV DNA
+a|
+* HPV (DNA test) (SNOMED-CT: 35904009)
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_CODED_TEXT | HPV DNA
+a|
+* Positivt (SNOMED-CT: 10828004)
+* Negativt (SNOMED-CT: 260385009)
+* Usikker (inkonklusiv) (SNOMED-CT: 64957009)
+* Ikke undersøkt (SNOMED-CT: 385660001)
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat - EBV* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_CODED_TEXT | Analysenavn - EBV (ISH)
+a|
+* EBV (in situ hybridiserings) (PatLab_code_dips: EBV(ISH))
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_CODED_TEXT | EBV (ISH)
+a|
+* Positivt (SNOMED-CT: 10828004)
+* Negativt (SNOMED-CT: 260385009)
+* Usikker (inkonklusiv) (SNOMED-CT: 64957009)
+* Ikke undersøkt (SNOMED-CT: 385660001)
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat - PDL1 CPS* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_CODED_TEXT | Analysenavn PDL1 CPS
+a|
+* PD-L1 CPS (PatLab_code_dips: PD-L1 CPS)
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_CODED_TEXT | PD-L1 CPS
+a|
+* Positivt (SNOMED-CT: 10828004)
+* Negativt (SNOMED-CT: 260385009)
+* Usikker (inkonklusiv) (SNOMED-CT: 64957009)
+* Ikke undersøkt (SNOMED-CT: 385660001)
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+|at0001| 0..1| DV_TEXT | PD-L1 CPS verdi
+a|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat - Perinerval vekst* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_CODED_TEXT | Analysenavn - Perinerval vekst
+a|
+* Perinerval vekst (SNOMED-CT: 371513001)
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_CODED_TEXT | Perinerval vekst
+a|
+* Positiv (Perineural invasjon tilstede) (SNOMED-CT: 369731000)
+* Negativ (Perineural invasjon ikke tilstede) (SNOMED-CT: 370051000)
+* Usikker (Perineural invasjon  usikker) (SNOMED-CT: 396393005)
+* Ikke undersøkt (SNOMED-CT: 385660001)
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*analyte multiplicity dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.analyte_multiplicity_dips.v1_
+5+a|*Analyseresultat* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn - Andre
+a|
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_TEXT | Analyseresultat
+a|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+|at0003| 0..1| DV_TEXT | Spesifiser analyse
+a|
+
+
+
+|at0057| 0..1| DV_TEXT | Konklusjon/sammendrag overordnet
+a|
+
+
+For eksempel "mønsteret indikerer betydelig nedsatt nyrefunksjon". Innholdet av konklusjonen vil variere, basert på hvilken undersøkelse som er utført. Konklusjonen bør være i overensstemmelse med kodene brukt i elementet "Diagnose".
+5+a|*Tjenesteyter* + 
+CLUSTER: _openEHR-EHR-CLUSTER.organisation.v1_
+
+
+For eksempel: Et firma, institusjon, selskap, forening, nettverk, avdeling, gruppe i nærmiljøet, forsikringsselskap, behandlingsteam eller en gruppe av naboer som opptrer som støtte.
+|at0001| 0..1| DV_CODED_TEXT | Utførende laboratorie
+a|
+* AHUS, Akershus universitetssykehus (U_LAB: UL001)
+* Fürst Patologi (U_LAB: UL002)
+* Gyn Lab A/S (U_LAB: UL003)
+* Gades Institutt, Haukeland universitetssjukehus (U_LAB: UL004)
+* Helse Fonna, Haugesund sjukehus (U_LAB: UL005)
+* Helse Førde, Førde sjukehus (U_LAB: UL006)
+* Helse Møre og Romsdal, Molde sjukehus (U_LAB: UL007)
+* Helse Sunnmøre, Ålesund sjukehus (U_LAB: UL008)
+* Nordlandssykehuset, Bodø (U_LAB: UL009)
+* Oslo universitetssykehus, Aker (U_LAB: UL010)
+* Oslo universitetssykehus, Radiumhospitalet (U_LAB: UL011)
+* Oslo universitetssykehus, Rikshospitalet (U_LAB: UL012)
+* Oslo universitetssykehus, Ullevål (U_LAB: UL013)
+* Stavanger universitetssjukehus (U_LAB: UL014)
+* St. Olavs Hospital (U_LAB: UL015)
+* Sykehuset Innlandet, Lillehammer (U_LAB: UL016)
+* Sykehuset i Telemark, Skien (U_LAB: UL017)
+* Sykehuset i Vestfold, Tønsberg (U_LAB: UL018)
+* Sykehuset Østfold, Kalnes (U_LAB: UL019)
+* Sørlandet sykehus, Arendal (U_LAB: UL020)
+* Sørlandet sykehus, Kristiansand (U_LAB: UL021)
+* UNN, Universitetssykehuset i Nord-Norge (U_LAB: UL022)
+* Vestre Viken HF, Sykehuset Buskerud, Drammen (U_LAB: UL023)
+* Annet laboratorium (U_LAB: UL024)
+* Ukjent (U_LAB: UL025)
+
+
+For eksempel: "Haukeland Sykehus", "Årstad hjemmesykepleie", "YNWA Oslo" eller "JB Smith advokater".
+5+a|*Rekvisisjonsdetaljer* + 
+CLUSTER: _at0094_
+
+
+I de fleste situasjoner finnes det én rekvisisjon og ett korresponderende svar, men under noen omstendigheter kan flere rekvisisjoner representeres ved hjelp av en enkelt laboratorieresultat-arketype.
+
+For eksempel kan en kliniker bestille "glukose" i en rekvisisjon og "urea og elektrolytter" i en ytterligere rekvisisjon, mens laboratoriet utfører begge analysene og sender en samlet rapport.
+|at0063| 0..1| DV_TEXT | Rekvisisjons/remissenr.
+a|
+
+
+Når Laboratorieinformasjonssystemet (LIMS) tildeler en identifikator, åpnes det for sporing av fremdriften/prosessforløpet på bestillingen av undersøkelsen/rekvisisjonen og for å koble undersøkelsesresultatet til rekvisisjonen/bestillingen. Som regel tilsvarer dette HL7 "Filler Order Identifier".
+
+Denne identifikatoren kalles også ofte "rekvisisjonsnummer" eller "remissenummer".
+|====
+== Patologi operasjonspreparat
+== Kartlegging patologi på operasjonspreparat
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartlegging patologi på operasjonspreparat* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.investigation_screening.v1_
+
+
+Svarene kan være selvrapporterte.
+|at0040| 0..1| DV_CODED_TEXT | Kartleggingsformål
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Dette dataelementet er ment for å sette en kontekst for samlingen av spørsmål/svar til bruk senere for å gjøre spørringer på dataene. Det er ikke forventet at dette dataelementet skal være synlig for en bruker av skjemaet, men kun tilgjengelig i de lagrede dataene. For eksempel: "Preoperativ screening" eller navnet på det faktiske spørreskjemaet.
+|at0027| 0..1| DV_CODED_TEXT | Er det utført patologiundersøkelse på operasjonspreparat?
+a|
+* at0028 -> Ja 
+* at0029 -> Nei 
+
+
+Navnet på dataelementet kan omformuleres til det spesifikke spørsmålet i et templat eller brukergrensesnitt. Det foreslåtte verdisettet kan tilpasses/endres i det enkelte bruksområde ved å benytte de alternative datatypene DV_TEXT eller DV_BOOLEAN
+|====
+== Analyseresultat patologi kirurgi
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Analyseresultat patologi kirurgi* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.laboratory_test_result.v1_
+|at0005| 1..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* Anatomisk patologisk prosedyre/undersøkelse (SNOMED-CT: 108257001)
+
+
+Undersøkelsesnavnet kan dekke ett enkelt resultat eller en gruppe av resultater. Undersøkelsesnavnet kan kodes med medisinsk kodeverk som for eksempel NLK (Norsk laboratoriekodeverk), LOINC, SNOMED CT eller lokale laboratoriekodeverk. Eksempler kan være "Glukose", "Elektrolytter", "Blodgass", "Differensialtelling", "Dyrkning", "Kortisol (morgen)" eller "histologi melanom". Navnet kan noen ganger inneholde typen prøvemateriale og/eller pasientstatus, for eksempel "fastende blodglukose" "Kalium i svette", eller inneholde annen informasjon, som "Kalium (PNA blodgass)".
+5+a|*Prøvemateriale* + 
+CLUSTER: _openEHR-EHR-CLUSTER.specimen.v1_
+
+
+For eksempel kroppsvev eller kroppsvæske.
+|at0029| 0..1| DV_CODED_TEXT | Type prøvemateriale
+a|
+* Vev (NLK prøvemateriale: VE)
+
+
+For eksempel venøst blod, bakteriekultur, celleprøve eller vevsprøve. Koding av prøvetypen med en terminologi er foretrukket, dersom mulig.
+|at0007| 0..1| DV_CODED_TEXT | Prøvetakingsmetode
+a|
+* Vevsprøve hentet ved eksisjon (SNOMED-CT: 439479000)
+
+
+For eksempel venepunksjon, biopsi eller reseksjon. Koding av prøvetakingsmetoden med en terminologi er foretrukket, når det er mulig. Dersom prøvetakingsmetoden er inkludert i "Type prøvemateriale" gjennom bruk av prekoordinerte koder blir dette elementet overflødig.
+|at0015| 0..1| DV_DATE_TIME | Prøvetakningsdato
+|
+
+
+Denne dato/tidsregistreringen vil primært registreres i forbindelse med INSTRUCTION-timing, ACTION-tid, eller OBSERVATION-tider. Imidlertid er dette en kritisk informasjonsbit, og det kan være nyttig å ha mulighet til å også knytte den direkte til prøvematerialet.
+|at0073| 0..1| DV_CODED_TEXT | Overordnet resultatstatus
+a|
+* Prøve tatt, venter på svar (PatLab_code_status_dips: 1)
+* Endelig svar (PatLab_code_status_dips: 2)
+
+
+Verdiene er valgt spesifikt for å samsvare med verdiene i HL7 FHIR-ressursen "Diagnostic report", som historisk sett kommer fra HL7 v2. Andre lokale koder eller termer kan brukes ved å bruke datatypen "Fri eller kodet tekst.
+
+Dette elementet kan repeteres for å understøtte bruksområdene der statuser for forskjellige aspekter av resultatet er delt opp i flere elementer. Et eksempel på dette er de norske standard labsvarmeldingene i HIS 1.4-standarden, der status for svaret og status for laboratorieprosessen håndteres separat.
+5+a|*Analyseresultat - ENE* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_CODED_TEXT | Analyseresultat - Ekstranodal ekstensjon (ENE)
+a|
+* Ekstranodal ekstensjon (ENE) (SNOMED-CT: 2960001000004100)
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_CODED_TEXT | Ekstranodel ekstensjon (ENE)
+a|
+* Positivt (SNOMED-CT: 10828004)
+* Negativt (SNOMED-CT: 260385009)
+* Usikker (inkonklusiv) (SNOMED-CT: 64957009)
+* Ikke undersøkt (SNOMED-CT: 385660001)
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat - Korteste margin* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_CODED_TEXT | Analysenavn - Korteste margin
+a|
+* Korteste margin (SNOMED-CT: 371491000)
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_CODED_TEXT | Analyseresultat
+a|
+* Korteste margin (SNOMED-CT: 371491000)
+* Ikke mulig å vurdere (SNOMED-CT: 371151008)
+* Ikke undersøkt (SNOMED-CT: 385660001)
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Fysiske mål til prøvemateriale - korteste margin* + 
+CLUSTER: _openEHR-EHR-CLUSTER.specimen_measurements.v1_
+|at0042| 0..1| DV_QUANTITY | Lengde
+|
+5+a|*Analyseresultat - Invasjonsdyp* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_CODED_TEXT | Analysenavn - Invasjonsdyp
+a|
+* Invasjonsdyp (SNOMED-CT: 370052007)
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_CODED_TEXT | Analyseresultat
+a|
+* Invasjonsdybde til tumor (SNOMED-CT: 396236002)
+* Ikke mulig å vurdere (SNOMED-CT: 371151008)
+* Ikke undersøkt (SNOMED-CT: 385660001)
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Fysiske mål til prøvemateriale - invasjonsdyp* + 
+CLUSTER: _openEHR-EHR-CLUSTER.specimen_measurements.v1_
+|at0042| 0..1| DV_QUANTITY | Dybde
+|
+5+a|*Analyseresultat - tumorstørrelse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_CODED_TEXT | Analysenavn - tumorstørrelse
+a|
+* Tumorstørrelse (SNOMED-CT: 263605001)
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_CODED_TEXT | Analyseresultat
+a|
+* Tumorstørrelse (SNOMED-CT: 263605001)
+* Ukjent tumorstørrelse (SNOMED-CT: 261665006)
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Fysiske mål til prøvemateriale - tumorstørrelse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.specimen_measurements.v1_
+|at0042| 0..1| DV_QUANTITY | Diameter
+|
+|at0057| 0..1| DV_TEXT | Konklusjon/sammendrag operasjonspreparat
+a|
+
+
+For eksempel "mønsteret indikerer betydelig nedsatt nyrefunksjon". Innholdet av konklusjonen vil variere, basert på hvilken undersøkelse som er utført. Konklusjonen bør være i overensstemmelse med kodene brukt i elementet "Diagnose".
+|at0098| 0..1| DV_CODED_TEXT | Morfologi
+a|
+* Plateepitelkarsinom (SNOMED-CT: 1162767002)
+* Adenokarsinom (SNOMED-CT: 1187332001)
+* Polymorft lavgradig adenokarsinom (SNOMED-CT: 128702009)
+* Mukoepidermoid karsinom (SNOMED-CT: 4079000)
+* Adenoid cystisk karsinom (SNOMED-CT: 11671000)
+* Acinærcellekarsinom (SNOMED-CT: 45410002)
+* Infiltrerande duktalt karsinom (SNOMED-CT: 82711006)
+* Udifferensiert karsinom (SNOMED-CT: 38549000)
+* Sinonasal carcinoma (SNUC) (SNOMED-CT: 697993003)
+* Malign tumor, speifiser (SNOMED-CT: 1240414004)
+
+
+For eksempel "Betydelig nedsatt leverfunksjon" eller "Salmonella". Koding med en terminologi foretrekkes, der det er mulig. Diagnosen bør være i overensstemmelse med teksten i "Konklusjon".
+5+a|*Rekvisisjonsdetaljer* + 
+CLUSTER: _at0094_
+
+
+I de fleste situasjoner finnes det én rekvisisjon og ett korresponderende svar, men under noen omstendigheter kan flere rekvisisjoner representeres ved hjelp av en enkelt laboratorieresultat-arketype.
+
+For eksempel kan en kliniker bestille "glukose" i en rekvisisjon og "urea og elektrolytter" i en ytterligere rekvisisjon, mens laboratoriet utfører begge analysene og sender en samlet rapport.
+|at0063| 0..1| DV_TEXT | Rekvisisjons/remissenr.
+a|
+
+
+Når Laboratorieinformasjonssystemet (LIMS) tildeler en identifikator, åpnes det for sporing av fremdriften/prosessforløpet på bestillingen av undersøkelsen/rekvisisjonen og for å koble undersøkelsesresultatet til rekvisisjonen/bestillingen. Som regel tilsvarer dette HL7 "Filler Order Identifier".
+
+Denne identifikatoren kalles også ofte "rekvisisjonsnummer" eller "remissenummer".
+|====
+== Lymfestasjoner - HLD
+== Kartleggingsspørsmål om diagnostiske undersøkelser HLD
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartleggingsspørsmål om diagnostiske undersøkelser HLD* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.investigation_screening.v1_
+
+
+Svarene kan være selvrapporterte.
+|at0040| 0..1| DV_CODED_TEXT | Kartleggingsformål
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Dette dataelementet er ment for å sette en kontekst for samlingen av spørsmål/svar til bruk senere for å gjøre spørringer på dataene. Det er ikke forventet at dette dataelementet skal være synlig for en bruker av skjemaet, men kun tilgjengelig i de lagrede dataene. For eksempel: "Preoperativ screening" eller navnet på det faktiske spørreskjemaet.
+|at0027| 0..1| DV_BOOLEAN | Er Halslymfeknutedisseksjon (HLD) utført?
+|
+
+
+Navnet på dataelementet kan omformuleres til det spesifikke spørsmålet i et templat eller brukergrensesnitt. Det foreslåtte verdisettet kan tilpasses/endres i det enkelte bruksområde ved å benytte de alternative datatypene DV_TEXT eller DV_BOOLEAN
+|====
+== HLD høyre
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*HLD høyre* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.laboratory_test_result.v1_
+|at0005| 1..1| DV_TEXT | HLD høyre
+a|
+* HLD høyre
+
+
+Undersøkelsesnavnet kan dekke ett enkelt resultat eller en gruppe av resultater. Undersøkelsesnavnet kan kodes med medisinsk kodeverk som for eksempel NLK (Norsk laboratoriekodeverk), LOINC, SNOMED CT eller lokale laboratoriekodeverk. Eksempler kan være "Glukose", "Elektrolytter", "Blodgass", "Differensialtelling", "Dyrkning", "Kortisol (morgen)" eller "histologi melanom". Navnet kan noen ganger inneholde typen prøvemateriale og/eller pasientstatus, for eksempel "fastende blodglukose" "Kalium i svette", eller inneholde annen informasjon, som "Kalium (PNA blodgass)".
+5+a|*Anatomisk lokalisering Høyre* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+|at0001| 1..1| DV_TEXT | Navn på kroppssted
+a|
+* Lymfestasjoner
+
+
+Dette dataelementet er det eneste obligatoriske dataelementet i arketypen og bør brukes som det primære dataelementet for registrering av en anatomisk lokalisering. Det er sterkt anbefalt at "Navn på kroppssted" registreres så anatomisk spesifikt som mulig. For eksempel; registrer "øvre øyelokk" heller enn "øyelokk" med "øvre" som kvalifikator; "femte ribben" heller enn "ribben" med en numerisk kvalifikator. Bruk de andre dataelementene for lateralitet, aspekt, region og anatomisk linje for å gi mer detaljer. Dette dataelementet bør kodes med en terminologi som kan assistere beslutningsstøtte dersom mulig - en passende terminologi for bruk her kunne omfatte individuelle konsepter eller lister av prekoordinerte termer. Fritekst bør kun brukes hvis det ikke finnes en passende terminologi. 
+
+Dersom navn på kroppssted er oppgitt i arketypen som denne arketypen er nøstet inn i, kan dette dataelementet være redundant. Imidlertid kan det være fornuftig å dobbeltregistrere navnet på kroppstedet for å støtte semantiske spørringer basert på denne arketypen i stedet for i arketypen den er nøstet inn i.
+|at0002| 0..1| DV_CODED_TEXT | Kroppsside
+a|
+* Venstre side (SNOMED-CT: 7771000)
+* Høyre side (SNOMED-CT: 24028007)
+
+
+Hvis den identifiserte kroppssiden ikke har noen lateralitet, bør dette datalementet stå tomt. Hvis dataelementet "Navn på kroppsted" bruker prekoordinerte termer som inkluderer lateralitet, er dette dataelementet overflødig.
+5+a|*Analyseresultat 1a positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 1aN+
+a|
+* 1aN+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 1aN+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 1a undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 1aN
+a|
+* 1aN
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 1aN
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 1b positve noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 1bN+
+a|
+* 1bN+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 1bN+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 1b undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 1bN
+a|
+* 1bN
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 1bN
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 2a positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 2aN+
+a|
+* 2aN+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 2aN+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 2a undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 2aN
+a|
+* 2aN
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 2aN
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 2b positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 2bN+
+a|
+* 2bN+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 2bN+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 2b undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 2bN
+a|
+* 2bN
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 2bN
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 3 positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 3N+
+a|
+* 3N+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 3N+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 3 undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 3N
+a|
+* 3N
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 3N
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 4 positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 4N+
+a|
+* 4N+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 4N+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 4 undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 4N
+a|
+* 4N
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 4N
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 5a positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 5aN+
+a|
+* 5aN+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 5aN+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 5a undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 5aN
+a|
+* 5aN
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 5aN
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 5b positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 5bN+
+a|
+* 5bN+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 5bN+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 5b undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 5bN
+a|
+* 5bN
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 5bN
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 6 positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 6N+
+a|
+* 6N+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 6N+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 6 undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 6N
+a|
+* 6N
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 6N
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat ukjent stasjon positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn ukjentN+
+a|
+* ukjentN+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall ukjentN+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat ukjent stasjon undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn ukjentN
+a|
+* ukjentN
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall ukjentN
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat sum positive noder høyre side* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn sum N+ høyre
+a|
+* Sum N+ høyre
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Sum N+ høyre
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat sum underøkte noder høyre side* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn sum N høyre
+a|
+* Sum N høyre
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Sum N høyre
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+|====
+== HLD venstre
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*HLD venstre* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.laboratory_test_result.v1_
+|at0005| 1..1| DV_TEXT | HLD venstre
+a|
+* HLD venstre
+
+
+Undersøkelsesnavnet kan dekke ett enkelt resultat eller en gruppe av resultater. Undersøkelsesnavnet kan kodes med medisinsk kodeverk som for eksempel NLK (Norsk laboratoriekodeverk), LOINC, SNOMED CT eller lokale laboratoriekodeverk. Eksempler kan være "Glukose", "Elektrolytter", "Blodgass", "Differensialtelling", "Dyrkning", "Kortisol (morgen)" eller "histologi melanom". Navnet kan noen ganger inneholde typen prøvemateriale og/eller pasientstatus, for eksempel "fastende blodglukose" "Kalium i svette", eller inneholde annen informasjon, som "Kalium (PNA blodgass)".
+5+a|*Anatomisk lokalisering Venstre* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+|at0001| 1..1| DV_TEXT | Navn på kroppssted
+a|
+* Lymfestasjoner
+
+
+Dette dataelementet er det eneste obligatoriske dataelementet i arketypen og bør brukes som det primære dataelementet for registrering av en anatomisk lokalisering. Det er sterkt anbefalt at "Navn på kroppssted" registreres så anatomisk spesifikt som mulig. For eksempel; registrer "øvre øyelokk" heller enn "øyelokk" med "øvre" som kvalifikator; "femte ribben" heller enn "ribben" med en numerisk kvalifikator. Bruk de andre dataelementene for lateralitet, aspekt, region og anatomisk linje for å gi mer detaljer. Dette dataelementet bør kodes med en terminologi som kan assistere beslutningsstøtte dersom mulig - en passende terminologi for bruk her kunne omfatte individuelle konsepter eller lister av prekoordinerte termer. Fritekst bør kun brukes hvis det ikke finnes en passende terminologi. 
+
+Dersom navn på kroppssted er oppgitt i arketypen som denne arketypen er nøstet inn i, kan dette dataelementet være redundant. Imidlertid kan det være fornuftig å dobbeltregistrere navnet på kroppstedet for å støtte semantiske spørringer basert på denne arketypen i stedet for i arketypen den er nøstet inn i.
+|at0002| 0..1| DV_CODED_TEXT | Kroppsside
+a|
+* Venstre side (SNOMED-CT: 7771000)
+* Høyre side (SNOMED-CT: 24028007)
+
+
+Hvis den identifiserte kroppssiden ikke har noen lateralitet, bør dette datalementet stå tomt. Hvis dataelementet "Navn på kroppsted" bruker prekoordinerte termer som inkluderer lateralitet, er dette dataelementet overflødig.
+5+a|*Analyseresultat 1a positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 1aN+
+a|
+* 1aN+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 1aN+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 1a undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 1aN
+a|
+* 1aN
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 1aN
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 1b positve noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 1bN+
+a|
+* 1bN+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 1bN+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 1b undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 1bN
+a|
+* 1bN
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 1bN
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 2a positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 2aN+
+a|
+* 2aN+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 2aN+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 2a undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 2aN
+a|
+* 2aN
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 2aN
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 2b positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 2bN+
+a|
+* 2bN+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 2bN+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 2b undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 2bN
+a|
+* 2bN
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 2bN
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 3 positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 3N+
+a|
+* 3N+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 3N+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 3 undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 3N
+a|
+* 3N
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 3N
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 4 positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 4N+
+a|
+* 4N+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 4N+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 4 undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 4N
+a|
+* 4N
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 4N
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 5a positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 5aN+
+a|
+* 5aN+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 5aN+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 5a undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 5aN
+a|
+* 5aN
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 5aN
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 5b positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 5bN+
+a|
+* 5bN+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 5bN+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 5b undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 5bN
+a|
+* 5bN
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 5bN
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 6 positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 6N+
+a|
+* 6N+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 6N+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat 6 undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn 6N
+a|
+* 6N
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall 6N
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat ukjent stasjon positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn ukjentN+
+a|
+* ukjentN+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall ukjentN+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat ukjent stasjon undersøkte noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn ukjentN
+a|
+* ukjentN
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Antall ukjentN
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat sum positive noder venstre side* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn sum N+ venstre
+a|
+* Sum N+ venstre
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Sum N+ venstre
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Analyseresultat sum underøkte noder venstre side* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Analysenavn sum N venstre
+a|
+* Sum N venstre
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Sum N venstre
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+|====
+== HLD totalt
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*HLD totalt* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.laboratory_test_result.v1_
+|at0005| 1..1| DV_TEXT | HLD total begge sider
+a|
+* HLD total
+
+
+Undersøkelsesnavnet kan dekke ett enkelt resultat eller en gruppe av resultater. Undersøkelsesnavnet kan kodes med medisinsk kodeverk som for eksempel NLK (Norsk laboratoriekodeverk), LOINC, SNOMED CT eller lokale laboratoriekodeverk. Eksempler kan være "Glukose", "Elektrolytter", "Blodgass", "Differensialtelling", "Dyrkning", "Kortisol (morgen)" eller "histologi melanom". Navnet kan noen ganger inneholde typen prøvemateriale og/eller pasientstatus, for eksempel "fastende blodglukose" "Kalium i svette", eller inneholde annen informasjon, som "Kalium (PNA blodgass)".
+5+a|*Totalt antall positive noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Total antall N+
+a|
+* Total N+
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Total N+
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+5+a|*Totalt antall noder* + 
+CLUSTER: _openEHR-EHR-CLUSTER.laboratory_test_analyte.v1_
+|at0024| 0..1| DV_TEXT | Total antall N
+a|
+* Total N
+
+
+Verdien for dette elementet blir vanligvis lagt inn i en spesialisering av denne arketypen, i en templat, eller i applikasjonen. For eksempel "serum natrium" eller "hemoglobin". Det er sterkt anbefalt å kode dette elementet med en terminologi, for eksempel Norsk laboratoriekodeverk, NPU, LOINC, SNOMED CT eller lokale kodesett.
+|at0001| 0..1| DV_COUNT | Total N
+|
+
+
+For eksempel "7,3 mmol/L" eller "Forhøyet". Datatypen "Udefinert datatype" må begrenses til en passende datatype i en spesialisering, et templat eller i applikasjonen. Datatypen Quantity har attributter fra referansemodellen som dekker flagg for normalt/unormalt, referanseområder og approksimeringer. Se https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class for mer detaljer.
+|====
+== Bildediagnostikk
+== Kartleggingsspørsmål om diagnostiske undersøkelser bildediagnostikk
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartleggingsspørsmål om diagnostiske undersøkelser bildediagnostikk* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.investigation_screening.v1_
+
+
+Svarene kan være selvrapporterte.
+|at0040| 0..1| DV_CODED_TEXT | Kartleggingsformål
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Dette dataelementet er ment for å sette en kontekst for samlingen av spørsmål/svar til bruk senere for å gjøre spørringer på dataene. Det er ikke forventet at dette dataelementet skal være synlig for en bruker av skjemaet, men kun tilgjengelig i de lagrede dataene. For eksempel: "Preoperativ screening" eller navnet på det faktiske spørreskjemaet.
+|at0027| 0..1| DV_CODED_TEXT | Er bildediagnostiske undersøkelser gjennomført?
+a|
+* at0028 -> Ja 
+* at0029 -> Nei 
+
+
+Navnet på dataelementet kan omformuleres til det spesifikke spørsmålet i et templat eller brukergrensesnitt. Det foreslåtte verdisettet kan tilpasses/endres i det enkelte bruksområde ved å benytte de alternative datatypene DV_TEXT eller DV_BOOLEAN
+|at0043| 0..1| DV_TEXT | Overordnet beskrivelse bildediagnostiske undersøkelse
+a|
+|====
+== Spesifikk undersøkelse RTG
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Spesifikk undersøkelse RTG* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.imaging_exam_result.v1_
+|at0004| 1..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* Røntgen-undersøkelse (SNOMED-CT: 363680008)
+
+
+For eksempel: "CT abdomen", "Doppler ultralyd av nyrearterier", "Røntgen thorax". Det anbefales sterkt å bruke en terminologi der det er mulig, fortrinnsvis en kode som både spesifiserer modalitet og anatomisk lokalisering. Mulige terminologier er NCRP, LOINC, SNOMED CT eller RadLex. Vanligvis tilsvarende FIHR DiagnosticReport.code.
+|at0091| 0..*| DV_CODED_TEXT | Modalitet
+a|
+* Røntgen (SNOMED-CT: 312254007)
+
+
+For eksempel: "Rtg", "CT", "Ultralyd", "UL", "MR", "Bentetthetsmåling", "Tomografi", "Mammografi", "Nukleærmedisin", "PET", "Angiografi" og "Fluoroskopi". 
+Dette dataelementet kan være overflødig hvis modaliteten er tydelig representert i 'Undersøkelsesnavnet'. Alternativt kan det også være mulig å autofylle 'Modalitet' fra et kodet 'Undersøkelsesnavn'. Koding av 'Modalitet' med et verdisett anbefales. For eksempel er verdien i kodeverket "DICOM CID 29 Acquisition Modality". Vanligvis tilsvarer dette ImagingStudy.modality i FHIR og Modality (0008, 0060) i DICOM.
+|at0070| 0..1| DV_DATE_TIME | Undersøkelsesdato
+|
+
+
+Tilsvarer FIHR 'ImagingStudy.started.
+|at0061| 0..1| DV_CODED_TEXT | Problemstilling
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Også kjent som "Begrunnelse for rekvisisjon/henvisning".
+|at0021| 0..1| DV_TEXT | Resymé
+a|
+
+
+Også referert til som "Sammendrag" eller "Funn og undersøkelsesresultat". Vanligvis tilsvarerende FHIR DiagnosticReport.conclusion.
+|====
+== Spesifikk undersøkelse MR
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Spesifikk undersøkelse MR* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.imaging_exam_result.v1_
+|at0004| 1..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* MR-undersøkelse (SNOMED-CT: 113091000)
+
+
+For eksempel: "CT abdomen", "Doppler ultralyd av nyrearterier", "Røntgen thorax". Det anbefales sterkt å bruke en terminologi der det er mulig, fortrinnsvis en kode som både spesifiserer modalitet og anatomisk lokalisering. Mulige terminologier er NCRP, LOINC, SNOMED CT eller RadLex. Vanligvis tilsvarende FIHR DiagnosticReport.code.
+|at0091| 0..*| DV_CODED_TEXT | Modalitet
+a|
+* MR (SNOMED-CT: 312250003)
+
+
+For eksempel: "Rtg", "CT", "Ultralyd", "UL", "MR", "Bentetthetsmåling", "Tomografi", "Mammografi", "Nukleærmedisin", "PET", "Angiografi" og "Fluoroskopi". 
+Dette dataelementet kan være overflødig hvis modaliteten er tydelig representert i 'Undersøkelsesnavnet'. Alternativt kan det også være mulig å autofylle 'Modalitet' fra et kodet 'Undersøkelsesnavn'. Koding av 'Modalitet' med et verdisett anbefales. For eksempel er verdien i kodeverket "DICOM CID 29 Acquisition Modality". Vanligvis tilsvarer dette ImagingStudy.modality i FHIR og Modality (0008, 0060) i DICOM.
+|at0070| 0..1| DV_DATE_TIME | Undersøkelsesdato
+|
+
+
+Tilsvarer FIHR 'ImagingStudy.started.
+|at0061| 0..1| DV_CODED_TEXT | Problemstilling
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Også kjent som "Begrunnelse for rekvisisjon/henvisning".
+|at0021| 0..1| DV_TEXT | Resymé
+a|
+
+
+Også referert til som "Sammendrag" eller "Funn og undersøkelsesresultat". Vanligvis tilsvarerende FHIR DiagnosticReport.conclusion.
+|====
+== Spesifikk undersøkelse CT
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Spesifikk undersøkelse CT* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.imaging_exam_result.v1_
+|at0004| 1..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* CT-undersøkelse (SNOMED-CT: 77477000)
+
+
+For eksempel: "CT abdomen", "Doppler ultralyd av nyrearterier", "Røntgen thorax". Det anbefales sterkt å bruke en terminologi der det er mulig, fortrinnsvis en kode som både spesifiserer modalitet og anatomisk lokalisering. Mulige terminologier er NCRP, LOINC, SNOMED CT eller RadLex. Vanligvis tilsvarende FIHR DiagnosticReport.code.
+|at0091| 0..*| DV_CODED_TEXT | Modalitet
+a|
+* CT (SNOMED-CT: 312251004)
+
+
+For eksempel: "Rtg", "CT", "Ultralyd", "UL", "MR", "Bentetthetsmåling", "Tomografi", "Mammografi", "Nukleærmedisin", "PET", "Angiografi" og "Fluoroskopi". 
+Dette dataelementet kan være overflødig hvis modaliteten er tydelig representert i 'Undersøkelsesnavnet'. Alternativt kan det også være mulig å autofylle 'Modalitet' fra et kodet 'Undersøkelsesnavn'. Koding av 'Modalitet' med et verdisett anbefales. For eksempel er verdien i kodeverket "DICOM CID 29 Acquisition Modality". Vanligvis tilsvarer dette ImagingStudy.modality i FHIR og Modality (0008, 0060) i DICOM.
+|at0070| 0..1| DV_DATE_TIME | Undersøkelsesdato
+|
+
+
+Tilsvarer FIHR 'ImagingStudy.started.
+|at0061| 0..1| DV_CODED_TEXT | Problemstilling
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Også kjent som "Begrunnelse for rekvisisjon/henvisning".
+|at0021| 0..1| DV_TEXT | Resymé
+a|
+
+
+Også referert til som "Sammendrag" eller "Funn og undersøkelsesresultat". Vanligvis tilsvarerende FHIR DiagnosticReport.conclusion.
+|====
+== Spesifikk undersøkelse PET
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Spesifikk undersøkelse PET* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.imaging_exam_result.v1_
+|at0004| 1..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* PET-undersøkelse (SNOMED-CT: 82918005)
+
+
+For eksempel: "CT abdomen", "Doppler ultralyd av nyrearterier", "Røntgen thorax". Det anbefales sterkt å bruke en terminologi der det er mulig, fortrinnsvis en kode som både spesifiserer modalitet og anatomisk lokalisering. Mulige terminologier er NCRP, LOINC, SNOMED CT eller RadLex. Vanligvis tilsvarende FIHR DiagnosticReport.code.
+|at0091| 0..*| DV_CODED_TEXT | Modalitet
+a|
+* PET (SNOMED-CT: 363678002)
+
+
+For eksempel: "Rtg", "CT", "Ultralyd", "UL", "MR", "Bentetthetsmåling", "Tomografi", "Mammografi", "Nukleærmedisin", "PET", "Angiografi" og "Fluoroskopi". 
+Dette dataelementet kan være overflødig hvis modaliteten er tydelig representert i 'Undersøkelsesnavnet'. Alternativt kan det også være mulig å autofylle 'Modalitet' fra et kodet 'Undersøkelsesnavn'. Koding av 'Modalitet' med et verdisett anbefales. For eksempel er verdien i kodeverket "DICOM CID 29 Acquisition Modality". Vanligvis tilsvarer dette ImagingStudy.modality i FHIR og Modality (0008, 0060) i DICOM.
+|at0070| 0..1| DV_DATE_TIME | Undersøkelsesdato
+|
+
+
+Tilsvarer FIHR 'ImagingStudy.started.
+|at0061| 0..1| DV_CODED_TEXT | Problemstilling
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Også kjent som "Begrunnelse for rekvisisjon/henvisning".
+|at0021| 0..1| DV_TEXT | Resymé
+a|
+
+
+Også referert til som "Sammendrag" eller "Funn og undersøkelsesresultat". Vanligvis tilsvarerende FHIR DiagnosticReport.conclusion.
+|====
+== Spesifikk undersøkelse PET-CT
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Spesifikk undersøkelse PET-CT* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.imaging_exam_result.v1_
+|at0004| 1..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* PET-undersøkelse med CT (SNOMED-CT: 450436003)
+
+
+For eksempel: "CT abdomen", "Doppler ultralyd av nyrearterier", "Røntgen thorax". Det anbefales sterkt å bruke en terminologi der det er mulig, fortrinnsvis en kode som både spesifiserer modalitet og anatomisk lokalisering. Mulige terminologier er NCRP, LOINC, SNOMED CT eller RadLex. Vanligvis tilsvarende FIHR DiagnosticReport.code.
+|at0070| 0..1| DV_DATE_TIME | Undersøkelsesdato
+|
+
+
+Tilsvarer FIHR 'ImagingStudy.started.
+|at0061| 0..1| DV_CODED_TEXT | Problemstilling
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Også kjent som "Begrunnelse for rekvisisjon/henvisning".
+|at0021| 0..1| DV_TEXT | Resymé
+a|
+
+
+Også referert til som "Sammendrag" eller "Funn og undersøkelsesresultat". Vanligvis tilsvarerende FHIR DiagnosticReport.conclusion.
+|====
+== Spesifikk undersøkelse UL
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Spesifikk undersøkelse UL* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.imaging_exam_result.v1_
+|at0004| 1..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* Ultralyd-undersøkelse (SNOMED-CT: 16310003)
+
+
+For eksempel: "CT abdomen", "Doppler ultralyd av nyrearterier", "Røntgen thorax". Det anbefales sterkt å bruke en terminologi der det er mulig, fortrinnsvis en kode som både spesifiserer modalitet og anatomisk lokalisering. Mulige terminologier er NCRP, LOINC, SNOMED CT eller RadLex. Vanligvis tilsvarende FIHR DiagnosticReport.code.
+|at0091| 0..*| DV_CODED_TEXT | Modalitet
+a|
+* Ultralyd (SNOMED-CT: 278292003)
+
+
+For eksempel: "Rtg", "CT", "Ultralyd", "UL", "MR", "Bentetthetsmåling", "Tomografi", "Mammografi", "Nukleærmedisin", "PET", "Angiografi" og "Fluoroskopi". 
+Dette dataelementet kan være overflødig hvis modaliteten er tydelig representert i 'Undersøkelsesnavnet'. Alternativt kan det også være mulig å autofylle 'Modalitet' fra et kodet 'Undersøkelsesnavn'. Koding av 'Modalitet' med et verdisett anbefales. For eksempel er verdien i kodeverket "DICOM CID 29 Acquisition Modality". Vanligvis tilsvarer dette ImagingStudy.modality i FHIR og Modality (0008, 0060) i DICOM.
+|at0070| 0..1| DV_DATE_TIME | Undersøkelsesdato
+|
+
+
+Tilsvarer FIHR 'ImagingStudy.started.
+|at0061| 0..1| DV_CODED_TEXT | Problemstilling
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Også kjent som "Begrunnelse for rekvisisjon/henvisning".
+|at0021| 0..1| DV_TEXT | Resymé
+a|
+
+
+Også referert til som "Sammendrag" eller "Funn og undersøkelsesresultat". Vanligvis tilsvarerende FHIR DiagnosticReport.conclusion.
+|====
+== Bildediagnostisk svar
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Bildediagnostisk svar* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.imaging_exam_result.v1_
+// Not supported rmType EVENT
+|at0004| 1..1| DV_TEXT | Undersøkelsesnavn
+a|
+
+
+For eksempel: "CT abdomen", "Doppler ultralyd av nyrearterier", "Røntgen thorax". Det anbefales sterkt å bruke en terminologi der det er mulig, fortrinnsvis en kode som både spesifiserer modalitet og anatomisk lokalisering. Mulige terminologier er NCRP, LOINC, SNOMED CT eller RadLex. Vanligvis tilsvarende FIHR DiagnosticReport.code.
+|at0070| 0..1| DV_DATE_TIME | Undersøkelsesdato
+|
+
+
+Tilsvarer FIHR 'ImagingStudy.started.
+|at0061| 0..1| DV_CODED_TEXT | Problemstilling
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Også kjent som "Begrunnelse for rekvisisjon/henvisning".
+|at0021| 0..1| DV_TEXT | Resymé
+a|
+
+
+Også referert til som "Sammendrag" eller "Funn og undersøkelsesresultat". Vanligvis tilsvarerende FHIR DiagnosticReport.conclusion.
+|at0023| 0..*| DV_TEXT | Kommentar
+a|
+
+
+For eksempel et notat om at kopi av bilde eller svarrapport er gitt til pasienten. Tilsvarer DiagnosticReport.note i FHIR.
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+|====
+== Skopi (m/u narkose) og beskrivelse av tumor
+== Kartleggingsspørsmål om diagnostiske undersøkelser skopi
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartleggingsspørsmål om diagnostiske undersøkelser skopi* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.investigation_screening.v1_
+
+
+Svarene kan være selvrapporterte.
+|at0040| 0..1| DV_CODED_TEXT | Kartleggingsformål
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Dette dataelementet er ment for å sette en kontekst for samlingen av spørsmål/svar til bruk senere for å gjøre spørringer på dataene. Det er ikke forventet at dette dataelementet skal være synlig for en bruker av skjemaet, men kun tilgjengelig i de lagrede dataene. For eksempel: "Preoperativ screening" eller navnet på det faktiske spørreskjemaet.
+5+a|*Spesifikk undersøkelse endoskopi* + 
+CLUSTER: _at0026_
+
+
+Bruk separate instanser av dette CLUSTER'et for å skille mellom spesifikke undersøkelser eller gruppering av undersøkelser.
+|at0021| 1..1| DV_TEXT | Undersøkelsesnavn
+a|
+* Endoskopi uten narkose
+* Endoskopi med narkose
+
+
+For eksempel: "Blodgass"," Røntgen thorax", "EKG" eller "Hørseltest". Koding av "Undersøkelsesnavn" med en terminologi foretrekkes der det er mulig.
+|at0024| 0..1| DV_BOOLEAN | Utført?
+|
+
+
+Navnet på dataelementet kan omformuleres til det spesifikke spørsmålet i et templat eller brukergrensesnitt. Det foreslåtte verdisettet kan tilpasses/endres i det enkelte bruksområde ved å benytte de alternative datatypene DV_TEXT eller DV_BOOLEAN.
+|====
+== Funn ved endoskopi/beskrivelse av tumor
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Funn ved endoskopi/beskrivelse av tumor* + 
+ACTION: _openEHR-EHR-ACTION.procedure.v1_
+|at0002| 1..1| DV_CODED_TEXT | Prosedyrenavn
+a|
+* Endoskopi (SNOMED-CT: 423827005)
+
+
+Det bør om mulig benyttes terminologi for å angi prosedyrenavnet.
+|at0049| 0..1| DV_TEXT | Funn v/endoskopi, beskrivelse av tumor
+a|
+
+
+For eksempel en beskrivelse av utførelsen og funnene fra prosedyren, det avbrutte forsøket, eller avlysningen av prosedyren.
+|====
+== Audiometri
+== Kartleggingsspørsmål om diagnostiske undersøkelser audiometri
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartleggingsspørsmål om diagnostiske undersøkelser audiometri* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.investigation_screening.v1_
+
+
+Svarene kan være selvrapporterte.
+|at0040| 0..1| DV_CODED_TEXT | Kartleggingsformål
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Dette dataelementet er ment for å sette en kontekst for samlingen av spørsmål/svar til bruk senere for å gjøre spørringer på dataene. Det er ikke forventet at dette dataelementet skal være synlig for en bruker av skjemaet, men kun tilgjengelig i de lagrede dataene. For eksempel: "Preoperativ screening" eller navnet på det faktiske spørreskjemaet.
+5+a|*Spesifikk undersøkelse* + 
+CLUSTER: _at0026_
+
+
+Bruk separate instanser av dette CLUSTER'et for å skille mellom spesifikke undersøkelser eller gruppering av undersøkelser.
+|at0021| 1..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* Audiometri (SNOMED-CT: 21727005)
+
+
+For eksempel: "Blodgass"," Røntgen thorax", "EKG" eller "Hørseltest". Koding av "Undersøkelsesnavn" med en terminologi foretrekkes der det er mulig.
+|at0024| 0..1| DV_BOOLEAN | Er det gjort audiometri?
+|
+
+
+Navnet på dataelementet kan omformuleres til det spesifikke spørsmålet i et templat eller brukergrensesnitt. Det foreslåtte verdisettet kan tilpasses/endres i det enkelte bruksområde ved å benytte de alternative datatypene DV_TEXT eller DV_BOOLEAN.
+|at0025| 0..1| DV_TEXT | Kommentar
+a|
+|====
+== Vurdering av tannstatus
+== Kartleggingsspørsmål om diagnostiske undersøkelser tannstatus
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartleggingsspørsmål om diagnostiske undersøkelser tannstatus* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.investigation_screening.v1_
+
+
+Svarene kan være selvrapporterte.
+|at0040| 0..1| DV_CODED_TEXT | Kartleggingsformål
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Dette dataelementet er ment for å sette en kontekst for samlingen av spørsmål/svar til bruk senere for å gjøre spørringer på dataene. Det er ikke forventet at dette dataelementet skal være synlig for en bruker av skjemaet, men kun tilgjengelig i de lagrede dataene. For eksempel: "Preoperativ screening" eller navnet på det faktiske spørreskjemaet.
+5+a|*Spesifikk undersøkelse* + 
+CLUSTER: _at0026_
+
+
+Bruk separate instanser av dette CLUSTER'et for å skille mellom spesifikke undersøkelser eller gruppering av undersøkelser.
+|at0021| 1..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* Vurdering av tannstatus (SNOMED-CT: 17691000202103)
+
+
+For eksempel: "Blodgass"," Røntgen thorax", "EKG" eller "Hørseltest". Koding av "Undersøkelsesnavn" med en terminologi foretrekkes der det er mulig.
+|at0024| 0..1| DV_BOOLEAN | Er tannstatus vurdert?
+|
+
+
+Navnet på dataelementet kan omformuleres til det spesifikke spørsmålet i et templat eller brukergrensesnitt. Det foreslåtte verdisettet kan tilpasses/endres i det enkelte bruksområde ved å benytte de alternative datatypene DV_TEXT eller DV_BOOLEAN.
+|at0002| 0..*| DV_TEXT | Konklusjon
+a|
+* Behov for å trekke tenner
+* Ikke behov for å trekke tenner
+
+
+For eksempel "Alle resultater innenfor normalverdier", "Normal", "Ytterligere undersøkelser nødvendig". Dette dataelementet er ikke tenkt å representere det faktiske resultatet eller funnet. Er det nødvendig, nøst (sett inn) en passende CLUSTER-arketype i det etterfølgende SLOT'et "Ytterligere detaljer".
+|at0025| 0..1| DV_TEXT | Kommentar
+a|
+|====
+== Kartleggingsspørsmål om prosedyrer tannekstraksjon
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartleggingsspørsmål om prosedyrer tannekstraksjon* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.procedure_screening.v1_
+
+
+Svarene kan være selvrapporterte.
+|at0034| 0..1| DV_CODED_TEXT | Kartleggingsformål
+a|
+* Sarkom (gruppering_kreft: 1)
+* Kreft i hode og hals (gruppering_kreft: 2)
+* Hjernesvulst (gruppering_kreft: 3)
+* Brystkreft (gruppering_kreft: 4)
+* Lungekreft (gruppering_kreft: 5)
+* Kreft i fordøyelsessystemet (gruppering_kreft: 6)
+* Gynekologisk kreft (gruppering_kreft: 7)
+* Kreft i nyre og urinveier (gruppering_kreft: 8)
+* Benmargs- og blodkreft (gruppering_kreft: 9)
+* Lymfom (gruppering_kreft: 10)
+* Hudkreft (gruppering_kreft: 11)
+* Kreft i mannlige kjønnsorganer (gruppering_kreft: 12)
+* Kreft i endokrine kjertler (gruppering_kreft: 13)
+* Nevroendokrin kreft (gruppering_kreft: 14)
+* Barnekreft (gruppering_kreft: 15)
+* Øyekreft (gruppering_kreft: 16)
+* Svulst av ukjent opprinnelse / Annet (gruppering_kreft: 17)
+
+
+Dette dataelementet er ment for å sette en kontekst for spørsmålene, dersom man senere ønsker å gjøre spørringer på dataene. Det er ikke forventet at dette dataelementet skal være synlig for en bruker av skjemaet, men kun tilgjengelig i de lagrede dataene. For eksempel: "Preoperativ screening" eller navnet på det faktiske spørreskjemaet.
+|at0028| 0..1| DV_CODED_TEXT | Er det fjernet tenner?
+a|
+* at0031 -> Ja 
+* at0032 -> Nei 
+
+
+Navnet på dataelementet kan omformuleres til det spesifikke spørsmålet i et templat eller brukergrensesnitt. Det foreslåtte verdisettet kan tilpasses/endres i det enkelte bruksområde ved å benytte de alternative datatypene DV_TEXT eller DV_BOOLEAN.
+|====
+== Prosedyre
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Prosedyre* + 
+ACTION: _openEHR-EHR-ACTION.procedure.v1_
+|at0002| 1..1| DV_CODED_TEXT | Prosedyrenavn
+a|
+* Tannekstraksjon (SNOMED-CT: 55162003)
+
+
+Det bør om mulig benyttes terminologi for å angi prosedyrenavnet.
+|at0060| 0..1| DV_DATE_TIME | Dato/tid for fjerning av tenner
+|
+
+
+Kun for bruk i forbindelse med prosesstrinnet "Prosedyre utført" og i situasjoner der prosedyren gjentas flere ganger før den fullføres, eller det finnes flere komponenter i prosedyren. Dette kan være det samme som referansemodellens "time"-atributt for prosesssteget "Prosedyre utført".
+|====
+== ECOG
+== ECOG funksjonsstatus
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*ECOG funksjonsstatus* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.ecog.v1_
+|at0004| 1..1| DV_ORDINAL | ECOG funksjonsstatus
+a|
+* 0 - Asymptomatisk I stand til å utføre enhver normal aktivitet uten begrensning.
+* 1 - Symptomatisk, fullt oppegående Ikke i stand til fysisk krevende aktivitet, men oppegående og i stand til å utføre lett arbeid.
+* 2 - Symptomatisk, sengeliggende <50 % av våken tid Oppegående og i stand til all egenpleie, men ikke i stand til noe arbeid; oppe og i bevegelse mer enn 50% av våken tid.
+* 3 - Symptomatisk, sengeliggende > 50 % av våken tid Bare i stand til begrenset egenpleie, bundet til seng eller stol > 50 % av våken tid.
+* 4 - Helt sengeliggende Helt hjelpetrengende; klarer ikke noen egenpleie; helt bundet til seng eller stol.
+* 5 - Død Pasienten er død.
+|at0013| 0..1| DV_TEXT | Kommentar
+a|
+|====
+== Videre plan/behandling
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Videre plan/behandling* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.progress_note.v1_
+|at0004| 0..1| DV_TEXT | Videre plan/behandling
+a|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Videre plan/behandling (no.dips.Freetext.Classification: OnkologiUtredningHodeHalsViderePlanBehandling)
+|====
+== Sammendrag
+== Klinisk sammendrag
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Klinisk sammendrag* + 
+EVALUATION: _openEHR-EHR-EVALUATION.clinical_synopsis.v1_
+|at0002| 1..1| DV_TEXT | Sammendrag
+a|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Sammendrag (no.dips.Freetext.Classification: OnkologiUtredningSammendrag)
+|====
+// Not supported rmType CODE_PHRASE
+// Not supported rmType CODE_PHRASE
+// Not supported rmType PARTY_PROXY

@@ -1,0 +1,197 @@
+= Sammendrag av helseinformasjon
+
+
+== Metadata
+
+
+TemplateId:: Oncology-Disease-History-Generic_v15
+
+
+Archetype:: openEHR-EHR-COMPOSITION.health_summary.v1
+
+
+
+
+:toc:
+
+
+
+
+// Not supported rmType COMPOSITION
+== EVENT_CONTEXT
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*EVENT_CONTEXT* + 
+EVENT_CONTEXT: __
+5+a|*Template versjonsinformasjon* + 
+CLUSTER: _openEHR-EHR-CLUSTER.template_semver_dips.v1_
+|at0001| 0..1| DV_TEXT | Navn
+a|
+* Generisk kreftsammendrag
+5+a|*Semver* + 
+CLUSTER: _at0003_
+|at0004| 0..1| DV_COUNT | Major
+|
+|at0005| 0..1| DV_COUNT | Minor
+|
+|at0006| 0..1| DV_COUNT | Patch
+|
+|at0008| 0..*| DV_TEXT | Nøkkelord
+a|
+|====
+== Problem/diagnose-Hoveddiagnose
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Problem/diagnose-Hoveddiagnose* + 
+EVALUATION: _openEHR-EHR-EVALUATION.problem_diagnosis.v1_
+
+
+Det er i praksis ikke lett å oppnå et klart skille mellom et problem og en diagnose. I klinisk dokumentasjon med denne arketypen ses problem og diagnose som et kontinuum, med økende krav til detaljer og støttende evidens for å underbygge en diagnose.
+|at0002| 1..1| DV_TEXT | Problem/diagnosenavn
+a|
+
+
+Koding av navnet på problemet eller diagnosen med en terminologi er foretrukket hvis mulig.
+|at0009| 0..1| DV_TEXT | Klinisk beskrivelse
+a|
+
+
+Brukes til å gi bakgrunn og kontekst, inkludert utvikling, episoder eller forverringer, fremgang og alle andre relevante detaljer, om problemet eller diagnosen.
+|at0012| 0..*| DV_TEXT | Anatomisk lokalisering
+a|
+
+
+Koding av navnet på den anatomiske lokaliseringen ved hjelp av en terminologi er foretrukket når dette er mulig. 
+Bruk dette dataelementet for å registrere prekoordinerte anatomiske lokaliseringer. Dersom behovene for å registrere anatomisk sted bestemmes i applikasjonen eller trenger større grad av kompleksitet som f.eks. relativ lokalisering, er det anbefalt å bruke CLUSTER.anatomical_location eller CLUSTER.relative_location innenfor SLOTet "Strukturert anatomisk lokalisering" i denne arketypen. Dette dataelementet kan ha ubegrenset antall forekomster, for å gjøre det mulig å registrere kliniske scenarier som f.eks. å beskrive et utslett som opptrer flere steder på kroppen, men der alle andre attributter er identiske. Dersom den anatomiske lokaliseringen inkluderes i feltet "Problem/diagnosenavn" via prekoordinerte koder blir dette dataelementet overflødig.
+|at0003| 0..1| DV_DATE_TIME | Dato/tid for klinisk bekreftelse
+|
+
+
+Delvise datoer er tillatt. Dersom individet er under ett år gammel, må komplett dato eller som et minimum måned og år oppgis for å muliggjøre presise beregninger av alder, f.eks. ved bruk i beslutningsstøttesystemer. Data registrert eller importert som "alder ved tidspunkt når diagnosen stilles" bør konverteres til en dato ved hjelp av individets fødselsdato.
+5+a|*Referansearketype for gjenbruksoplysninger i kreft generisk notat dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.referansearketype_for_gjenbruksoplysninger_i_kreft_generisk_notat_dips.v1_
+|at0003| 0..1| DV_TEXT | TNM/Stadium
+a|
+|at0004| 0..1| DV_TEXT | Annen klassifisering
+a|
+5+a|*Problem/diagnose-kvalifikator* + 
+CLUSTER: _openEHR-EHR-CLUSTER.problem_qualifier.v2_
+|at0063| 0..1| DV_CODED_TEXT | Diagnosisk kategori
+a|
+* at0064 -> Hoveddiagnose 
+
+
+Dette elementet inneholder et verdisett som er i vanlig bruk innen diagnosekategorisering. I episodiske behandlingssammenhenger (som regel spesialisthelsetjenesten) er det vanlig å kategorisere/organisere diagnoser i henhold til deres forhold til hoveddiagnosen som behandles i den aktuelle kontakten. Disse kategoriene kan også brukes for klinisk koding, rapportering og fakturering. I noen land omtales diagnosekategorien som "en DRG". I tillegg gjør muligheten for å legge til annen fri eller kodet tekst at det er mulig å bruke andre lokale verdisett ved behov.
+|at0073| 0..1| DV_CODED_TEXT | Diagnostisk sikkerhet
+a|
+* at0074 -> Mistenkt 
+* at0075 -> Sannsynlig 
+* at0076 -> Bekreftet 
+
+
+Hvis et alternativt verdisett er nødvendig, kan disse verdiene legges til DV_TEXT-datatypen i et templat.
+|at0070| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+|====
+== Bidiagnoser
+== Problem/diagnose
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Problem/diagnose* + 
+EVALUATION: _openEHR-EHR-EVALUATION.problem_diagnosis.v1_
+
+
+Det er i praksis ikke lett å oppnå et klart skille mellom et problem og en diagnose. I klinisk dokumentasjon med denne arketypen ses problem og diagnose som et kontinuum, med økende krav til detaljer og støttende evidens for å underbygge en diagnose.
+|at0002| 1..1| DV_TEXT | Problem/diagnosenavn
+a|
+
+
+Koding av navnet på problemet eller diagnosen med en terminologi er foretrukket hvis mulig.
+5+a|*Problem/diagnose-kvalifikator* + 
+CLUSTER: _openEHR-EHR-CLUSTER.problem_qualifier.v2_
+|at0063| 0..1| DV_CODED_TEXT | Diagnosisk kategori
+a|
+* at0066 -> Bidiagnose 
+
+
+Dette elementet inneholder et verdisett som er i vanlig bruk innen diagnosekategorisering. I episodiske behandlingssammenhenger (som regel spesialisthelsetjenesten) er det vanlig å kategorisere/organisere diagnoser i henhold til deres forhold til hoveddiagnosen som behandles i den aktuelle kontakten. Disse kategoriene kan også brukes for klinisk koding, rapportering og fakturering. I noen land omtales diagnosekategorien som "en DRG". I tillegg gjør muligheten for å legge til annen fri eller kodet tekst at det er mulig å bruke andre lokale verdisett ved behov.
+|at0070| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+|====
+== Oppsummeringer
+== Oppsummering utredning
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Oppsummering utredning* + 
+EVALUATION: _openEHR-EHR-EVALUATION.clinical_synopsis.v1_
+|at0002| 1..1| DV_TEXT | Sammendrag
+a|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Oppsummering av utredning (no.dips.Freetext.Classification: 06-Oppsummering-av-utredning)
+|====
+== Oppsummering behandling
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Oppsummering behandling* + 
+EVALUATION: _openEHR-EHR-EVALUATION.clinical_synopsis.v1_
+|at0002| 1..1| DV_TEXT | Sammendrag
+a|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Oppsummering av behandling (no.dips.Freetext.Classification: 07-Oppsummering-av-behandling)
+|====
+== Oppsummering komplikasjoner
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Oppsummering komplikasjoner* + 
+EVALUATION: _openEHR-EHR-EVALUATION.clinical_synopsis.v1_
+|at0002| 1..1| DV_TEXT | Sammendrag
+a|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Oppsummering av komplikasjoner (no.dips.Freetext.Classification: 08-Oppsummering-av-komplikasjoner)
+|====
+== Viktige tumorhendelser (Tumor-event)
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Viktige tumorhendelser (Tumor-event)* + 
+EVALUATION: _openEHR-EHR-EVALUATION.clinical_synopsis.v1_
+|at0002| 1..1| DV_TEXT | Sammendrag
+a|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Fritekst sammendrag av viktige hendelser i et onkologisk sykdomsforløp (no.dips.Freetext.Classification: 09-Viktige hendelser-Onkologi)
+|====
+== Klinisk sammendrag
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Klinisk sammendrag* + 
+EVALUATION: _openEHR-EHR-EVALUATION.clinical_synopsis.v1_
+|at0002| 1..1| DV_TEXT | Sammendrag
+a|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Overordnet sammendrag av sykehistorie kreft (no.dips.Freetext.Classification: 09-Overordnet-sammendrag-av-sykehistorie-kreft)
+|====
+// Not supported rmType CODE_PHRASE
+// Not supported rmType CODE_PHRASE
+// Not supported rmType PARTY_PROXY

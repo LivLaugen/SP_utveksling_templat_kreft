@@ -1,0 +1,45 @@
+= Oncology-Start
+
+
+== Metadata
+
+
+TemplateId:: Oncology-End_v1
+
+
+Archetype:: openEHR-EHR-COMPOSITION.encounter.v1
+
+
+
+
+:toc:
+
+
+
+
+// Not supported rmType COMPOSITION
+== EVENT_CONTEXT
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*EVENT_CONTEXT* + 
+EVENT_CONTEXT: __
+|====
+== Oppfølging av forløp
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Oppfølging av forløp* + 
+ACTION: _openEHR-EHR-ACTION.trajectory_follow_up.v1_
+|at0002| 0..1| DV_TEXT | Hendelse
+a|
+|at0010| 0..1| DV_TEXT | Beskrivelse
+a|
+5+a|*Onkologi AQL hjelpefelt* + 
+CLUSTER: _openEHR-EHR-CLUSTER.oncology_aql_support_dips.v1_
+|at0001| 0..1| DV_TEXT | AQL krefttype
+a|
+|====
+// Not supported rmType CODE_PHRASE
+// Not supported rmType CODE_PHRASE
+// Not supported rmType PARTY_PROXY
