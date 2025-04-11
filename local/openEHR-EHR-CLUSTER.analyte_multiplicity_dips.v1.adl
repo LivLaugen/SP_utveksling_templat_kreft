@@ -1,0 +1,57 @@
+archetype (adl_version=1.4; uid=3ecfc8ab-bc21-4c8e-bd83-2a0b03350b2b)
+	openEHR-EHR-CLUSTER.analyte_multiplicity_dips.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2024-02-08">
+		["name"] = <"Liv Laugen">
+		["organisation"] = <"Oslo universitetssykehus">
+		["email"] = <"liv.laugen@ous-hf.no">
+	>
+	lifecycle_state = <"unmanaged">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"2fdb124799bc9e46f9caad29fd879a10">
+		["build_uid"] = <"a9f6a46f-2719-3c06-9c1b-e886195c5a33">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- analyte multiplicity dips
+		items cardinality matches {1..*; unordered} matches {
+			allow_archetype CLUSTER[at0001] occurrences matches {0..*} matches {    -- analyte slot
+				include
+					archetype_id/value matches {/.*/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"analyte multiplicity dips">
+					description = <"analyte multiplicity dips">
+				>
+				["at0001"] = <
+					text = <"analyte slot">
+					description = <"">
+				>
+			>
+		>
+	>
