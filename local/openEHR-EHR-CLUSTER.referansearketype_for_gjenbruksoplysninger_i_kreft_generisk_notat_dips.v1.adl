@@ -1,0 +1,126 @@
+archetype (adl_version=1.4; uid=026d36ae-a42a-30cc-b16a-bcb9819f45c9)
+	openEHR-EHR-CLUSTER.referansearketype_for_gjenbruksoplysninger_i_kreft_generisk_notat_dips.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2023-06-13">
+		["name"] = <"">
+	>
+	lifecycle_state = <"0">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Brukes for å hente inn data i poliklinisk kreftnotat for Arena. Hensikten med arketypen er kun å lagre eksisterende opplysninger fra andre steder i journalen i skjema.">
+			use = <"Skal utelukkende brukes for data som allerede finnes i systemet som en referanse til eksisterende data.">
+			misuse = <"Det skal ikke brukes for å lagre ny data/endre data. Eller brukes utenfor generisk notat.">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"3ACCA04ED2E84741326226A67D60F30E">
+		["build_uid"] = <"dec71e9e-837b-3a05-90cb-31ec1f3cf0eb">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Referansearketype for gjenbruksoplysninger i kreft generisk notat dips
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Diagnose
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0007] occurrences matches {0..1} matches {    -- Diagnosedato
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- TNM/Stadium
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Annen klassifisering
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0006] occurrences matches {0..*} matches {    -- Studier
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0008] occurrences matches {0..1} matches {    -- Utredning
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0009] occurrences matches {0..1} matches {    -- Behandling
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..*} matches {    -- Komplikasjoner
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0010] occurrences matches {0..1} matches {    -- Bildediagnostikk
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Referansearketype for gjenbruksoplysninger i kreft generisk notat dips">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Diagnose">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"TNM/Stadium">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Annen klassifisering">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Komplikasjoner">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Studier">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Diagnosedato">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Utredning">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Behandling">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Bildediagnostikk">
+					description = <"*">
+				>
+			>
+		>
+	>
