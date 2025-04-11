@@ -1,0 +1,53 @@
+archetype (adl_version=1.4; uid=7def7c0b-f1d7-3d80-a384-f202aaad09b0)
+	openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"0">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Brukes for å kunne definere semistrukturerte elementer.">
+			use = <"Brukes for å kunne definere semistrukturerte elementer. Graden av granulering er opp til behovet. Kodeverket kan brukes i mange DIPS løsninger og kodeverket vil da være svært variert utfra behov.">
+			misuse = <"skal ikke brukes til noe annet enn beskrevet over og bør ikke brukes uten avtale med DIPS.">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"5779BD381D047A909CCCF5E3E716A8E6">
+		["build_uid"] = <"6db52731-16b8-343c-9191-b3d5030819bd">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Semistrukturert metadata dips
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Klassifisering av informasjon
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Semistrukturert metadata dips">
+					description = <"Semistrukturert metadata dips">
+				>
+				["at0001"] = <
+					text = <"Klassifisering av informasjon">
+					description = <"*">
+				>
+			>
+		>
+	>
