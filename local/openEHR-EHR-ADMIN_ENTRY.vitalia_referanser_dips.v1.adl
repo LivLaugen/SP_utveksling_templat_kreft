@@ -1,0 +1,65 @@
+archetype (adl_version=1.4; uid=e2d9d0c6-360b-4906-a1e6-360c58ce6a87)
+	openEHR-EHR-ADMIN_ENTRY.vitalia_referanser_dips.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2024-02-23">
+		["name"] = <"Liv Laugen">
+		["organisation"] = <"Oslo universitetssykehus">
+		["email"] = <"liv.laugen@ous-hf.no">
+	>
+	lifecycle_state = <"unmanaged">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"902f4288e1990b51099ae34e4e98108e">
+		["build_uid"] = <"73035fb8-7d31-366d-9308-754b93fdb36c">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {    -- vitalia referanser DIPS
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0002] occurrences matches {0..*} matches {    -- CLUSTER_SLOT
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"vitalia referanser DIPS">
+					description = <"vitalia referanser DIPS">
+				>
+				["at0001"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"CLUSTER_SLOT">
+					description = <"">
+				>
+			>
+		>
+	>
