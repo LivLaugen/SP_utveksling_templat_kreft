@@ -1,0 +1,78 @@
+archetype (adl_version=1.4; uid=6537d328-cdd2-309d-bbb2-e1fcb460c553)
+	openEHR-EHR-CLUSTER.pulsoksymetri_referanse.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"0">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"For å registrere en REFERANSE til openEHR-OBSERVATION.pulse.Oximetry">
+			use = <"Brukes kun for å registre referanser til  openEHR-OBSERVATION.pulse.Oximetry">
+			misuse = <"brukes ikke til noe annet enn beskrevet over. Spesielt viktig er at man ikke bruker denne isteden for den godkjente når man vil føre opp nye verdier i systemet.">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"F476755BAD09564716945C5520BDA0FB">
+		["build_uid"] = <"3faa795c-a63f-3c4d-9f36-1d7cab63aa2a">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Pulsoksymetri referanse
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- SpO₂
+				value matches {
+					DV_PROPORTION matches {
+						numerator matches {|0.0..100.0|}
+						type matches {2}
+					}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Time
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"SNOMED-CT","LOINC">
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pulsoksymetri referanse">
+					description = <"Referanse til Blodoksygen og beslektede målinger, målt ved pulsoksymetri eller puls-CO-oksymetri.">
+				>
+				["at0002"] = <
+					text = <"SpO₂">
+					description = <"Oksygenmetning i perifert blod, målt via pulsoksimetri.">
+				>
+				["at0003"] = <
+					text = <"Time">
+					description = <"*">
+				>
+			>
+		>
+	>
+	term_binding = <
+		["SNOMED-CT"] = <
+			items = <
+				["at0002"] = <[SNOMED-CT::431314004]>
+			>
+		>
+		["LOINC"] = <
+			items = <
+				["at0002"] = <[LOINC::59408-5]>
+			>
+		>
+	>
