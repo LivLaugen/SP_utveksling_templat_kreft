@@ -1,0 +1,78 @@
+archetype (adl_version=1.4; uid=a7b7223c-6951-37e4-8299-a72eb8dba68e)
+	openEHR-EHR-CLUSTER.pulse_referanse.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"0">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"ea42b673ec4b1d97241079ad8a8175a0">
+		["build_uid"] = <"ff07cccc-33db-3bce-a909-44a6588e1efd">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Pulse referanse
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Pulsfrekvens
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::118]>
+						list = <
+							["1"] = <
+								units = <"/min">
+								magnitude = <|0.0..1000.0|>
+								precision = <|0|>
+							>
+						>
+					>
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Time
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Rytme
+				value matches {
+					DV_CODED_TEXT matches {*}
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pulse referanse">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Pulsfrekvens">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"Time">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Rytme">
+					description = <"">
+				>
+			>
+		>
+	>
