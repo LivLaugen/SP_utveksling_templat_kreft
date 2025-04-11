@@ -1,17 +1,17 @@
-archetype (adl_version=1.4; uid=6dbbd6b0-6d81-4ada-bd6c-061ee69aa456)
+﻿archetype (adl_version=1.4; uid=7ca16b4f-6b53-4191-8769-199f13956c75)
 	openEHR-EHR-OBSERVATION.pulse_oximetry.v1
 
 concept
-	[at0000]
-
+	[at0000]	-- Pulse oximetry
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
 		["de"] = <
 			language = <[ISO_639-1::de]>
 			author = <
-				["name"] = <"Jasmin Buck, Sebastian Garde">
-				["organisation"] = <"University of Heidelberg, Central Queensland University">
+				["name"] = <"Jasmin Buck, Sebastian Garde, Alina Rehberg">
+				["organisation"] = <"University of Heidelberg, Central Queensland University, Medizinische Hochschule Hannover">
+				["email"] = <"rehberg.alina@mh-hannover.de">
 			>
 		>
 		["ru"] = <
@@ -24,9 +24,9 @@ language
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			author = <
-				["name"] = <"Kirsi Poikela">
-				["organisation"] = <"Tieto Sweden Healthcare & Welfare AB">
-				["email"] = <"ext.kirsi.poikela@tieto.com">
+				["name"] = <"Kirsi Poikela / Erik Sundvall">
+				["organisation"] = <"KP: Tieto Sweden Healthcare & Welfare AB / ES: Region Östergötland">
+				["email"] = <"ext.kirsi.poikela@tieto.com / erik.sundvall@regionostergotland.se">
 			>
 		>
 		["fi"] = <
@@ -74,33 +74,47 @@ language
 				["organisation"] = <"Ocean Informatics">
 			>
 		>
+		["nl"] = <
+			language = <[ISO_639-1::nl]>
+			author = <
+				["name"] = <"Joost Holslag">
+				["organisation"] = <"Nedap">
+				["email"] = <"joost.holslag@nedap.com">
+			>
+			accreditation = <"MD">
+		>
 	>
-
 description
 	original_author = <
-		["date"] = <"2010-10-26">
 		["name"] = <"Ian McNicoll">
 		["organisation"] = <"Ocean Informatics, United Kingdom">
 		["email"] = <"Ian.mcnicoll@oceaninformatics.com">
+		["date"] = <"2010-10-26">
 	>
-	lifecycle_state = <"published">
-	other_contributors = <"Morten Aas, Oslo Universitetssykehus, Norway","Tomas Alme, DIPS, Norway","Nadim Anani, Karolinska Institutet, Sweden","Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)","Koray Atalag, University of Auckland, New Zealand","Silje Ljosland Bakke, Nasjonal IKT HF, Norway (openEHR Editor)","Mate Bestek, National Institute of Public Health of Slovenia, Slovenia","SB Bhattacharyya, Sudisa Consultancy Services, India","Marja Buur, Medisch Centrum Alkmaar/ Code24, Netherlands","Sergio Carmona, Chile","Ady Angelica Castro Acosta, CIBERES-Hospital 12 de Octubre, Spain","Rong Chen, Cambio Healthcare Systems, Sweden","Stephen Chu, Queensland Health, Australia","Tamsin Cockayne, Australia","Ed Conley, Cardiff University","Lisbeth Dahlhaug, Helse Midt - Norge IT, Norway","Graham Denyer, Australian Antarctic Division, Australia","Paul Donaldson, Nursing Informatics Australia, Australia","Samo Drnovsek, Marand ltd, Slovenia","Stig Erik Hegrestad, Helse Førde, Norway","Shahla Foozonkhah, Iran ministry of health and education, Iran","Einar Fosse, National Centre for Integrated Care and Telemedicine, Norway","Hildegard Franke, freshEHR Clinical Informatics Ltd., United Kingdom","Sebastian Garde, Ocean Informatics, Germany (Editor)","Mikkel Gaup Grønmo, FSE, Helse Nord, Norway","Heather Grain, Llewelyn Grain Informatics, Australia","Sam Heard, Ocean Informatics, Australia","Ingrid Heitmann, Oslo universitetssykehus HF, Norway","Karsten Heusser, Hannover Medical School, Germany","Omer Hotomaroglu, Turkey (Editor)","Evelyn Hovenga, EJSH Consulting, Australia","Pieter Hummel, Medisch Centrum Alkmaar, Netherlands","Eugene Igras, IRIS Systems, Inc., Canada","Lars Ivar Mehlum, Helse Bergen HF, Norway","Patrícia Ivo, Prefeitura Municipal de Fortaleza, Brazil","Sundaresan Jagannathan, Scottish NHS, United Kingdom","Tom Jarl Jakobsen, Helse Bergen, Norway","Gorazd Kalan, University Medical Centre Ljubljana, Slovenia","Konstantinos Kalliamvakos, Cambio Healthcare Systems, Sweden","Hilde Karen Ofte, Nordlandssykehuset HF, Norway","Harmony Kosola, Alberta Health Services, Canada","Russell Leftwich, Russell B Leftwich MD, United States","Heather Leslie, Ocean Health Systems, Australia (openEHR Editor)","Rikard Lovstrom, Swedish Medical Association, Sweden","Mark Luciani, Gloucestershire Hospital NHS Foundation Trust, United Kingdom","Vincent McCauley, Medical Software Industry Association, Australia","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)","Jeroen Meintjens, Medisch Centrum Alkmaar, Netherlands","Lars Morgan Karlsen, Nordlandssykehuset Bodø, Norway","Udo Müller, CompuGROUP Software, Germany","Andrej Orel, Marand d.o.o., Slovenia","Vladimir Pizzo, Hospital Sírio Libanês, Brazil","Arturo Romero, SESCAM, Spain","Jussara Rotzsch, UNB, Brazil","Anoop Shah, University College London, United Kingdom","Tony Shannon, frectal ltd, United Kingdom","Line Silsand, Universitetssykehuset i Nord-Norge, Norway","Trine Strand, Oslo Universitetssykehus (OUS), Norway","Roy Støle, OUS, Norway","Norwegian Review Summary, Nasjonal IKT HF, Norway","Nyree Taylor, Ocean Informatics, Australia","Micaela Thierley, Helse Bergen, Norway","Rowan Thomas, St. Vincent's Hospital Melbourne, Australia","John Tore Valand, Haukeland Universitetssjukehus, Norway (Nasjonal IKT redaktør)","Stian Torleif Varpe, Helse Bergen, Norway">
 	details = <
 		["de"] = <
 			language = <[ISO_639-1::de]>
 			purpose = <"Zur Dokumentation der Sauerstoffsättigung im Blut unter Benutzung eines Pulsoxymeters.">
-			keywords = <"Sauerstoff","Behandlung mit Sauerstoff","Pulsoxymeter","Pulsoxymetrie">
+			use = <"Zur Darstellung des Blutsauerstoffs und damit zusammenhängender Messungen, die durch Pulsoxymetrie oder Puls-CO-Oximetrie gemessen werden.
+
+Wellenformen sollten hier aufgezeichnet werden, wenn sie zur Dokumentation der Qualität der Blutgasmessung verwendet werden.">
+			keywords = <"Sauerstoff", "Behandlung mit Sauerstoff", "Pulsoxymeter", "Pulsoxymetrie">
+			misuse = <"Nicht zur Darstellung von andere nicht-invasive Blutgasmessungen wie transkutane CO₂, laterale endtidalen CO₂ oder nicht-invasive zerebraler Oxymetrie verwendet.
+
+Nicht zur Darstellung von Plethysmographie zu verwenden. Verwenden Sie einen anderen geeigneten Archetyp für diesen Zweck.
+
+Nicht zur Darstellung einer anderen Art von Messung verwenden, wie z.B. der Pulsfrequenz, wenn das Aufzeichnungsgerät dies ebenfalls ermöglicht. Dies sollte in einem separaten Archetyp aufgezeichnet werden, der für diese spezielle Messung geeignet ist, um eine konsistente Abfrage zu ermöglichen. In diesem Beispiel sollte die Pulsfrequenz im Archetyp OBSERVATION.pulse aufgezeichnet werden.
+
+Nicht zur Darstellung von Messungen der peripheren Blutgase zu verwenden, die einen direkten Kontakt mit Blut beinhalten. Zum Beispiel sollte PaO₂, PaCO₂ unter Verwendung des Archetyps OBSERVATION.laboratory_test_result aufgezeichnet werden.
+
+Nicht zur Darstellung invasiver Blutgasmessungen verwenden. Zum Beispiel arterielle (SaO₂), venöse (SvO₂) Sauerstoffsättigung oder Sauerstoffgehalt (CaOC), die normalerweise durch invasive Methoden wie Laborblutgase oder Gefäßkathetergeräte bestimmt werden. Diese sollten auch innerhalb des Archetyps OBSERVATION.laboratory_test_resultate erfasst werden.">
 			copyright = <"© openEHR Foundation">
-			use = <"*">
-			misuse = <"*">
 		>
 		["ru"] = <
 			language = <[ISO_639-1::ru]>
 			purpose = <"Для записи результатов непрямых,в настоящее время неинвазивных, измерений газового состава крови, таких как SpO2 (насыщение кислородом периферической крови) и pTCO2 (насыщение углекислым газом), полученных методами пульсовой оксиметрии, чрескожной оксиметрии или другими методами.
 
 Вполне вероятно, что этот архетип будет использоваться, в основном, для записи оценок оксигенации, однако в него могут быть включены или добавлены со временем измерения и других газов.">
-			keywords = <"парциальное давление","насыщение","карбоксигемоглобин","метгемоглобин","чрескожный","пульс","оксиметр","оксиметрия","концентрация","неинвазивный","жизненный","кислород","углекислый газ","О2","СО2","оксигенация">
-			copyright = <"© openEHR Foundation">
 			use = <"Используется для записи результатов непрямых,в настоящее время неинвазивных, измерений газового состава крови. Новые непрямые измерения газов крови должны добавляться к этому архетипу.
 
 Если записывающее устройство также обеспечивает другой тип измерения,например, такой как частота пульса, то это должно быть записано в отдельный архетип, соответствующий данному измерению, например, OBSERVATION.heart_rate, для обеспечения последовательных запросов.
@@ -108,33 +122,38 @@ description
 Цель состоит в том, чтобы последовательно моделировать клиническое понятие, а не моделировать вывод данных с устройства. Устройства становятся все более многофункциональными и обеспечивают дублирование измерений, которые, возможно, придется записывать с помощью ряда отдельных архетипов.
 
 Осциллограммы должны быть зарегистрированы здесь, когда используются для документирования качества измерений газов крови. В отличие от этого, если они используется для первичной диагностики, например, сердечного выброса, плетизмограммы должны быть записаны в ключевом клиническом архетипе - OBSERVATION.heart_rate-pulse.">
+			keywords = <"парциальное давление", "насыщение", "карбоксигемоглобин", "метгемоглобин", "чрескожный", "пульс", "оксиметр", "оксиметрия", "концентрация", "неинвазивный", "жизненный", "кислород", "углекислый газ", "О2", "СО2", "оксигенация">
 			misuse = <"Любые измерения газов крови, который включает прямой контакт с кровью, а также измерения PaO2 (парциальное давление кислорода), PaCO2 (парциальное давление углекислого газа) не должны записываться с помощью этого архетипа - для таких измерений используется архетип OBSERVATION.lab_test-blood_gases. Новые прямые измерения газов крови должны быть добавлены к архетипу OBSERVATION.lab_test-blood_gases.v1.
 
 НЕ использовать для записи прямого измерения газов крови. Например, насыщение кислородом артериальной (SaO2) или венозной (SvO2) крови, или содержание кислорода (CAOC), которые обычно определяются инвазивными методами, например, специальными лабораториями газов крови или с помощью сосудистых катетеров. Такие измерения должны быть записаны в архетип OBSERVATION.lab_test-blood_gases.">
+			copyright = <"© openEHR Foundation">
 		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
-			purpose = <"Att mäta den nuvarande icke-invasiva syrehalten i blodet såsom SpO2 och SpCO sekundärt, genom pulsoximetri eller andra metoder.">
-			keywords = <"syre","syrsättning","syremättnad","SpO2","spMet","spCO","spOC","karboxihemoglobin","methemoglobin","transkutan","puls","oximeter","oximetri","koncentration","partiell","tryck","icke-invasiv","vital","O2","CO2","koldioxid","SaO₂","SaO2">
+			purpose = <"Mätning av syremättnad i blodet och relaterade mätningar, uppmätta med pulsoximetri eller CO-oximetri.">
+			use = <"Använd för att dokumentera av mätning av syremättnad i blodet och relaterade mätningar, uppmätta med pulsoximetri eller CO-oximetri.
+
+Vågformer bör registreras (i fältet vågform) om de används för att dokumentera kvaliteten av mätningen.">
+			keywords = <"syre", "syresättning", "syremättnad", "SpO2", "spMet", "spCO", "spOC", "karboxihemoglobin", "methemoglobin", "puls", "oximeter", "oximetri", "koncentration", "partiell", "tryck", "icke-invasiv", "vital", "O2", "CO2", "koldioxid", "SaO₂", "SaO2">
+			misuse = <"Ska inte användas för andra icke-invasiva blodgasmätningar, exempelvis transkutan CO₂, lateral endtidal CO₂ eller icke-invasiv cerebral oximetri.
+
+Ska inte användas för pletysmografi. Använd en annan lämplig arketyp för det ändamålet.
+
+Ska inte användas för att registrera andra typer av mätningar, exempelvis pulsfrekvens, även om mätenheten tillhandahåller också den informationen. Används istället existerande specifika arketyper, så att mer konsekventa sökningar kan göras. För exemplet puls registrerar du pulsfrekvensen i arketypen OBSERVATION.pulse istället.
+
+
+Används inte för perifera blodgasmätningar som innebär direktkontakt med blod. PaO2, PaCO2 bör till exempel registreras med hjälp av OBSERVATION.laboratory_test_result arketypen istället.
+
+Används inte för invasiv blodgasmätning. Exempelvis arteriell (SaO₂), venös (SvO₂) syremättnad, eller syreinnehåll (CaOC) som vanligtvis fastställs genom invasiva metoder såsom laboratorieblodgaser eller kärlkateter-kopplad utrustning. Dessa bör registreras med arketypen OBSERVATION.laboratory_test_result istället.">
 			copyright = <"© openEHR Foundation">
-			use = <"Används för att mäta nuvarande icke-invasiva, syrehalter i blodet, såsom SpO2 och SpCO, sekundärt genom pulsoximetri eller andra metoder.
-
-Vågformer bör registreras här vid användning för att dokumentera kvaliteten av blodgasmätningen.">
-			misuse = <"Används inte för mätning av pletysmografi. Använd en annan lämplig arketyp för det ändamålet.
-
-Används inte för andra typer av mätningar, t.ex. pulsfrekvens, eftersom mätenheten också tillhandahåller informationen. För dessa används en separat arketyp som är lämplig för den specifika mätningen för att möjliggöra konsekventa förfrågningar. I det här exemplet registrerar du pulsfrekvensen i OBSERVATION.pulse arketypen.
-
-Används inte för mätning av perifert blodgas som innebär direktkontakt med blod. PaO2, PaCO2 bör till exempel mätas med hjälp av OBSERVATION.laboratory_test_result arketypen.
-
-Används inte för invasiv blodgasmätning, t.ex. arteriell (Sa02), venös (SvO2) syremättnad eller syreinnehåll (CaOC) som vanligtvis fastställs av invasiva metoder såsom laboratorieblodgaser eller vaskulära katetrar. De bör också mätas med arketypen OBSERVATION.laboratory_test_result.">
 		>
 		["fi"] = <
 			language = <[ISO_639-1::fi]>
 			purpose = <"*To record blood oxygen and related measurements, measured by pulse oximetry or pulse CO-oximetry.(en)">
-			keywords = <"*oxygen(en)","*oxygenation(en)","*saturation(en)","*SpO2(en)","*spMet(en)","*spCO(en)","*spOC(en)","*carboxyhaemoglobin(en)","*methaemoglobin(en)","*pulse(en)","*oximeter(en)","*oximetry(en)","*concentration(en)","*partial(en)","*pressure(en)","*non-invasive(en)","*vital(en)","*O2(en)","*SaO₂(en)","*SaO2(en)","*sat(en)","*sats(en)","*hypoxaemia(en)">
 			use = <"*Use to record blood oxygen and related measurements, measured by pulse oximetry or pulse CO-oximetry.
 
 Waveforms should be recorded here when used to document quality of the blood gas measurement.(en)">
+			keywords = <"*oxygen(en)", "*oxygenation(en)", "*saturation(en)", "*SpO2(en)", "*spMet(en)", "*spCO(en)", "*spOC(en)", "*carboxyhaemoglobin(en)", "*methaemoglobin(en)", "*pulse(en)", "*oximeter(en)", "*oximetry(en)", "*concentration(en)", "*partial(en)", "*pressure(en)", "*non-invasive(en)", "*vital(en)", "*O2(en)", "*SaO₂(en)", "*SaO2(en)", "*sat(en)", "*sats(en)", "*hypoxaemia(en)">
 			misuse = <"*Not used for other non-invasive blood gas measurements such as transcutaneous CO₂, lateral end-tidal CO₂ or non-invasive cerebral oximetry.
 
 Not to be used for recording plethysmography. Use another appropriate archetype for this purpose.
@@ -150,8 +169,6 @@ Not to be used to record invasive blood gas measurement. For example, arterial (
 			purpose = <"Para registrar la medición indirecta y habitualmente no invasiva de los gases en sangre tales como SpO2 y PtCO2, por medio de un oxímetro de pulso (o saturómetro de pulso), oximetría transcutánea u otros métodos.
 
 Es probable que este arquetipo será usado usado primariamente para registrar estimaciones de oxigenación, pero otras mediciones de gases pueden ser incluidas o agregadas en el futuro.">
-			keywords = <"oxígeno","oxigenación","saturación","SpO2","ptcCO2","ptcO2","spMet","spCO","spOC","carboxi-hemoglobina","meta-hemoglobina","transcutáneo","pulso","oxímetro","oximetría","saturómetro","concentración","parcial","presión","no invasivo","vital","O2","CO2","anhídrido carbónico","dióxido de carbono">
-			copyright = <"© openEHR Foundation">
 			use = <"Usado para registrar la medición indirecta de gases en sangre, comúnmente por técnicas no invasivas. Nuevas mediciones indirectas de gases en sangres deberían ser incorporadas a este arquetipo.
 
 Cuando el dispositivo de registro también provea otro tipo de medida, tal como la frecuencia del pulso, esto debe ser registrado en un arquetipo separado, adecuado para esa medida en particular. Ej. el arquetipo OBSERVATION.heart_rate-pulse, para permitir una consulta consistente.
@@ -159,20 +176,21 @@ Cuando el dispositivo de registro también provea otro tipo de medida, tal como 
 El objetivo es modelar consistentemente un concepto clínico, más que la salida del modelo del dispositivo; los dispositivos son cada vez más multi-funcionales y proporcionan mediciones redundantes, que pueden requerir el registro por medio de arquetipos discretos.
 
 Las formas de onda deben ser registradas aquí cuando se utiliza para documentar la calidad de la medición de gases en sangre. Por el contrario, si se utiliza primariamente con fines diagnósticos (Ej. del gasto cardíaco), debe registrarse en el arquetipo OBSERVATION.heart_rate-pulse.">
+			keywords = <"oxígeno", "oxigenación", "saturación", "SpO2", "ptcCO2", "ptcO2", "spMet", "spCO", "spOC", "carboxi-hemoglobina", "meta-hemoglobina", "transcutáneo", "pulso", "oxímetro", "oximetría", "saturómetro", "concentración", "parcial", "presión", "no invasivo", "vital", "O2", "CO2", "anhídrido carbónico", "dióxido de carbono">
 			misuse = <"Cualquier medición de gases en sangre que involucra contacto directo con la sangre y la medición de la PaO2, PaCO2 no deberían ser registradas usando este arquetipo. Usar el arquetipo OBSERVATION.lab_test-blood_gases.v1. Mediciones directas de gases arteriales nuevas, deberían ser agregadas a OBSERVATION.lab_test-blood_gases.v1.
 
 No usar para registrar medidas directas de gases en sangre. Ej. SaO2 (saturación arterial), SvO2 (saturación venosa) o CaO2 (contenido de Oxígeno), usualmente determinados por métodos invasivos. Ej. laboratorio de gases en sangre o dispositivos catheter vascular. Estos deberían ser registrados en el arquetipo OBSERVATION.lab_test-blood_gases.">
+			copyright = <"© openEHR Foundation">
 		>
 		["nb"] = <
 			language = <[ISO_639-1::nb]>
 			purpose = <"For å registrere blodoksygen og beslektede målinger, målt ved pulsoksymetri eller puls-CO-oksymetri.">
-			keywords = <"oksygen","oksygenering","saturasjon","SpO2","spMet","spCO","spCaO","karbonmonoksid hemoglobin","methemoglobin","puls","oksimetri","oksimeter","konsentrasjon","partial","trykk","non-invasiv","vital","O2","CO2","karbondioksid","oksimetri","oksymetri","metning","oksygenmetning","SaO2","SaO₂","hypoksemi">
-			copyright = <"© openEHR Foundation">
 			use = <"Brukes til å registrere blodoksygen og beslektede målinger, målt ved pulsoksymetri eller puls-CO-oksymetri.
 
 Bølgeformer bør registreres her, når det benyttes til å dokumentere kvalitet på blodgassmåling.
 ">
-			misuse = <"Brukes ikke til å registrere andre non-invasive blodgassmålinger, som transkutan CO₂, sidestrøms endetidal CO₂ eller noninvasiv cerebral oksymetri.
+			keywords = <"oksygen", "oksygenering", "saturasjon", "SpO2", "spMet", "spCO", "spCaO", "karbonmonoksid hemoglobin", "methemoglobin", "puls", "oksimetri", "oksimeter", "konsentrasjon", "partial", "trykk", "non-invasiv", "vital", "O2", "CO2", "karbondioksid", "oksimetri", "oksymetri", "metning", "oksygenmetning", "SaO2", "SaO₂", "hypoksemi">
+			misuse = <"Brukes ikke til å registrere andre non-invasive blodgassmålinger, som transkutan CO₂, sidestrøms endetidal CO₂ eller noninasiv cerebral oksymetri.
 
 Brukes ikke til å registrere pletysmografi. Bruk en annen passende arketype for dette formålet.
 
@@ -181,14 +199,15 @@ Brukes ikke til å registrer andre typer målinger som for eksempel puls, der m�
 Brukes ikke til å registrere perifere blodgassmålinger som involverer direkte kontakt med blod. For eksempel bør PaO₂, PaCO₂ registreres i OBSERVATION.laboratory_test_result arketypen.
 
 Brukes ikke til å registrere invasiv blodgassmåling, for eksempel arteriell (SaO₂) eller venøs (SvO₂) oksygenmetning eller oksygeninnhold (CaOC) som vanligvis måles ved hjelp av invasive metoder. Bruk OBSERVATION.laboratory_test_result til dette formålet.">
+			copyright = <"© openEHR Foundation">
 		>
 		["pt-br"] = <
 			language = <[ISO_639-1::pt-br]>
 			purpose = <"Para gravar medidas de oxigênio sanguíneo, medidas por oximetria de pulso ou por carbo-oximetria de pulso.
 ">
-			keywords = <"Oxigênio","Oxigenação","Saturação","SpO2","spMet(","spCO","spOC","Carboxyhaemoglobina","Methaemoglobina","Pulso","Oxímetro","Oximetria","Concentração","Parcial","Pressão","Não invasivo","Vital","O2","SaO₂","SaO2","sat","sats","Hipoxemia">
 			use = <"Para gravar medidas de oxigênio sanguíneo, medidas por oximetria de pulso ou por carbo-oximetria de pulso.
 A forma das ondas podem ser usadas para documentar a qualidade das medidas de gases sanguíneos">
+			keywords = <"Oxigênio", "Oxigenação", "Saturação", "SpO2", "spMet(", "spCO", "spOC", "Carboxyhaemoglobina", "Methaemoglobina", "Pulso", "Oxímetro", "Oximetria", "Concentração", "Parcial", "Pressão", "Não invasivo", "Vital", "O2", "SaO₂", "SaO2", "sat", "sats", "Hipoxemia">
 			misuse = <"Não deve ser usado para outras medidas não invasivas de gases sanguíneos, tais como CO₂ transcutâneo, CO₂ inalado ou oximetria cerebral não invasiva.
 Não dever ser usado para avaliar alterações de volume. Usar outro arquétipo apropriado para este fim.
 Não deve ser usado para obter outros tipos de medida, tais como medida de pulso uma vez que o processo de medida também oferce isso. Deveria ser obtido em um arquétipo separado, apropriado para esta medida particular para obter dados consistentes. No exemplo obtenha o pulso no aquétipo de observação de pulso.
@@ -201,8 +220,6 @@ Não deve ser usado para obter medidas de gases sanguíneos invasivos. Por exemp
 			purpose = <"لتسجيل قياسات غازات الدم غير المباشرة, بطريقة غير باضِعة, مثل تشبع الدم الطرفي بالأكسجين, و الضغط الجزئي للأكسجين في الدم الطرفي, عن طريق قياس تأكسج الدم عند النبض, أو قياس تأكسج الدم بطريق الجلد أو طرق أخرى.
 
 عادة ما يستخدم هذا النموذج لتسجيل تقديرات التأكسج, و لكن قياسات الغازات الأخرى قد يتم تضمينها أو تضاف مع الوقت.">
-			keywords = <"الأكسجين","التأكسج","تشبع الدم الطرفي بالأكسجين","الضغط الجزئي لثاني أكسيد الكربون في الدم الطرفي","الضغط الجزئي لثاني أكسيد الكربون في الدم الطرفي","تشبع الميثوكسيهيموغلوبين في الدم الطرفي","تشبع الكاربوكسي هيموغلوبين في الدم الطرفي","المحتوى الأكسجيني في الدم الطرفي","التشبع","كربوكسي هيموغلوبين","الميتهيموغلوبين","عن طريق الجلد","النبض","مقياس التأكسج","قياس التأكسج","التركيز","جزئي","الضغط","غير باضع","حيوي - حياتي","الأكسجين","ثاني أكسيد الكربون">
-			copyright = <"© openEHR Foundation">
 			use = <"يستخدم لتسجيل القياسات غير المباشرة لغازات الدم, باستخدام الطرق غير الباضعة. ينبغي أن يتم إضافة القياسات الجديدة لغازات الدم إلى هذا النموذج.
 
 كما تضيف الجهيزة المستخدمة طريقة أخرى للقياس, مثل سرعة النبض, و لكن ينبغي تسجيل ذلك في نموذج منفرد, يتناسب مع العلامة التي يتم قياسها, مثل: نموذج ملاحظة. القلب - معدل النبض, للسماح بالاستعلام عن البيانات بشكل متجانس.
@@ -212,6 +229,7 @@ Não deve ser usado para obter medidas de gases sanguíneos invasivos. Por exemp
 ينبغي تسجيل التموجات في هذا النموذج عند استخدامها لتوثيق جودة قراءة غاز الدم. و على العكس, إذا استخدمت لأغراض تشخيصية أولية, مثل النتاج (المخرج) القلبي, و الـ 
 plesmythography 
 فينبغي تسجيلها باستخدام النموذج الجوهري: ملاحظة. القلب - معدل النبض.">
+			keywords = <"الأكسجين", "التأكسج", "تشبع الدم الطرفي بالأكسجين", "الضغط الجزئي لثاني أكسيد الكربون في الدم الطرفي", "الضغط الجزئي لثاني أكسيد الكربون في الدم الطرفي", "تشبع الميثوكسيهيموغلوبين في الدم الطرفي", "تشبع الكاربوكسي هيموغلوبين في الدم الطرفي", "المحتوى الأكسجيني في الدم الطرفي", "التشبع", "كربوكسي هيموغلوبين", "الميتهيموغلوبين", "عن طريق الجلد", "النبض", "مقياس التأكسج", "قياس التأكسج", "التركيز", "جزئي", "الضغط", "غير باضع", "حيوي - حياتي", "الأكسجين", "ثاني أكسيد الكربون">
 			misuse = <"لا ينبغي أن يستخدم هذا النموذج في قياس غازات الدم التي تتضمن تماس مباشر مع الدم, و قياس ضغط الأكسجين في الدم الشرياني, و ضغط ثاني أكسيد الكربون في الدم 
 الشرياني, و ينبغي استخدام نموذج ملاحظة. الاختبار المعملي - غازات الدم, لذلك.
 
@@ -220,15 +238,15 @@ plesmythography
 لا ينبغي أن يستخدم لقياس قياسات غازات الدم المباشرة, مثل تشبع الدم شرياني بالأكسجين و تشبع الدم الوريدي بالأكسجين, أو المحتوى الأكسجيني, التي يتم تحديدها باستخدام الطرق الباضعة, مثل استخدام الأجهزة المعملية لقياس غازات الدم أو القثطار الوريدي 
 و ينبغي تسجيل هذه القياسات باستخدام نموذج ملاحظة. الاختبار المعملي. غازات الدم.
 ">
+			copyright = <"© openEHR Foundation">
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record blood oxygen and related measurements, measured by pulse oximetry or pulse CO-oximetry.">
-			keywords = <"oxygen","oxygenation","saturation","SpO2","spMet","spCO","spOC","carboxyhaemoglobin","methaemoglobin","pulse","oximeter","oximetry","concentration","partial","pressure","non-invasive","vital","O2","SaO₂","SaO2","sat","sats","hypoxaemia">
-			copyright = <"© openEHR Foundation">
 			use = <"Use to record blood oxygen and related measurements, measured by pulse oximetry or pulse CO-oximetry.
 
 Waveforms should be recorded here when used to document quality of the blood gas measurement.">
+			keywords = <"oxygen", "oxygenation", "saturation", "SpO2", "spMet", "spCO", "spOC", "carboxyhaemoglobin", "methaemoglobin", "pulse", "oximeter", "oximetry", "concentration", "partial", "pressure", "non-invasive", "vital", "O2", "SaO₂", "SaO2", "sat", "sats", "hypoxaemia">
 			misuse = <"Not used for other non-invasive blood gas measurements such as transcutaneous CO₂, lateral end-tidal CO₂ or non-invasive cerebral oximetry.
 
 Not to be used for recording plethysmography. Use another appropriate archetype for this purpose.
@@ -238,13 +256,12 @@ Not to be used for recording another type of measurement, such as pulse rate, wh
 Not to be used to record any peripheral blood gas measurement that involves direct contact with blood. For example, PaO₂, PaCO₂ should be recorded using the OBSERVATION.laboratory_test_result archetype.
 
 Not to be used to record invasive blood gas measurement. For example, arterial (SaO₂), venous (SvO₂) oxygen saturation or Oxygen content (CaOC) which are usually determined by invasive methods such as laboratory blood gases or vascular catheter devices. These should also be recorded within the OBSERVATION.laboratory_test_result archetype.">
+			copyright = <"© openEHR Foundation">
 		>
 		["fa"] = <
 			language = <[ISO_639-1::fa]>
 			purpose = <"برای ثبت اندازه گیری گاز خون بطور غیر مستقیم ،در حال حاضر غیر تهاجمی و غیر مستقیم بکار می رود، نظیر ....و ... از طریق اندازه گیری اکسیژن نبضی ، اندازه گیری اکسیژن زیر پوستی یا سایر روشها 
 این احتمال بالاست که از این الگو ساز بطور اولیه در ثبت برآوردهای تولید اکسیژن استفاده شوداما سایر اندازه گیری های گاز ممکن است در طول زمان اضافه شود  .   ">
-			keywords = <"اکسیژن","تولید اکسیژن","اشباع","اشباع اکسیژن خون","SpO2","ptcCO2","ptcO2","spMet","spCO","spOC","ترکیب مونو اکسید کربن و هموگلوبین در گلبولهای قرمز","پروتیین حمل کننده اکسیژن در هموگلوبین","زیر پوستی","وسیله اندازه گیری اکسیژن خون","روش اندازه گیری اکسیژن خون","غلظت","جزیی","فشار","غیر تهاجمی","حیاتی","O2","CO2","کربن دی اکسید">
-			copyright = <"© openEHR Foundation">
 			use = <"برای ثبت اندازه گیری غیر مستقیم گاز خون، که در حال حاضر با تکنیک های غیر تهاجمی انجام می شود، بکار می رود. داده های جدید اندازه گیری های غیر مستقیم گاز خون بایستی به این الگوساز افزوده شوند
 
 از انجایی که وسایل ثبت انواع دیگری از اندازه گیری مانند میزان نبض را فراهم می کنند، بایستی در یک الگوساز جداگانه، مناسب با آن اندازه گیری مانند
@@ -258,10 +275,31 @@ OBSERVATION.heart_rate-pulse
 OBSERVATION.heart_rate-pulse
 ثبت شود
     ">
+			keywords = <"اکسیژن", "تولید اکسیژن", "اشباع", "اشباع اکسیژن خون", "SpO2", "ptcCO2", "ptcO2", "spMet", "spCO", "spOC", "ترکیب مونو اکسید کربن و هموگلوبین در گلبولهای قرمز", "پروتیین حمل کننده اکسیژن در هموگلوبین", "زیر پوستی", "وسیله اندازه گیری اکسیژن خون", "روش اندازه گیری اکسیژن خون", "غلظت", "جزیی", "فشار", "غیر تهاجمی", "حیاتی", "O2", "CO2", "کربن دی اکسید">
 			misuse = <"هر گونه اندازه گیری گاز خون که شامل تماس مستقیم با خون و اندازه گیری .... و .... نباید با استفاده از این الگو ساز ثبت شود . ازالگو ساز ..... استفاده کنید . اندازه گیری جدید فشار خو.ن باید به ... اضافه شود
 نباید در ثبت اندازه گیری فشار گاز خون مستقیم استفاده شود به عنوان مثال .... ، .... اشباع اکسیژن یا محتوای اکسیژن .... که معمولا با روشهای غیر تهاجمی تعیین می شود.به عنوان مثال گازههای خونی آزمایشگاهی یا وسایل کاتتر عروقی . این موارد باید در الگو ساز ... ثبت شوند ">
+			copyright = <"© openEHR Foundation">
+		>
+		["nl"] = <
+			language = <[ISO_639-1::nl]>
+			purpose = <"*To record blood oxygen and related measurements, measured by pulse oximetry or pulse CO-oximetry.(en)">
+			use = <"*Use to record blood oxygen and related measurements, measured by pulse oximetry or pulse CO-oximetry.
+
+Waveforms should be recorded here when used to document quality of the blood gas measurement.(en)">
+			keywords = <"*oxygen(en)", "*oxygenation(en)", "*saturation(en)", "*SpO2(en)", "*spMet(en)", "*spCO(en)", "*spOC(en)", "*carboxyhaemoglobin(en)", "*methaemoglobin(en)", "*pulse(en)", "*oximeter(en)", "*oximetry(en)", "*concentration(en)", "*partial(en)", "*pressure(en)", "*non-invasive(en)", "*vital(en)", "*O2(en)", "*SaO₂(en)", "*SaO2(en)", "*sat(en)", "*sats(en)", "*hypoxaemia(en)">
+			misuse = <"*Not used for other non-invasive blood gas measurements such as transcutaneous CO₂, lateral end-tidal CO₂ or non-invasive cerebral oximetry.
+
+Not to be used for recording plethysmography. Use another appropriate archetype for this purpose.
+
+Not to be used for recording another type of measurement, such as pulse rate, where the recording device also provides this. This should be recorded in a separate archetype, appropriate for that particular measurement to allow consistent querying. In this example, record the pulse rate in the OBSERVATION.pulse archetype.
+
+Not to be used to record any peripheral blood gas measurement that involves direct contact with blood. For example, PaO₂, PaCO₂ should be recorded using the OBSERVATION.laboratory_test_result archetype.
+
+Not to be used to record invasive blood gas measurement. For example, arterial (SaO₂), venous (SvO₂) oxygen saturation or Oxygen content (CaOC) which are usually determined by invasive methods such as laboratory blood gases or vascular catheter devices. These should also be recorded within the OBSERVATION.laboratory_test_result archetype.(en)">
 		>
 	>
+	lifecycle_state = <"published">
+	other_contributors = <"Morten Aas, Oslo Universitetssykehus, Norway", "Tomas Alme, DIPS, Norway", "Nadim Anani, Karolinska Institutet, Sweden", "Vebjørn Arntzen, Oslo universitetssykehus HF, Norway (Nasjonal IKT redaktør)", "Koray Atalag, University of Auckland, New Zealand", "Silje Ljosland Bakke, Nasjonal IKT HF, Norway (openEHR Editor)", "Mate Bestek, National Institute of Public Health of Slovenia, Slovenia", "SB Bhattacharyya, Sudisa Consultancy Services, India", "Marja Buur, Medisch Centrum Alkmaar/ Code24, Netherlands", "Sergio Carmona, Chile", "Ady Angelica Castro Acosta, CIBERES-Hospital 12 de Octubre, Spain", "Rong Chen, Cambio Healthcare Systems, Sweden", "Stephen Chu, Queensland Health, Australia", "Tamsin Cockayne, Australia", "Ed Conley, Cardiff University", "Lisbeth Dahlhaug, Helse Midt - Norge IT, Norway", "Graham Denyer, Australian Antarctic Division, Australia", "Paul Donaldson, Nursing Informatics Australia, Australia", "Samo Drnovsek, Marand ltd, Slovenia", "Stig Erik Hegrestad, Helse Førde, Norway", "Shahla Foozonkhah, Iran ministry of health and education, Iran", "Einar Fosse, National Centre for Integrated Care and Telemedicine, Norway", "Hildegard Franke, freshEHR Clinical Informatics Ltd., United Kingdom", "Sebastian Garde, Ocean Informatics, Germany (Editor)", "Mikkel Gaup Grønmo, FSE, Helse Nord, Norway", "Heather Grain, Llewelyn Grain Informatics, Australia", "Sam Heard, Ocean Informatics, Australia", "Ingrid Heitmann, Oslo universitetssykehus HF, Norway", "Karsten Heusser, Hannover Medical School, Germany", "Omer Hotomaroglu, Turkey (Editor)", "Evelyn Hovenga, EJSH Consulting, Australia", "Pieter Hummel, Medisch Centrum Alkmaar, Netherlands", "Eugene Igras, IRIS Systems, Inc., Canada", "Lars Ivar Mehlum, Helse Bergen HF, Norway", "Patrícia Ivo, Prefeitura Municipal de Fortaleza, Brazil", "Sundaresan Jagannathan, Scottish NHS, United Kingdom", "Tom Jarl Jakobsen, Helse Bergen, Norway", "Gorazd Kalan, University Medical Centre Ljubljana, Slovenia", "Konstantinos Kalliamvakos, Cambio Healthcare Systems, Sweden", "Hilde Karen Ofte, Nordlandssykehuset HF, Norway", "Harmony Kosola, Alberta Health Services, Canada", "Russell Leftwich, Russell B Leftwich MD, United States", "Heather Leslie, Ocean Health Systems, Australia (openEHR Editor)", "Rikard Lovstrom, Swedish Medical Association, Sweden", "Mark Luciani, Gloucestershire Hospital NHS Foundation Trust, United Kingdom", "Vincent McCauley, Medical Software Industry Association, Australia", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)", "Jeroen Meintjens, Medisch Centrum Alkmaar, Netherlands", "Lars Morgan Karlsen, Nordlandssykehuset Bodø, Norway", "Udo Müller, CompuGROUP Software, Germany", "Andrej Orel, Marand d.o.o., Slovenia", "Vladimir Pizzo, Hospital Sírio Libanês, Brazil", "Arturo Romero, SESCAM, Spain", "Jussara Rotzsch, UNB, Brazil", "Anoop Shah, University College London, United Kingdom", "Tony Shannon, frectal ltd, United Kingdom", "Line Silsand, Universitetssykehuset i Nord-Norge, Norway", "Trine Strand, Oslo Universitetssykehus (OUS), Norway", "Roy Støle, OUS, Norway", "Norwegian Review Summary, Nasjonal IKT HF, Norway", "Nyree Taylor, Ocean Informatics, Australia", "Micaela Thierley, Helse Bergen, Norway", "Rowan Thomas, St. Vincent's Hospital Melbourne, Australia", "John Tore Valand, Haukeland Universitetssjukehus, Norway (Nasjonal IKT redaktør)", "Stian Torleif Varpe, Helse Bergen, Norway">
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
@@ -278,22 +316,22 @@ Jubran A. Pulse oximetry. Crit Care. 1999;3(2):R11-R17. PubMed PMID: 11094477; P
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"1FC83A6FE8F0873A82C7E7DDFA956766">
-		["build_uid"] = <"4950856d-6639-410e-9bc8-027036613406">
+		["MD5-CAM-1.0.1"] = <"02D54A1F08B1D0D12BDEB8DFD499D214">
+		["build_uid"] = <"992140bd-078e-4792-b1a5-4ce1de711162">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomedct or info@snomed.org.">
-		["revision"] = <"1.1.0">
+		["revision"] = <"1.1.3">
 	>
 
 definition
-	OBSERVATION[at0000] matches {    -- Pulse oximetry
+	OBSERVATION[at0000] matches {	-- Pulse oximetry
 		data matches {
-			HISTORY[at0001] matches {    -- Event Series
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {    -- Tree
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0006] occurrences matches {0..1} matches {    -- SpO₂
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- SpO₂
 										value matches {
 											DV_PROPORTION matches {
 												numerator matches {|0.0..100.0|}
@@ -301,7 +339,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0044] occurrences matches {0..1} matches {    -- SpOC
+									ELEMENT[at0044] occurrences matches {0..1} matches {	-- SpOC
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -314,7 +352,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0045] occurrences matches {0..1} matches {    -- SpCO
+									ELEMENT[at0045] occurrences matches {0..1} matches {	-- SpCO
 										value matches {
 											DV_PROPORTION matches {
 												numerator matches {|0.0..100.0|}
@@ -322,7 +360,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0046] occurrences matches {0..1} matches {    -- SpMet
+									ELEMENT[at0046] occurrences matches {0..1} matches {	-- SpMet
 										value matches {
 											DV_PROPORTION matches {
 												numerator matches {|0.0..100.0|}
@@ -330,20 +368,20 @@ definition
 											}
 										}
 									}
-									allow_archetype CLUSTER[at0054] occurrences matches {0..*} matches {    -- Waveform
+									allow_archetype CLUSTER[at0054] occurrences matches {0..*} matches {	-- Waveform
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.waveform(-[a-zA-Z0-9_]+)*\.v0|openEHR-EHR-CLUSTER\.waveform(-[a-zA-Z0-9_]+)*\.v1/}
 									}
-									allow_archetype CLUSTER[at0060] occurrences matches {0..*} matches {    -- Multimedia image
+									allow_archetype CLUSTER[at0060] occurrences matches {0..*} matches {	-- Multimedia image
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.multimedia(-[a-zA-Z0-9_]+)*\.v0|openEHR-EHR-CLUSTER\.multimedia(-[a-zA-Z0-9_]+)*\.v1/}
 									}
-									ELEMENT[at0058] occurrences matches {0..*} matches {    -- Interpretation
+									ELEMENT[at0058] occurrences matches {0..*} matches {	-- Interpretation
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0036] occurrences matches {0..1} matches {    -- Comment
+									ELEMENT[at0036] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -352,17 +390,17 @@ definition
 							}
 						}
 						state matches {
-							ITEM_TREE[at0014] matches {    -- Tree
+							ITEM_TREE[at0014] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									allow_archetype CLUSTER[at0034] occurrences matches {0..1} matches {    -- Exertion
+									allow_archetype CLUSTER[at0034] occurrences matches {0..1} matches {	-- Exertion
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.level_of_exertion(-[a-zA-Z0-9_]+)*\.v0|openEHR-EHR-CLUSTER\.level_of_exertion(-[a-zA-Z0-9_]+)*\.v1/}
 									}
-									allow_archetype CLUSTER[at0015] occurrences matches {0..1} matches {    -- Inspired oxygen
+									allow_archetype CLUSTER[at0015] occurrences matches {0..1} matches {	-- Inspired oxygen
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.inspired_oxygen(-[a-zA-Z0-9_]+)*\.v1/}
 									}
-									ELEMENT[at0016] occurrences matches {0..*} matches {    -- Confounding factors
+									ELEMENT[at0016] occurrences matches {0..*} matches {	-- Confounding factors
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -375,30 +413,30 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0007] matches {    -- List
+			ITEM_TREE[at0007] matches {	-- List
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0009] occurrences matches {0..1} matches {    -- Sensor site
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Sensor site
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0061] occurrences matches {0..1} matches {    -- Pre/post-ductal
+					ELEMENT[at0061] occurrences matches {0..1} matches {	-- Pre/post-ductal
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0062,    -- Pre-ductal
-									at0063,    -- Post-ductal
-									at0064]    -- Indeterminate
+									at0062, 	-- Pre-ductal
+									at0063, 	-- Post-ductal
+									at0064]	-- Indeterminate
 								}
 							}
 						}
 					}
-					allow_archetype CLUSTER[at0018] occurrences matches {0..1} matches {    -- Oximetry device
+					allow_archetype CLUSTER[at0018] occurrences matches {0..1} matches {	-- Oximetry device
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1/}
 					}
-					allow_archetype CLUSTER[at0059] occurrences matches {0..*} matches {    -- Extension
+					allow_archetype CLUSTER[at0059] occurrences matches {0..*} matches {	-- Extension
 						include
 							archetype_id/value matches {/.*/}
 					}
@@ -407,8 +445,11 @@ definition
 		}
 	}
 
+
+
+
 ontology
-	terminologies_available = <"SNOMED-CT","LOINC">
+	terminologies_available = <"SNOMED-CT", "LOINC">
 	term_definitions = <
 		["ar-sy"] = <
 			items = <
@@ -421,7 +462,7 @@ ontology
 					description = <"*@ internal @(en)">
 				>
 				["at0002"] = <
-					text = <"إحدى الوقائع">
+					text = <"  إحدى الوقائع">
 					description = <" 
 واقعة زمنية
 ">
@@ -633,105 +674,111 @@ ontology
 		["de"] = <
 			items = <
 				["at0000"] = <
-					text = <"*Pulse oximetry(en)">
-					description = <"*Blood oxygen and related measurements, measured by pulse oximetry or pulse CO-oximetry.(en)">
+					text = <"Pulsoxymetrie">
+					description = <"Blutsauerstoff und verwandte Messungen, die mittels Pulsoxymetrie oder Puls-CO-Oximetrie gemessen wurden.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
 					description = <"@ internal @">
 				>
 				["at0002"] = <
-					text = <"*Any event(en)">
-					description = <"*Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.(en)">
+					text = <"Beliebiges Ereignis">
+					description = <"Standardwert, ein undefinierter/s Zeitpunkt oder Intervallereignis, das explizit im Template oder zur Laufzeit der Anwendung definiert werden kann.">
 				>
 				["at0003"] = <
 					text = <"Baum">
 					description = <"@ internal @">
 				>
 				["at0006"] = <
-					text = <"*SpO₂(en)">
-					description = <"*The saturation of oxygen in the peripheral blood, measured via pulse oximetry.(en)">
-					comment = <"*SpO₂ is defined as the percentage of oxyhaemoglobin (HbO₂) to the total concentration of haemoglobin (HbO₂ + deoxyhaemoglobin) in peripheral blood.(en)">
+					text = <"SpO₂">
+					description = <"Die Sättigung des Sauerstoffs im peripheren Blut, mittels Pulsoxymetrie gemessen.">
+					comment = <"SpO₂ ist definiert als der prozentuale Anteil von Oxyhämoglobin (HbO₂) an der Gesamtkonzentration von Hämoglobin (HbO₂ + Deoxyhämoglobin) im peripheren Blut.">
 				>
 				["at0007"] = <
 					text = <"Liste">
 					description = <"@ internal @">
 				>
 				["at0009"] = <
-					text = <"*Sensor site(en)">
-					description = <"*The site of the measurement sensor.(en)">
-					comment = <"*For example: Right index finger, left earlobe. Coding with a terminology is preferred, if possible.(en)">
+					text = <"Sensor Stelle">
+					description = <"Die Stelle des Messsensors.">
+					comment = <"Zum Beispiel: Rechter Zeigefinger, linkes Ohrläppchen. Eine Kodierung mit einer Terminologie wird, wenn möglich, bevorzugt.">
 				>
 				["at0014"] = <
 					text = <"*Tree(en)">
 					description = <"*@ internal @(en)">
 				>
 				["at0015"] = <
-					text = <"*Inspired oxygen(en)">
-					description = <"*Details of the amount of oxygen available to the subject at the time of observation.(en)">
-					comment = <"*Assumed values of 21% oxygen concentration, Fi02 of 0.21 and oxygen flow rate of 0 l/min or 0 ml/min.(en)">
+					text = <"Eingeatmeter Sauerstoff">
+					description = <"Details über die Sauerstoffmenge, die dem Probanden zum Zeitpunkt der Beobachtung zur Verfügung steht.">
+					comment = <"Angenommene Werte von 21% Sauerstoffkonzentration, Fi0₂ von 0,21 und Sauerstoffdurchflussrate von 0 l/min oder 0 ml/min.">
 				>
 				["at0016"] = <
-					text = <"*Confounding factors(en)">
-					description = <"*Comment on and record other incidental factors that may be affect interpretation of the observation.(en)">
-					comment = <"*For example, motion, pain, poor perfusion, infant feeding, peripheral hypothermia, sedation.(en)">
+					text = <"Einflussfaktoren">
+					description = <"Kommentar und Aufzeichung anderer Faktoren die ggf. die Interpretation der Beobachtung beeinflussen können
+
+">
+					comment = <"Zum Beispiel Bewegung, Schmerzen, schlechte Durchblutung, Säuglingsernährung, periphere Unterkühlung, Sedierung.
+">
 				>
 				["at0018"] = <
-					text = <"*Device(en)">
-					description = <"*Details of the non-invasive oximetry device used.(en)">
+					text = <"Oxymetrie Gerät">
+					description = <"Details über das verwendeten nicht-invasiven Oximetriegeräte.">
 				>
 				["at0034"] = <
-					text = <"*Exertion(en)">
-					description = <"*Details about physical activity undertaken at the time of measurement.(en)">
+					text = <"Anstrengung">
+					description = <"Details über physische Aktivitäten zur Zeit der Messung.">
 				>
 				["at0036"] = <
-					text = <"*Comment(en)">
-					description = <"*A text comment about the pulse oximetry result.(en)">
+					text = <"Kommentar">
+					description = <"Ein Kommentar über das Ergebnis der Pulsoximetrie.">
 				>
 				["at0044"] = <
-					text = <"*SpOC(en)">
-					description = <"*The oxygen content of the peripheral blood, calculated based on pulse oximetry and pulse CO-oximetry.(en)">
+					text = <"SpOC">
+					description = <"Der Sauerstoffgehalt des peripheren Blutes, auf der Grundlage der Pulsoxymetrie und der Puls-CO-Oximetrie berechnet.">
 				>
 				["at0045"] = <
-					text = <"*SpCO(en)">
-					description = <"*The saturation of carboxyhaemoglobin in the perpiheral blood, measured via pulse CO-oximetry.(en)">
+					text = <"SpCO">
+					description = <"Die Sättigung des Carboxyhämoglobins im peripheren Blut, mittels Puls-CO-Oximetrie gemessen.">
 				>
 				["at0046"] = <
-					text = <"*SpMet(en)">
-					description = <"*The saturation of metaemoglobin in the peripheral blood, measured via pulse CO-oximetry.(en)">
+					text = <"SpMet">
+					description = <"Die Sättigung des Methämoglobins im peripheren Blut, mittels Puls-CO-Oximetrie gemessen.">
 				>
 				["at0054"] = <
-					text = <"*Waveform(en)">
-					description = <"*A waveform reading associated with the oximetry measurement.(en)">
+					text = <"Wellenform">
+					description = <"Eine mittels Oximetermessung verbundene Wellenformmessung.">
 				>
 				["at0058"] = <
-					text = <"*Interpretation(en)">
-					description = <"*Single word, phrase or brief description which represents the clinical meaning and significance of the measurements.(en)">
-					comment = <"*Coding with a terminology is preferred, if possible. For example, normal oxygen saturation or hypoxaemia.(en)">
+					text = <"Interpretation">
+					description = <"Ein einzelnes Wort, eine Phrase oder eine kurze Beschreibung, welches die klinische Bedeutung und Signifikanz der Messung darstellt.">
+					comment = <"Eine Kodierung mit einer Terminologie wird, wenn möglich, bevorzugt. Zum Beispiel: normale Sauerstoffsättigung oder Hypoxämie.">
 				>
 				["at0059"] = <
-					text = <"*Cluster(en)">
-					description = <"**(en)">
+					text = <"Erweiterung">
+					description = <"Zusätzliche Information, die für die Erfassung des lokalen Kontexts oder für die Anpassung an andere Referenzmodelle/Formalismen benötigt wird.
+">
+					comment = <"Zum Beispiel: Informationen bzgl. der lokalen Krankenhausabteilung oder zusätzliche Metadata zur Anpassung an entsprechende FHIR oder CIMI Gegenstücke.">
 				>
 				["at0060"] = <
-					text = <"*Multimedia image(en)">
-					description = <"*Details of a series of oximetry readings, other than waveforms, expressed as a multimedia image or series of images. Waveforms should be recorded using the Waveform slot and associated cluster archetype.(en)">
+					text = <"Multimedia-Bild">
+					description = <"Details einer Reihe von Oximetrie-Messwerten, die keine Wellenformen sind, ausgedrückt als Multimediabild oder Bilderserie. Wellenformen sollten unter der Verwendung des Wellenform Slots und des zugehörigen Cluster-Archetyps dargestellt werden.">
 				>
 				["at0061"] = <
-					text = <"*Pre/post-ductal(en)">
-					description = <"*Sensor site relative to the ductus arteriosus in neonates, to determine whether the blood supply to limb of the sensor site is pre- or post-ductal in cases of patent ductus arteriosa.(en)">
+					text = <"prä/postduktal">
+					description = <"Stelle des Sensors bezogen zum Ductus arteriosus bei Neugeborenen, um zu bestimmen, ob die Blutversorgung der Extremität der Sensorstelle prä- oder postduktal ist, wenn es sich um einen patentierten Ductus arteriosus handelt.
+">
 				>
 				["at0062"] = <
-					text = <"*Pre-ductal(en)">
-					description = <"*The sensor site is pre-ductal.(en)">
+					text = <"Präduktal">
+					description = <"Die Senorstelle ist präduktal.">
 				>
 				["at0063"] = <
-					text = <"*Post-ductal(en)">
-					description = <"*The sensor site is post-ductal.(en)">
+					text = <"Postductal">
+					description = <"Die Senorstelle ist postductal.">
 				>
 				["at0064"] = <
-					text = <"*Indeterminate(en)">
-					description = <"*Unable to assess whether the sensor site is pre- or post-ductal.(en)">
+					text = <"Unbestimmt">
+					description = <"Kann nicht beurteilen, ob die Sensorstelle prä- oder postductal ist.">
 				>
 			>
 		>
@@ -1162,8 +1209,8 @@ ontology
 		["sv"] = <
 			items = <
 				["at0000"] = <
-					text = <"*Pulse oximetry(en)">
-					description = <"*Blood oxygen and related measurements, measured by pulse oximetry or pulse CO-oximetry.(en)">
+					text = <"Pulsoximetri">
+					description = <"Syremättnad i blodet och relaterade mätningar, uppmätta med pulsoximetri eller CO-oximetri.">
 				>
 				["at0001"] = <
 					text = <"Händelseförlopp">
@@ -1171,25 +1218,28 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Ospecificerad händelse">
-					description = <"Standardval, händelse vid ospecificerad tidpunkt eller tidsintervall som tydligt kan definieras i en mall eller vid körning av program.">
+					description = <"Ospecificerad händelse
+
+Ospecificerad standardhändelse vid en tidpunkt eller inom ett tidsintervall som explicit kan definieras i en mall eller genereras automatiskt av vissa IT-system.">
 				>
 				["at0003"] = <
 					text = <"Tree">
 					description = <"@ internal @">
 				>
 				["at0006"] = <
-					text = <"*SpO₂(en)">
-					description = <"*The saturation of oxygen in the peripheral blood, measured via pulse oximetry.(en)">
-					comment = <"*SpO₂ is defined as the percentage of oxyhaemoglobin (HbO₂) to the total concentration of haemoglobin (HbO₂ + deoxyhaemoglobin) in peripheral blood.(en)">
+					text = <"SpO₂">
+					description = <"Syremättnad i perifert blod uppmätt genom pulsoximetri.">
+					comment = <"SpO₂ defineras som procentandelen oxyhemoglobin (HbO₂) i förhållande till totala koncentrationen av hemoglobin (HbO₂ + deoxyhemoglobin) i perifert blod.">
 				>
 				["at0007"] = <
 					text = <"List">
 					description = <"@ internal @">
 				>
 				["at0009"] = <
-					text = <"*Sensor site(en)">
-					description = <"*The site of the measurement sensor.(en)">
-					comment = <"*For example: Right index finger, left earlobe. Coding with a terminology is preferred, if possible.(en)">
+					text = <"Mätplats">
+					description = <"Plats på kroppen där sensorn satt under mätningen">
+					comment = <"Exempelvis: höger pekfinger, vänster örsnibb.
+Bör kodas med terminologi om möjligt">
 				>
 				["at0014"] = <
 					text = <"Tree">
@@ -1199,70 +1249,71 @@ ontology
 					text = <"Tillförd syrgas">
 					description = <"Detaljer om mängden syre som patienten inandas vid observationstillfället.
 ">
-					comment = <"Antagna värden på 21% syrekoncentration, Fi02 av 0,21 och syrgasflödeshastighet av 0 l/min eller 0 ml/ min.">
+					comment = <"Antagna värden på 21% syrekoncentration, Fi02 på 0,21 och tillfört extra syrgasflöde 0 l/min eller 0 ml/min.">
 				>
 				["at0016"] = <
-					text = <"*Confounding factors(en)">
-					description = <"*Comment on and record other incidental factors that may be affect interpretation of the observation.(en)">
-					comment = <"*For example, motion, pain, poor perfusion, infant feeding, peripheral hypothermia, sedation.(en)">
+					text = <"Möjliga felkällor">
+					description = <"Beskrivning av faktorer och felkällor som kan påverka bedömningen av mätningen.">
+					comment = <"Exempelvis rörelse, smärta, dålig perfusion, spädbarn som ammar, perifer hypotermi, bedövning etc.">
 				>
 				["at0018"] = <
 					text = <"Oximetriutrustning">
-					description = <"Detaljer om den använda icke-invasiva oximeteranordningen.">
+					description = <"Detaljer om den icke-invasiva oximetriutrustningen som användes.">
 				>
 				["at0034"] = <
 					text = <"Ansträngning">
 					description = <"Detaljer om fysisk aktivitet vid mätningstillfället.">
 				>
 				["at0036"] = <
-					text = <"*Comment(en)">
-					description = <"*A text comment about the pulse oximetry result.(en)">
+					text = <"Kommentar">
+					description = <"Kommentar angående pulsoximetriresultatet">
 				>
 				["at0044"] = <
-					text = <"*SpOC(en)">
-					description = <"*The oxygen content of the peripheral blood, calculated based on pulse oximetry and pulse CO-oximetry.(en)">
+					text = <"SpOC">
+					description = <"Syreinehållet i preifert blod, beräknat från pulsoximetri och puls-CO-oximetri i kombination.">
 				>
 				["at0045"] = <
 					text = <"SpCO">
 					description = <"Mättnaden av karboxihemoglobin i perifert blod, mätt genom puls CO-oximetri.">
 				>
 				["at0046"] = <
-					text = <"*SpMet(en)">
-					description = <"*The saturation of metaemoglobin in the peripheral blood, measured via pulse CO-oximetry.(en)">
+					text = <"SpMet">
+					description = <"Mättnaden av metahemoglobin i perifert blod uppmätt genom puls-CO-oximetri.">
 				>
 				["at0054"] = <
 					text = <"Vågform">
-					description = <"Ett mätvärde av en vågform kopplad till oximetrimätningen.">
+					description = <"Vågform kopplad till oximetrimätningen.">
 				>
 				["at0058"] = <
-					text = <"*Interpretation(en)">
-					description = <"*Single word, phrase or brief description which represents the clinical meaning and significance of the measurements.(en)">
-					comment = <"*Coding with a terminology is preferred, if possible. For example, normal oxygen saturation or hypoxaemia.(en)">
+					text = <"Tolkning">
+					description = <"Ord, fras eller kort text som beskriver den kliniska innebörden och signifikansen av mätningarna.">
+					comment = <"Bör kodas med terminologi om möjligt, t.ex. kodade termer för \"normal syremättnad\" eller \"hypoxi\"">
 				>
 				["at0059"] = <
-					text = <"Övrig information">
-					description = <"Ytterligare information som krävs för att fånga lokal kontext eller för att kunna anpassa sig till andra referensmodeller / formalismer.">
-					comment = <"T.ex. information om en lokal sjukhusavdelning eller ytterligare metadata för att anpassa sig till HL7- eller CDISC-ekvivalenter.">
+					text = <"Tilläggsinformation">
+					description = <"Plats för att infoga tilläggsinformation som krävs för lokala anpassningar eller anpassning till andra referensmodeller eller formella krav.">
+					comment = <"Exempelvis lokala informationskrav eller metadata för anpassning till HL7 eller CDISC-motsvarigheter.">
 				>
 				["at0060"] = <
-					text = <"*Multimedia image(en)">
-					description = <"*Details of a series of oximetry readings, other than waveforms, expressed as a multimedia image or series of images. Waveforms should be recorded using the Waveform slot and associated cluster archetype.(en)">
+					text = <"Multimedia-bild(er)">
+					description = <"Detaljer för en serie oximetrimätningar, utöver vågformer, representerade som en bild eller bildserie. Rena vågformer skall istället lagras i fältet \"Vågform\" och tillhörande CLUSTER-arketyp.">
 				>
 				["at0061"] = <
-					text = <"*Pre/post-ductal(en)">
-					description = <"*Sensor site relative to the ductus arteriosus in neonates, to determine whether the blood supply to limb of the sensor site is pre- or post-ductal in cases of patent ductus arteriosa.(en)">
+					text = <"Pre/post-duktal">
+					description = <"Mätsensorns placering i relation till ductus arteriosus hos nyfödda 
+barn, för att avgöra om blodtillförseln till kroppsdelen sensorn sitter på är pre- eller post-duktal för patienter med öppetstående ductus arteriosus.">
 				>
 				["at0062"] = <
-					text = <"*Pre-ductal(en)">
-					description = <"*The sensor site is pre-ductal.(en)">
+					text = <"Preduktal">
+					description = <"Sensorn är placerad preduktalt.">
 				>
 				["at0063"] = <
-					text = <"*Post-ductal(en)">
-					description = <"*The sensor site is post-ductal.(en)">
+					text = <"Postduktal">
+					description = <"Sensorn är placerad postduktalt.">
 				>
 				["at0064"] = <
-					text = <"*Indeterminate(en)">
-					description = <"*Unable to assess whether the sensor site is pre- or post-ductal.(en)">
+					text = <"Obestämd">
+					description = <"Det går inte att bedöma om sensorplatsen är pre- eller post-duktal">
 				>
 			>
 		>
@@ -1478,8 +1529,114 @@ ontology
 				>
 			>
 		>
+		["nl"] = <
+			items = <
+				["at0064"] = <
+					text = <"*Indeterminate(en)">
+					description = <"*Unable to assess whether the sensor site is pre- or post-ductal.(en)">
+				>
+				["at0063"] = <
+					text = <"*Post-ductal(en)">
+					description = <"*The sensor site is post-ductal.(en)">
+				>
+				["at0062"] = <
+					text = <"*Pre-ductal(en)">
+					description = <"*The sensor site is pre-ductal.(en)">
+				>
+				["at0061"] = <
+					text = <"*Pre/post-ductal(en)">
+					description = <"*Sensor site relative to the ductus arteriosus in neonates, to determine whether the blood supply to limb of the sensor site is pre- or post-ductal in cases of patent ductus arteriosus.(en)">
+				>
+				["at0060"] = <
+					text = <"*Multimedia image(en)">
+					description = <"*Details of a series of oximetry readings, other than waveforms, expressed as a multimedia image or series of images. Waveforms should be recorded using the Waveform slot and associated cluster archetype.(en)">
+				>
+				["at0059"] = <
+					text = <"*Extension(en)">
+					description = <"*Additional information required to capture local context or to align with other reference models/formalisms.(en)">
+					comment = <"*e.g. Local hospital departmental infomation or additional metadata to align with HL7 or CDISC equivalents.(en)">
+				>
+				["at0058"] = <
+					text = <"*Interpretation(en)">
+					description = <"*Single word, phrase or brief description which represents the clinical meaning and significance of the measurements.(en)">
+					comment = <"*Coding with a terminology is preferred, if possible. For example, normal oxygen saturation or hypoxaemia.(en)">
+				>
+				["at0054"] = <
+					text = <"*Waveform(en)">
+					description = <"*A waveform reading associated with the oximetry measurement.(en)">
+				>
+				["at0046"] = <
+					text = <"*SpMet(en)">
+					description = <"*The saturation of methaemoglobin in the peripheral blood, measured via pulse CO-oximetry.(en)">
+				>
+				["at0045"] = <
+					text = <"*SpCO(en)">
+					description = <"*The saturation of carboxyhaemoglobin in the peripheral blood, measured via pulse CO-oximetry.(en)">
+				>
+				["at0044"] = <
+					text = <"*SpOC(en)">
+					description = <"*The oxygen content of the peripheral blood, calculated based on pulse oximetry and pulse CO-oximetry.(en)">
+				>
+				["at0036"] = <
+					text = <"*Comment(en)">
+					description = <"*A text comment about the pulse oximetry result.(en)">
+				>
+				["at0034"] = <
+					text = <"*Exertion(en)">
+					description = <"*Details about physical activity undertaken at the time of measurement.(en)">
+				>
+				["at0018"] = <
+					text = <"*Oximetry device(en)">
+					description = <"*Details of the non-invasive oximetry device used.(en)">
+				>
+				["at0016"] = <
+					text = <"*Confounding factors(en)">
+					description = <"*Comment on and record other incidental factors that may be affect interpretation of the observation.(en)">
+					comment = <"*For example, motion, pain, poor perfusion, infant feeding, peripheral hypothermia, sedation.(en)">
+				>
+				["at0015"] = <
+					text = <"*Inspired oxygen(en)">
+					description = <"*Details of the amount of oxygen available to the subject at the time of observation.(en)">
+					comment = <"*Assumed values of 21% oxygen concentration, Fi0₂ of 0.21 and oxygen flow rate of 0 l/min or 0 ml/min.(en)">
+				>
+				["at0014"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0009"] = <
+					text = <"*Sensor site(en)">
+					description = <"*The site of the measurement sensor.(en)">
+					comment = <"*For example: Right index finger, left earlobe. Coding with a terminology is preferred, if possible.(en)">
+				>
+				["at0007"] = <
+					text = <"*List(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0006"] = <
+					text = <"SpO₂">
+					description = <"De zuurstofsaturatie in het perifere bloed gemeten met pulsoximetrie.">
+					comment = <"*SpO₂ is defined as the percentage of oxyhaemoglobin (HbO₂) to the total concentration of haemoglobin (HbO₂ + deoxyhaemoglobin) in peripheral blood.(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"*Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.(en)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0000"] = <
+					text = <"Pulsoximetrie">
+					description = <"Zuurstof saturatie in het bloed en gerelateerde metingen, gemeten met behulp van pulsoximetrie of pulsCOoximetrie.">
+				>
+			>
+		>
 	>
-	term_binding = <
+	term_bindings = <
 		["SNOMED-CT"] = <
 			items = <
 				["at0006"] = <[SNOMED-CT::431314004]>
