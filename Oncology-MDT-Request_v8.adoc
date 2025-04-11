@@ -1,0 +1,159 @@
+= Oncology-MDT-Request
+
+
+== Metadata
+
+
+TemplateId:: Oncology-MDT-Request_v8
+
+
+Archetype:: openEHR-EHR-COMPOSITION.request.v1
+
+
+
+
+:toc:
+
+
+
+
+// Not supported rmType COMPOSITION
+== EVENT_CONTEXT
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*EVENT_CONTEXT* + 
+EVENT_CONTEXT: __
+5+a|*Template versjonsinformasjon* + 
+CLUSTER: _openEHR-EHR-CLUSTER.template_semver_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Navn
+a|
+* Oncology-MDT-Request (TemplateVersionNameMDT: Req01)
+5+a|*Semver* + 
+CLUSTER: _at0003_
+|at0004| 0..1| DV_COUNT | Major
+|
+|at0005| 0..1| DV_COUNT | Minor
+|
+|at0006| 0..1| DV_COUNT | Patch
+|
+|====
+== MDT
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*MDT* + 
+INSTRUCTION: _openEHR-EHR-INSTRUCTION.service_request.v1_
+// Not supported rmType ACTIVITY
+|at0121| 1..1| DV_TEXT | Tjenestenavn
+a|
+
+
+Koding av tjenestenavnet med et kodeverk er ønskelig, dersom tilgjengelig. For eksempel: "henvisning" til en endokrinolog for diabetesoppfølging.
+|at0148| 0..1| DV_CODED_TEXT | Tjenestetype
+a|
+* multidisiplinært teammøte (SNOMED-CT: 312384001)
+
+
+Koding av tjenestetypen med et kodeverk er ønskelig, dersom tilgjengelig. Dersom "Tjenestenavn" er kodet kan dette elementet i noen tilfeller utledes fra koden. For eksempel klinisk biokjemi eller mikrobiologisk laboratorium, ultralyd eller CT.
+|at0064| 0..1| DV_TEXT | Nærmere beskrivelse av årsak
+a|
+
+
+For eksempel "Pasientens diabetes har i det siste blitt vanskeligere å stabilisere, og nyrefunksjonen er under forverring".
+|at0152| 0..1| DV_CODED_TEXT | Klinisk indikasjon
+a|
+* Sarkom (OncologyTrajectoryType: 01)
+* Hode og halskreft (OncologyTrajectoryType: 02)
+* Hjernesvulst (OncologyTrajectoryType: 03)
+* Brystkreft (OncologyTrajectoryType: 04)
+* Lungekreft (OncologyTrajectoryType: 05)
+* Kreft i fordøyelsessystemet (OncologyTrajectoryType: 06)
+* Gynekologisk kreft (OncologyTrajectoryType: 07)
+* Kreft i nyre og urinveier (OncologyTrajectoryType: 08)
+* Benmargs- og blodkreft (OncologyTrajectoryType: 09)
+* Lymfom (OncologyTrajectoryType: 10)
+* Hudkreft (OncologyTrajectoryType: 11)
+* Kreft i mannlige kjønnsorganer (OncologyTrajectoryType: 12)
+* Kreft i endokrine kjertler (OncologyTrajectoryType: 13)
+* Nevroendokrin kreft (OncologyTrajectoryType: 14)
+* Barnekreft (OncologyTrajectoryType: 15)
+* Øyekreft (OncologyTrajectoryType: 16)
+* Svulst av ukjent opprinnelse / Annet kreft (OncologyTrajectoryType: 17)
+
+
+For eksempel "angina" eller "diabetes mellitus type 1". Koding av indikasjonen med et kodeverk er ønskelig, dersom tilgjengelig. Dette dataelementet tillater flere forekomster.
+|at0040| 0..1| DV_DATE_TIME | Tid/dato for ønsket MDT møte
+|
+
+
+Dette dataelementet tillater registrering av timing for én tjeneste, enten som dato/tid, intervall av dato/tid, eller som en tekstbeskrivelsen som kan understøtte "neste tilgjengelige". I praksis vil klinikere ofte tenke i omtrentlig timing, for eksempel "revurdering om 3 måneder, 6 måneder eller 12 måneder. Siden kliniske systemer trenger mer eksakte tidsangivelser, vil "3 måneder" som regel konverteres til en eksakt dato 3 måneder fra registreringsdatoen, og lagres i dette dataelementet. Dersom det er behov for kompleks timing eller sekvenser av timing, bruk arketypen CLUSTER.service_direction i SLOTet "Kompleks timing". I disse tilfellene blir dette dataelementet redundant.
+5+a|*Mdt tilleggsinformasjon dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.mdt_tilleggsinformasjon_dips.v1_
+|at0001| 0..1| DV_BOOLEAN | Pasienten skal møte fysisk i MDT møte
+|
+|at0002| 0..1| DV_TEXT | Hvem informerer pasienten om konklusjonen fra møtet
+a|
+5+a|*Enkeltdeltagere* + 
+CLUSTER: _at0004_
+|at0005| 0..1| DV_TEXT | Rolle
+a|
+|at0006| 0..1| DV_TEXT | Navn
+a|
+|at0003| 0..1| DV_TEXT | Sammendrag av deltagere
+a|
+|at0076| 0..1| DV_BOOLEAN | Supplerende informasjon
+|
+
+
+Registrer som SANN dersom ytterligere informasjon er identifisert, og vil bli ettersendt når den er tilgjengelig. For eksempel: ufullstendige prøvesvar.
+|at0078| 0..1| DV_TEXT | Supplerende informasjon
+a|
+|at0150| 0..1| DV_TEXT | Kommentar
+a|
+// Not supported rmType DV_PARSABLE
+// Not supported rmType STRING
+|at0127| 0..1| DV_CODED_TEXT | Rekvisisjonsstatus
+a|
+* Ønsket (SNOMED-CT: 410526009)
+* Bestilt (SNOMED-CT: 385644000)
+* Avlyst (SNOMED-CT: 89925002)
+
+
+Status brukes for å vise om dette er den primære forespørselen, en endring eller supplerende informasjon. Koding med en terminologi foretrekkes, der det er mulig.
+|undefined| 0..1| DV_DATE_TIME | expiry_time
+|
+|====
+== Administrasjon av forløp
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Administrasjon av forløp* + 
+EVALUATION: _openEHR-EHR-EVALUATION.trajectory_summary_dips.v1_
+|at0002| 0..1| DV_TEXT | Resymê
+a|
+|at0003| 0..1| DV_TEXT | Praktisk informasjon
+a|
+|at0012| 0..*| DV_TEXT | Fagspesifikt sammendrag
+a|
+
+
+Feltet kan multipliseres for ulike fagspesifikke sammendrag
+|at0004| 0..1| DV_TEXT | Status
+a|
+|at0011| 0..*| DV_TEXT | Pasientansvarlig lege
+a|
+5+a|*Stikkord* + 
+CLUSTER: _at0007_
+|at0008| 0..1| DV_DATE_TIME | Dato
+|
+|at0009| 0..1| DV_TEXT | Ansvarlig
+a|
+|at0010| 0..1| DV_TEXT | Stikkord
+a|
+|at0006| 0..1| DV_DATE_TIME | Sist endret
+|
+|====
+// Not supported rmType CODE_PHRASE
+// Not supported rmType CODE_PHRASE
+// Not supported rmType PARTY_PROXY

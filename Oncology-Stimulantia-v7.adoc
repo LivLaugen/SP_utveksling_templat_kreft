@@ -1,0 +1,173 @@
+= Klinisk kontakt
+
+
+== Metadata
+
+
+TemplateId:: Oncology-Stimulantia-v7
+
+
+Archetype:: openEHR-EHR-COMPOSITION.encounter.v1
+
+
+
+
+:toc:
+
+
+
+
+// Not supported rmType COMPOSITION
+== EVENT_CONTEXT
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*EVENT_CONTEXT* + 
+EVENT_CONTEXT: __
+5+a|*Template versjonsinformasjon* + 
+CLUSTER: _openEHR-EHR-CLUSTER.template_semver_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Navn
+a|
+* Oncology-Stimulantia (no.dips.TemplateMetadata.Classification: TM4)
+5+a|*Semver* + 
+CLUSTER: _at0003_
+|at0004| 0..1| DV_COUNT | Major
+|
+|====
+== Stimulantia
+== Alkohol
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Alkohol* + 
+EVALUATION: _openEHR-EHR-EVALUATION.alcohol_consumption_summary.v1_
+|at0089| 0..1| DV_CODED_TEXT | Overordnet status
+a|
+* at0003 -> Nåværende bruker 
+* at0005 -> Tidligere bruker 
+* at0006 -> Aldri brukt 
+|at0043| 0..1| DV_TEXT | Overordnet beskrivelse
+a|
+
+
+Bruk dette elementet for å registrere en beskrivelse i fritekst om drikkevaner for dette individet, eller for å overføre til arketypeformat ustrukturert informasjon om drikkevaner fra et eksisterende eller tidligere brukt klinisk system.
+5+a|*Per episode* + 
+CLUSTER: _at0064_
+|at0023| 0..1| DV_QUANTITY | Typisk bruk (alkoholenheter)
+|
+|at0022| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+|====
+== Røyk
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Røyk* + 
+EVALUATION: _openEHR-EHR-EVALUATION.tobacco_smoking_summary.v1_
+|at0089| 0..1| DV_CODED_TEXT | Overordnet status
+a|
+* at0006 -> Aldri røykt 
+* at0003 -> Røyker 
+* at0005 -> Tidligere røyker 
+|at0043| 0..1| DV_TEXT | Overordnet beskrivelse
+a|
+
+
+Bruk dette datalementet til å registrere en fritekstbeskrivelse av individets tobakksrøykevaner, eller for å overføre ustrukturert informasjon fra eksisterende eller tidligere kliniske systemer til arketypeformat.
+|at0074| 0..1| DV_COUNT | Samlet pakkeår
+|
+
+
+Definisjonen på en pakke kan registreres i protokollen av denne arketypen, ved å bruke dataelementet "Pakkedefinisjon".
+|at0022| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+|====
+== Røykfri tobakk/snus
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Røykfri tobakk/snus* + 
+EVALUATION: _openEHR-EHR-EVALUATION.smokeless_tobacco_summary.v1_
+|at0089| 0..1| DV_CODED_TEXT | Overordnet status
+a|
+* at0006 -> Aldri brukt 
+* at0003 -> Nåværende bruker 
+* at0005 -> Tidligere bruker 
+|at0043| 0..1| DV_TEXT | Overordnet beskrivelse
+a|
+
+
+Bruk dette datalementet til å registrere en fritekstbeskrivelse kun der data som er registrert strukturert ikke reflekterer individets bruk av røykfri tobakk på en tilfredsstillende måte, eller for å overføre ustrukturert informasjon om bruk av røykfri tobakk fra eksisterende eller tidligere kliniske systemer til arketypeformat.
+|at0022| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+|====
+== Sammendrag andre substanser
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Sammendrag andre substanser* + 
+EVALUATION: _openEHR-EHR-EVALUATION.substance_use_summary.v1_
+
+
+Tobakksrøyking, bruk av røykfri tobakk, alkoholbruk, damping (vaping) og administrasjon av medikamenter i henhold til etablerte medisinske retningslinjer og standarder er bevisst holdt utenfor konseptet, og skal registreres ved å bruke andre arketyper laget for formålet.
+|at0002| 1..1| DV_CODED_TEXT | Substansnavn
+a|
+* Annen substans (no.onk.substansbruk: osub)
+
+
+Koding med ekstern terminologi anbefales om det er mulig.
+|at0007| 0..1| DV_TEXT | Overordnet beskrivelse
+a|
+
+
+Dette elementet kan også brukes til å ta inn fritekstlige beskrivelser av substansbruk fra eksisterende eller historiske kliniske systemer.
+|at0031| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+|====
+== Substansanamnese
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Substansanamnese* + 
+EVALUATION: _openEHR-EHR-EVALUATION.substance_use_summary.v1_
+
+
+Tobakksrøyking, bruk av røykfri tobakk, alkoholbruk, damping (vaping) og administrasjon av medikamenter i henhold til etablerte medisinske retningslinjer og standarder er bevisst holdt utenfor konseptet, og skal registreres ved å bruke andre arketyper laget for formålet.
+|at0002| 1..1| DV_TEXT | Substansnavn
+a|
+
+
+Koding med ekstern terminologi anbefales om det er mulig.
+|at0003| 0..1| DV_CODED_TEXT | Overordnet status
+a|
+* at0004 -> Aldri brukt 
+* at0005 -> Nåværende bruker 
+* at0006 -> Tidligere bruker 
+|at0007| 0..1| DV_TEXT | Overordnet beskrivelse
+a|
+
+
+Dette elementet kan også brukes til å ta inn fritekstlige beskrivelser av substansbruk fra eksisterende eller historiske kliniske systemer.
+|at0031| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+|====
+== Tidfestet fritekst
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Tidfestet fritekst* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.progress_note.v1_
+// Not supported rmType EVENT
+|at0004| 0..1| DV_TEXT | Tidfestet fritekst
+a|
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Sammendrag av stimulantia (no.dips.Freetext.Classification: 11-SammendragAvStimulantia)
+|====
+// Not supported rmType CODE_PHRASE
+// Not supported rmType CODE_PHRASE
+// Not supported rmType PARTY_PROXY

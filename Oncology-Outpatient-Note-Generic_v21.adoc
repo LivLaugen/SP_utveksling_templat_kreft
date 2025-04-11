@@ -1,0 +1,685 @@
+= Klinisk kontakt
+
+
+== Metadata
+
+
+TemplateId:: Oncology-Outpatient-Note-Generic_v21
+
+
+Archetype:: openEHR-EHR-COMPOSITION.encounter.v1
+
+
+
+
+:toc:
+
+
+
+
+// Not supported rmType COMPOSITION
+== EVENT_CONTEXT
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*EVENT_CONTEXT* + 
+EVENT_CONTEXT: __
+5+a|*Template versjonsinformasjon* + 
+CLUSTER: _openEHR-EHR-CLUSTER.template_semver_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Navn
+a|
+* Onkologisk poliklinisk notat (no.dips.oncology: outpatient_note_generic)
+5+a|*Semver* + 
+CLUSTER: _at0003_
+|at0004| 0..1| DV_COUNT | Major
+|
+5+a|*Onkologi AQL hjelpefelt* + 
+CLUSTER: _openEHR-EHR-CLUSTER.oncology_aql_support_dips.v1_
+|at0001| 0..1| DV_TEXT | AQL krefttype
+a|
+|====
+== Historiske data
+== Historiske data
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Historiske data* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.progress_note.v1_
+|at0004| 0..1| DV_TEXT | Historiske data
+a|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Historiske data (no.dips.Freetext.Classification: OnkologiPoliklinikkHistoriskeData)
+|====
+== Aktuelt
+== Aktuelt
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Aktuelt* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.progress_note.v1_
+|at0004| 0..1| DV_TEXT | Aktuelt
+a|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Aktuelt (no.dips.Freetext.Classification: OnkologiPoliklinikkAktuelt)
+|====
+== Status presens
+== Vitalia
+== Kroppsmasseindeks
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kroppsmasseindeks* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.body_mass_index.v2_
+|at0004| 1..1| DV_QUANTITY | Kroppsmasseindeks
+|
+|at0006| 0..1| DV_CODED_TEXT | Metode
+a|
+* at0007 -> Automatisk registrering 
+|====
+== Høyde/Lengde
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Høyde/Lengde* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.height.v2_
+
+
+Høyde måles stående og lengde liggende.
+|at0004| 1..1| DV_QUANTITY | Høyde/lengde
+|
+|at0014| 0..1| DV_CODED_TEXT | Kroppsstilling
+a|
+* at0016 -> Stående 
+* at0020 -> Liggende 
+|====
+== Kroppsvekt
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kroppsvekt* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.body_weight.v2_
+|at0004| 1..1| DV_QUANTITY | Kroppsvekt
+|
+|at0009| 0..1| DV_CODED_TEXT | Påkledning
+a|
+* at0013 -> Naken 
+* at0017 -> Bleie 
+* at0011 -> Lette klær / undertøy 
+* at0028 -> Fullt påkledt, uten sko 
+* at0010 -> Fullt påkledt inklusive sko 
+|====
+== Kroppstemperatur
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kroppstemperatur* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.body_temperature.v2_
+|at0004| 1..1| DV_QUANTITY | Temperatur
+|
+|at0021| 0..1| DV_CODED_TEXT | Målested
+a|
+* at0025 -> Endetarm 
+* at0024 -> Armhule 
+* at0023 -> Øre 
+* at0061 -> Panne 
+* at0022 -> Munn 
+* at0026 -> Nesesvelg 
+* at0027 -> Urinblære 
+* at0028 -> Intravaskulært 
+* at0043 -> Hud 
+* at0051 -> Skjede 
+* at0054 -> Spiserør 
+* at0055 -> Lyske 
+* at0060 -> Tinning 
+|====
+== Pulsoksymetri
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Pulsoksymetri* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.pulse_oximetry.v1_
+// Not supported rmType DV_PROPORTION
+|====
+== Puls/Hjertefrekvens
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Puls/Hjertefrekvens* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.pulse.v2_
+|at0004| 0..1| DV_QUANTITY | Frekvens
+|
+
+
+Det er spesifisert begrensninger i navn for å gjøre det lettere å eksplisitt merke dette elementet som Pulsfrekvens eller Hjertefrekvens ved behov.
+|at0005| 0..1| DV_CODED_TEXT | Rytme
+a|
+* at0006 -> Regelmessig 
+* at1028 -> Uregelmessig 
+|====
+== Blodtrykk
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Blodtrykk* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.blood_pressure.v2_
+
+
+Vanligvis brukes begrepet "blodtrykk" om måling av brakialt arterietrykk i overarmen.
+|at0004| 0..1| DV_QUANTITY | Systolisk
+|
+|at0005| 0..1| DV_QUANTITY | Diastolisk
+|
+|at1006| 0..1| DV_QUANTITY | Middelarterietrykk
+|
+|at0008| 0..1| DV_CODED_TEXT | Stilling
+a|
+* at1000 -> Stående 
+* at1001 -> Sittende 
+* at1002 -> Tilbakelent 
+* at1003 -> Liggende 
+* at1014 -> Liggende lent mot venstre 
+|at1038| 0..1| DV_TEXT | Formel for beregning av MAP
+a|
+|====
+== Åndedrett
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Åndedrett* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.respiration.v2_
+// Not supported rmType EVENT
+|at0004| 0..1| DV_QUANTITY | Frekvens
+|
+|at0005| 0..1| DV_CODED_TEXT | Regelmessighet
+a|
+* at0006 -> Regelmessig 
+* at0007 -> Uregelmessig 
+|at0016| 0..1| DV_CODED_TEXT | Dybde
+a|
+* at0017 -> Normal 
+* at0018 -> Overfladisk 
+* at0019 -> Dyp 
+* at0025 -> Varierende 
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+|====
+== Kroppsoverflate
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kroppsoverflate* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.body_surface_area.v1_
+
+
+Refereres også til som BSA (body surface area).
+// Not supported rmType EVENT
+|at0004| 1..1| DV_QUANTITY | Kroppsoverflate
+|
+
+
+For eksempel: "1,81 m²".
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+|at0009| 0..1| DV_CODED_TEXT | Metode
+a|
+* at0010 -> Automatisk registrering 
+|at0006| 0..1| DV_CODED_TEXT | Formel
+a|
+* at0012 -> Dubois og Dubois 
+* at0013 -> Mosteller 
+* at0014 -> Haycock 
+* at0015 -> Gehan og George 
+* at0016 -> Boyd 
+* at0017 -> Fujimoto 
+* at0018 -> Takihara 
+
+
+For eksempel: Mosteller, DuBois og DuBois, Haycock og Boyd.
+|====
+// Not supported rmType ADMIN_ENTRY
+5+a|*Kroppsoverflate referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.kroppsoverflate_referanse.v1_
+|at0001| 0..1| DV_QUANTITY | Kroppsoverflate
+|
+|at0002| 0..1| DV_DATE_TIME | Time
+|
+5+a|*kroppsmasseindex referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.kroppsmasseindex_referanse.v1_
+|at0001| 0..1| DV_QUANTITY | Kroppsmasseindex
+|
+|at0002| 0..1| DV_DATE_TIME | Time
+|
+5+a|*Høyde/Lengde referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.hoyde_referanse.v1_
+|at0003| 0..1| DV_QUANTITY | Høyde/Lengde
+|
+|at0002| 0..1| DV_DATE_TIME | Time
+|
+|at0004| 0..1| DV_CODED_TEXT | Kroppstilling
+a|
+5+a|*Vekt referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.vekt_referanse.v1_
+|at0003| 0..1| DV_QUANTITY | Kroppsvekt
+|
+|at0002| 0..1| DV_DATE_TIME | Time
+|
+|at0004| 0..1| DV_TEXT | Kommentar
+a|
+|at0005| 0..1| DV_CODED_TEXT | Påkleding
+a|
+5+a|*Temperatur referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.kroppstemperatur_referanse.v1_
+|at0001| 1..1| DV_QUANTITY | Temperatur
+|
+|at0002| 0..1| DV_DATE_TIME | Time
+|
+|at0003| 0..1| DV_CODED_TEXT | Målested
+a|
+5+a|*Respirasjon referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.respirasjon_referanse.v1_
+|at0001| 0..1| DV_QUANTITY | Frekvens
+|
+|at0002| 0..1| DV_DATE_TIME | Time
+|
+|at0004| 0..1| DV_CODED_TEXT | Regelmessighet
+a|
+|at0005| 0..1| DV_CODED_TEXT | Dybde
+a|
+5+a|*Pulsoksymetri referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.pulsoksymetri_referanse.v1_
+// Not supported rmType DV_PROPORTION
+|at0003| 0..1| DV_DATE_TIME | Time
+|
+5+a|*Blodtrykk referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.blodtrykk_referanse.v1_
+|at0001| 0..1| DV_QUANTITY | Systolisk
+|
+|at0002| 0..1| DV_QUANTITY | Diastolisk
+|
+|at0004| 0..1| DV_QUANTITY | Middelarterietrykk
+|
+|at0005| 0..1| DV_CODED_TEXT | Stilling
+a|
+|at0003| 0..1| DV_DATE_TIME | Time
+|
+5+a|*Pulse referanse* + 
+CLUSTER: _openEHR-EHR-CLUSTER.pulse_referanse.v1_
+|at0001| 0..1| DV_QUANTITY | Pulsfrekvens
+|
+|at0002| 0..1| DV_DATE_TIME | Time
+|
+|at0003| 0..1| DV_CODED_TEXT | Rytme
+a|
+// Not supported rmType CODE_PHRASE
+// Not supported rmType CODE_PHRASE
+// Not supported rmType PARTY_PROXY
+== ECOG funksjonsstatus
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*ECOG funksjonsstatus* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.ecog.v1_
+|at0004| 1..1| DV_ORDINAL | ECOG funksjonsstatus
+a|
+* 0 - Asymptomatisk I stand til å utføre enhver normal aktivitet uten begrensning.
+* 1 - Symptomatisk, fullt oppegående Ikke i stand til fysisk krevende aktivitet, men oppegående og i stand til å utføre lett arbeid.
+* 2 - Symptomatisk, sengeliggende <50 % av våken tid Oppegående og i stand til all egenpleie, men ikke i stand til noe arbeid; oppe og i bevegelse mer enn 50% av våken tid.
+* 3 - Symptomatisk, sengeliggende > 50 % av våken tid Bare i stand til begrenset egenpleie, bundet til seng eller stol > 50 % av våken tid.
+* 4 - Helt sengeliggende Helt hjelpetrengende; klarer ikke noen egenpleie; helt bundet til seng eller stol.
+* 5 - Død Pasienten er død.
+|====
+== Objektiv undersøkelse
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Objektiv undersøkelse* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.exam.v1_
+|at0004| 0..1| DV_TEXT | Beskrivelse
+a|
+
+
+Kan anvendes til å registrere en tekstlig sammenfatning av en komplett klinisk undersøkelse eller nøkkelfunn ved den kliniske undersøkelsen, som vil bli understøttet av strukturerte data. Dette dataelementet kan brukes for å fange opp "legacy data" som ikke er tilgjengelig i et strukturert format. Detaljer om spesifikt strukturert funn inkluderes ved å bruke CLUSTER-arketyper i "Examination Detail" SLOT.
+|====
+== Resyme for supplerende undersøkelser
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Resyme for supplerende undersøkelser* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.progress_note.v1_
+// Not supported rmType POINT_EVENT
+|at0004| 0..1| DV_TEXT | Resyme for supplerende undersøkelser
+a|
+|undefined| 1..1| DV_DATE_TIME | Time
+|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Resyme for supplerende undersøkelser (no.dips.Freetext.Classification: OnkologiPoliklinikkResymeForSupplerendeUndersokelser)
+|====
+== Bivirkningsregistrering
+== Bivirkninger av behandling
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Bivirkninger av behandling* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.problem_screening.v1_
+
+
+Svarene kan være selvrapporterte.
+|at0034| 0..1| DV_TEXT | Kartleggingsformål
+a|
+* Komplikasjoner som følge av kreftbehandling
+
+
+Dette dataelementet er ment for å sette en kontekst for spørsmålene, dersom man senere ønsker å gjøre spørringer på dataene. Det er ikke forventet at dette dataelementet skal være synlig for en bruker av skjemaet, men kun tilgjengelig i de lagrede dataene. For eksempel: "Preoperativ screening" eller navnet på det faktiske spørreskjemaet.
+5+a|*Spesifikt problem eller diagnose* + 
+CLUSTER: _at0022_
+|at0004| 1..1| DV_CODED_TEXT | Problem/diagnosenavn
+a|
+* Complication of procedure (SNOMED-CT: 116224001)
+
+
+Koding av problem/diagnosenavnet med en terminologi foretrekkes, der det er mulig.
+|at0005| 0..1| DV_BOOLEAN | Har det oppstått bivirkninger som følge av behandling siden siste kontakt?
+|
+
+
+Navnet på dataelementet kan omformuleres til det spesifikke spørsmålet i et templat eller brukergrensesnitt. Det foreslåtte verdisettet kan tilpasses/endres i det enkelte bruksområde ved å benytte de alternative datatypene DV_TEXT eller DV_BOOLEAN.
+5+a|*Hørsel* + 
+CLUSTER: _at0022_
+|at0004| 1..1| DV_CODED_TEXT | Subjektiv hørselstap
+a|
+* hørselstap (SNOMED-CT: 15188001)
+
+
+Koding av problem/diagnosenavnet med en terminologi foretrekkes, der det er mulig.
+|at0005| 0..1| DV_CODED_TEXT | Subjektiv svekket hørsel?
+a|
+* at0023 -> Ja 
+* at0024 -> Nei 
+* at0027 -> Ukjent 
+
+
+Navnet på dataelementet kan omformuleres til det spesifikke spørsmålet i et templat eller brukergrensesnitt. Det foreslåtte verdisettet kan tilpasses/endres i det enkelte bruksområde ved å benytte de alternative datatypene DV_TEXT eller DV_BOOLEAN.
+5+a|*Klinisk grunnlag* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+|at0026| 0..1| DV_DATE_TIME | Dato/tid for klinisk relevans
+|
+|at0022| 0..1| DV_CODED_TEXT | Metode
+a|
+* Subjective observation (qualifier value) (SNOMED-CT: 255362007)
+
+
+Metoden bør vurderes kodet med en terminologi der dette er mulig. For eksempel fysisk undersøkelse, røntgen thorax, patologisvar, koloskopi.
+|====
+== Problem/diagnose
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Problem/diagnose* + 
+EVALUATION: _openEHR-EHR-EVALUATION.problem_diagnosis.v1_
+
+
+Det er i praksis ikke lett å oppnå et klart skille mellom et problem og en diagnose. I klinisk dokumentasjon med denne arketypen ses problem og diagnose som et kontinuum, med økende krav til detaljer og støttende evidens for å underbygge en diagnose.
+|at0002| 1..1| DV_CODED_TEXT | Problem/diagnosenavn
+a|
+* Complication of procedure (SNOMED-CT: 116224001)
+
+
+Koding av navnet på problemet eller diagnosen med en terminologi er foretrukket hvis mulig.
+|at0009| 0..1| DV_TEXT | Overordnet beskrivelse av bivirkning/komplikasjon
+a|
+
+
+Brukes til å gi bakgrunn og kontekst, inkludert utvikling, episoder eller forverringer, fremgang og alle andre relevante detaljer, om problemet eller diagnosen.
+5+a|*Common Terminology Criteria for Adverse Events (CTCAE)* + 
+CLUSTER: _openEHR-EHR-CLUSTER.ctcae.v1_
+
+
+Tidligere kjent som Common Toxicity Criteria (CTC).
+|at0001| 0..1| DV_CODED_TEXT | Kategori
+a|
+* Blood and lymphatic system disorders (MEDRA: 1001)
+
+
+Dette elementet identifiserer et anatomisk eller fysiologisk system, etiologi eller formål.
+
+
+|at0002| 1..1| DV_CODED_TEXT | Term
+a|
+* X (MEDRA: X)
+
+
+Dette elementet kan mappes til den korresponderende MedDRA-koden.
+|at0003| 1..1| DV_ORDINAL | Kategori for grad
+a|
+* 0 - Grad 0 Fravær av en uønsket hendelse eller innenfor normale verdier. Bare for CTC versjon 1 og 2.
+* 1 - Grad 1 Mild, ELLER asymptomatisk eller milde symptomer, ELLER kun kliniske eller diagnostiske observasjoner, ELLER ikke grunnlag for intervensjon.
+* 2 - Grad 2 Moderat, ELLER minimal, lokal eller indikasjon for ikke-invasiv intervensjon, ELLER begrenser alders-tilpasset ADL.
+* 3 - Grad 3 Alvorlig eller medisinsk betydningsfull, men ikke umiddelbart livstruende, ELLER indikasjon for sykehusinnleggelse eller forlengelse av sykehusopphold, ELLER invalidiserende, begrenset evne til egenomsorg og ADL.
+* 4 - Grad 4 Livstruende konsekvenser, ELLER indikasjon for øyeblikkelig intervensjon.
+* 5 - Grad 5 Død relatert til uønsket medisinsk hendelse.
+
+
+Den kliniske beskrivelsen for hver "Kategori for grad" er dokumentert i den publiserte spesifikasjonen av CTCAE v5.0. Grad 0 har ikke vært i bruk siden CTCAE v2, men er tatt med for å kunne brukes for alle versjoner av CTCAE.
+|at0020| 0..1| DV_CODED_TEXT | Beskrivelse av grad
+a|
+* A (CTCAETERM: A)
+
+
+Dette elementet er en plassholder for term eller frase som tilhører en identifisert grad. I de fleste implementasjonene vil det bli utfylt via en eksterne kilde, som en CTCAE kunnskapsbase eller en annen kilde, under kjøring av dataprogrammet (run-time).
+|at0009| 0..1| DV_TEXT | CTCAE- versjon
+a|
+* CTCAE_5.0
+|at0070| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+|====
+== Sykdomsutvikling (tumor event)
+== Kartlegging av Sykdomsutvikling (tumor event)
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartlegging av Sykdomsutvikling (tumor event)* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.problem_screening.v1_
+
+
+Svarene kan være selvrapporterte.
+5+a|*Spesifikt problem eller diagnose* + 
+CLUSTER: _at0022_
+|at0004| 1..1| DV_CODED_TEXT | Problem/diagnosenavn
+a|
+* Tumorhendelse (patologisk prosess) (SNOMED-CT: 308489006)
+
+
+Koding av problem/diagnosenavnet med en terminologi foretrekkes, der det er mulig.
+|at0005| 0..1| DV_BOOLEAN | Har det skjedd sykdomsutvikling (tumor event) siden sist kontakt?
+|
+
+
+Navnet på dataelementet kan omformuleres til det spesifikke spørsmålet i et templat eller brukergrensesnitt. Det foreslåtte verdisettet kan tilpasses/endres i det enkelte bruksområde ved å benytte de alternative datatypene DV_TEXT eller DV_BOOLEAN.
+|at0040| 0..1| DV_DATE_TIME | Hendelsestidspunkt
+|
+
+
+Dataelementet "Tidsangivelse" er med hensikt løst modellert for å støtte ulike måter å angi tidsangivelser for bekymringen, plagen, problemet eller diagnosen i et spørreskjema. Den konkrete semantikken defineres i templatet. For eksempel: Bekymringen, plagen, problemet eller diagnosen faktiske dato og/eller klokkeslett, start- og slutttid for bekymringen, plagen, problemet eller diagnosen, et tidsintervall for når bekymringen, plagen, problemet eller diagnosen oppstod, varigheten av bekymringen, plagen, problemet eller diagnosen, individets alder på tidspunktet for bekymringen, plagen, problemet eller diagnosen, eller hvor lenge det siden det oppstod. Kan være en deldato, for eksempel bare år, ved å bruke datatypen DV_DATE_TIME.
+5+a|*Tumor hendelse dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.tumor_hendelse_dips.v1_
+|at0008| 0..1| DV_DATE_TIME | Dato for forrige sykdomsutvikling (tumor event)
+|
+|====
+== Problem/diagnose
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Problem/diagnose* + 
+EVALUATION: _openEHR-EHR-EVALUATION.problem_diagnosis.v1_
+
+
+Det er i praksis ikke lett å oppnå et klart skille mellom et problem og en diagnose. I klinisk dokumentasjon med denne arketypen ses problem og diagnose som et kontinuum, med økende krav til detaljer og støttende evidens for å underbygge en diagnose.
+|at0002| 1..1| DV_TEXT | Problem/diagnosenavn (hentet fra ander dokumenter hvis de finnes)
+a|
+
+
+Koding av navnet på problemet eller diagnosen med en terminologi er foretrukket, der det er mulig.
+5+a|*Problem/diagnose-kvalifikator* + 
+CLUSTER: _openEHR-EHR-CLUSTER.problem_qualifier.v2_
+|at0089| 0..1| DV_CODED_TEXT | Residiv eller progresjon
+a|
+* Residiv (av tumor) (SNOMED-CT: 25173007)
+* Progresjon (SNOMED-CT: 419835002)
+
+
+For eksempel status for kreft eller en hematologisk diagnose.
+5+a|*Påvisningmetode* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+|at0026| 0..1| DV_DATE_TIME | Dato/tid for klinisk relevans
+|
+|at0022| 0..*| DV_CODED_TEXT | Metode
+a|
+* Biokjemisk test (SNOMED-CT: 250724005)
+* Klinisk (fysisk) undersøkelse (SNOMED-CT: 5880005)
+* Bildediagnostikk (SNOMED-CT: 363679005)
+* Histologisk test (SNOMED-CT: 714797009)
+
+
+Metoden bør vurderes kodet med en terminologi der dette er mulig. For eksempel fysisk undersøkelse, røntgen thorax, patologisvar, koloskopi.
+|at0001| 0..1| DV_TEXT | Beskrivelse av påvisningsmetode
+a|
+5+a|*Klinisk grunnlag* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+|at0003| 0..1| DV_CODED_TEXT | Spesifisert hendelsestype
+a|
+* Lokalt (no.dips.Oncology.SpecifiedTumorEventType: 01Lokalt)
+* Regionalt (no.dips.Oncology.SpecifiedTumorEventType: 02Regionalt)
+* Metastasert (no.dips.Oncology.SpecifiedTumorEventType: 03Metastasert)
+* Biokjemisk (no.dips.Oncology.SpecifiedTumorEventType: 04Biokjemisk)
+
+
+Det anbefales å kode "Funn" med en terminologi, der det er mulig.
+|at0026| 0..1| DV_DATE_TIME | Dato/tid for klinisk relevans
+|
+5+a|*Hendelsestype Lokalt* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+|at0003| 0..1| DV_CODED_TEXT | Spesifisert hendelsestype
+a|
+* Lokalt (no.dips.Oncology.SpecifiedTumorEventType: 01Lokalt)
+
+
+Det anbefales å kode "Funn" med en terminologi, der det er mulig.
+|at0026| 0..1| DV_DATE_TIME | Dato/tid for klinisk relevans
+|
+5+a|*Hendelsestype Regionalt* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+|at0003| 0..1| DV_CODED_TEXT | Spesifisert hendelsestype
+a|
+* Regionalt (no.dips.Oncology.SpecifiedTumorEventType: 02Regionalt)
+
+
+Det anbefales å kode "Funn" med en terminologi, der det er mulig.
+|at0026| 0..1| DV_DATE_TIME | Dato/tid for klinisk relevans
+|
+5+a|*Hendelsestype Biokjemisk* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+|at0003| 0..1| DV_CODED_TEXT | Spesifisert hendelsestype
+a|
+* Biokjemisk (no.dips.Oncology.SpecifiedTumorEventType: 04Biokjemisk)
+
+
+Det anbefales å kode "Funn" med en terminologi, der det er mulig.
+|at0026| 0..1| DV_DATE_TIME | Dato/tid for klinisk relevans
+|
+5+a|*Hendelsestype Metastasert* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+|at0003| 0..1| DV_CODED_TEXT | Spesifisert hendelsestype
+a|
+* Metastasert (no.dips.Oncology.SpecifiedTumorEventType: 03Metastasert)
+
+
+Det anbefales å kode "Funn" med en terminologi, der det er mulig.
+|at0026| 0..1| DV_DATE_TIME | Dato/tid for klinisk relevans
+|
+|at0073| 0..1| DV_CODED_TEXT | Diagnostisk sikkerhet
+a|
+* at0074 -> Mistenkt 
+* at0075 -> Sannsynlig 
+* at0076 -> Bekreftet 
+
+
+Hvis et alternativt verdisett er nødvendig, kan disse verdiene legges til DV_TEXT-datatypen i et templat.
+|at0070| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+|====
+== Vurdering/tiltak/videre plan
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Vurdering/tiltak/videre plan* + 
+EVALUATION: _openEHR-EHR-EVALUATION.clinical_synopsis.v1_
+|at0002| 1..1| DV_TEXT | Vurdering/tiltak/videre plan
+a|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Vurdering/tiltak (no.dips.Freetext.Classification: OnkologiPoliklinikkVurderingTiltak)
+|====
+== Neste planlagte kontakt og sammendrag
+== Neste ønsket kontakt
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Neste ønsket kontakt* + 
+INSTRUCTION: _openEHR-EHR-INSTRUCTION.service_request.v1_
+// Not supported rmType ACTIVITY
+|at0121| 1..1| DV_CODED_TEXT | Tjenestenavn
+a|
+* Follow-up visit (SNOMED-CT: 185389009)
+
+
+Koding av tjenestenavnet med et kodeverk er ønskelig, dersom tilgjengelig. For eksempel: "henvisning" til en endokrinolog for diabetesoppfølging.
+|at0135| 0..1| DV_TEXT | Beskrivelse
+a|
+
+
+Dette dataelementet kan brukes til å beskrive den aktuelle tjenesten i mer detalj, for eksempel hvordan den skal utføres, pasientens egne ønsker, eller problemer man kan støte på under utførelsen.
+|at0040| 0..1| DV_DATE_TIME | Ønsket dato
+|
+
+
+Dette dataelementet tillater registrering av timing for én tjeneste, enten som dato/tid, intervall av dato/tid, eller som en tekstbeskrivelsen som kan understøtte "neste tilgjengelige". I praksis vil klinikere ofte tenke i omtrentlig timing, for eksempel "revurdering om 3 måneder, 6 måneder eller 12 måneder. Siden kliniske systemer trenger mer eksakte tidsangivelser, vil "3 måneder" som regel konverteres til en eksakt dato 3 måneder fra registreringsdatoen, og lagres i dette dataelementet. Dersom det er behov for kompleks timing eller sekvenser av timing, bruk arketypen CLUSTER.service_direction i SLOTet "Kompleks timing". I disse tilfellene blir dette dataelementet redundant.
+// Not supported rmType DV_PARSABLE
+// Not supported rmType STRING
+|at0127| 0..1| DV_CODED_TEXT | Rekvisisjonsstatus
+a|
+* Ønsket (SNOMED-CT: 410526009)
+* Bestilt (SNOMED-CT: 385644000)
+
+
+Status brukes for å vise om dette er den primære forespørselen, en endring eller supplerende informasjon. Koding med en terminologi foretrekkes, der det er mulig.
+|undefined| 0..1| DV_DATE_TIME | expiry_time
+|
+|====
+== Sammendrag
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Sammendrag* + 
+EVALUATION: _openEHR-EHR-EVALUATION.clinical_synopsis.v1_
+|at0002| 1..1| DV_TEXT | Sammendrag
+a|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Sammendrag (no.dips.Freetext.Classification: OnkologiPoliklinikkSammendrag)
+|====
+// Not supported rmType CODE_PHRASE
+// Not supported rmType CODE_PHRASE
+// Not supported rmType PARTY_PROXY
