@@ -1,0 +1,62 @@
+archetype (adl_version=1.4; uid=df2f9065-e1ed-3c8d-a309-f9204b02cc7e)
+	openEHR-EHR-CLUSTER.deltagere_dips.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"0">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Brukes for å samle alle deltagere som oppføres på en action. Dette er for å kunne hente ut alle aktuelle navn i en kolonne i DIPS. Det er en teknisk arketype som ikke bør brukes utenfor context av DIPS og tenkt bruk.">
+			use = <"Brukes for å samle alle deltagere som oppføres på en action. Dette er for å kunne hente ut alle aktuelle navn i en kolonne i DIPS. Det er en teknisk arketype som ikke bør brukes utenfor context av DIPS og tenkt bruk.">
+			misuse = <"Skal ikke brukes av til annet enn beskrevet over.">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"FEDFE57994DFBD47FC56787AC4A03589">
+		["build_uid"] = <"66b55dea-d80d-3993-a728-18f29ec5445f">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- deltager dips
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0002] occurrences matches {0..*} matches {    -- Enkelt deltagere
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Komplett deltagerliste
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"deltager dips">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Komplett deltagerliste">
+					description = <"Samlet deltagerliste for en gjennomføring">
+				>
+				["at0002"] = <
+					text = <"Enkelt deltagere">
+					description = <"hver enkelt deltager koblet mot kodeverk">
+				>
+			>
+		>
+	>
