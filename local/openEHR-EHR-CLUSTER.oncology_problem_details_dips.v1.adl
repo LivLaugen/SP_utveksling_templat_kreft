@@ -1,0 +1,68 @@
+archetype (adl_version=1.4; uid=b20781f8-a63d-46f8-9b13-74633ac1efbe)
+	openEHR-EHR-CLUSTER.oncology_problem_details_dips.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2024-05-10">
+		["name"] = <"Runar Kristiansen">
+		["organisation"] = <"DIPS AS">
+		["email"] = <"rkr@dips.no">
+	>
+	lifecycle_state = <"unmanaged">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			use = <"Brukes for å indikere at det finnes flere primære maligniteter. Også mulighet for å beskrive de ytterlige malignitetene">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"e1556ce56f9c5f3ed079b737b70efeb1">
+		["build_uid"] = <"4e926802-d37c-3f7e-99fb-0ed7a3d2168c">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Oncology problem details dips
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Multiple primærtumorer
+				value matches {
+					DV_CODED_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Beskrivelse
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Oncology problem details dips">
+					description = <"En indikasjon på at det finnes flere primære maligniteter.">
+				>
+				["at0001"] = <
+					text = <"Multiple primærtumorer">
+					description = <"Indikasjon på at det finnes flere primære maligniteter.">
+				>
+				["at0002"] = <
+					text = <"Beskrivelse">
+					description = <"Beskrivelse av flere primære maligniteter.">
+				>
+			>
+		>
+	>
