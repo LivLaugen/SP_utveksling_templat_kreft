@@ -1,0 +1,78 @@
+archetype (adl_version=1.4; uid=00b8f33e-39dc-3b00-88aa-df043ddc83a1)
+	openEHR-EHR-CLUSTER.hoyde_referanse.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"0">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"c6372d58e2f1e6ed19809175922487cd">
+		["build_uid"] = <"ccc69afe-2cb2-3f49-98a3-5810a67f4fd2">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Høyde/Lengde referanse
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Høyde/Lengde
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::122]>
+						list = <
+							["1"] = <
+								units = <"cm">
+								magnitude = <|0.0..1000.0|>
+								precision = <|1|>
+							>
+						>
+					>
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Time
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Kroppstilling
+				value matches {
+					DV_TEXT matches {*}
+					DV_CODED_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Høyde/Lengde referanse">
+					description = <"unknown">
+				>
+				["at0002"] = <
+					text = <"Time">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Høyde/Lengde">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Kroppstilling">
+					description = <"">
+				>
+			>
+		>
+	>
