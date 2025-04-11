@@ -1,0 +1,116 @@
+archetype (adl_version=1.4; uid=52a5cbed-f79e-4aa7-9e66-54f0f93ec2e0)
+	openEHR-EHR-CLUSTER.mdt_tilleggsinformasjon_dips.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["date"] = <"2023-02-13">
+		["name"] = <"Borisa Barisa">
+		["organisation"] = <"DIPS AS">
+		["email"] = <"boba@dips.no">
+	>
+	lifecycle_state = <"NotSet">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Cluster arketypen som brukes for registrering av tilleggsinformasjon knyttet til et MDT møte">
+			copyright = <"© Nasjonal IKT HF">
+			use = <"Skal brukes til registrering av relevante tilleggsinformasjon knyttet til et MDT møte. 
+">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"Nasjonal IKT">
+		["original_namespace"] = <"no.nasjonalikt">
+		["original_publisher"] = <"Nasjonal IKT">
+		["custodian_namespace"] = <"no.nasjonalikt">
+		["MD5-CAM-1.0.1"] = <"5aebf99610c617ceae9d29b86a140f74">
+		["build_uid"] = <"30fb59bf-8e87-46c7-83fe-8590b909942b">
+		["revision"] = <"0.0.1-alpha">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Mdt tilleggsinformasjon dips
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Pasienten skal møte fysisk i MDT møte
+				value matches {
+					DV_BOOLEAN matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Hvem informerer pasienten om konklusjonen fra møtet
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			CLUSTER[at0004] occurrences matches {0..*} matches {    -- Enkeltdeltagere
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0005] occurrences matches {0..1} matches {    -- Rolle
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- Navn
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Sammendrag av deltagere
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0007] occurrences matches {0..1} matches {    -- Hvor følges pasienten opp videre
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Mdt tilleggsinformasjon dips">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Pasienten skal møte fysisk i MDT møte">
+					description = <"Angir om pasienten skal møte fysisk i mdt møte">
+				>
+				["at0002"] = <
+					text = <"Hvem informerer pasienten om konklusjonen fra møtet">
+					description = <"Angir hvem som skal informere pasienten om konklusjon av møte. ">
+				>
+				["at0003"] = <
+					text = <"Sammendrag av deltagere">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Enkeltdeltagere">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Rolle">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Navn">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Hvor følges pasienten opp videre">
+					description = <"*">
+				>
+			>
+		>
+	>
