@@ -1,0 +1,96 @@
+archetype (adl_version=1.4; uid=85005f6d-1ce8-3783-a6e4-7d3493c4361b)
+	openEHR-EHR-CLUSTER.tumor_hendelse_dips.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::nb]>
+
+description
+	original_author = <
+		["name"] = <"">
+	>
+	lifecycle_state = <"0">
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Brukes for å definere en tumor hendelse">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"8c97679af88e8f1711add100deb350b4">
+		["build_uid"] = <"ec45d768-4807-3348-a83a-a601ffca4ccf">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- Tumor hendelse dips
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Hendelsestype
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..*} matches {    -- Metode for påvisning
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {    -- Fritekst for beskrivelse av metode detaljer
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0006] occurrences matches {0..*} matches {    -- Spesifisert hendelsestype
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0008] occurrences matches {0..1} matches {    -- Dato for forrige kontroll
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+			ELEMENT[at0009] occurrences matches {0..1} matches {    -- Videre plan/behandling
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Tumor hendelse dips">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Hendelsestype">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"Metode for påvisning">
+					description = <"Metode brukt for å påvise hendelsen">
+				>
+				["at0005"] = <
+					text = <"Fritekst for beskrivelse av metode detaljer">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Spesifisert hendelsestype">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Dato for forrige kontroll">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Videre plan/behandling">
+					description = <"*">
+				>
+			>
+		>
+	>
