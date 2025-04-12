@@ -1,0 +1,834 @@
+= Bildediagnostikk
+
+
+== Metadata
+
+
+TemplateId:: Bildediagnostikk_qa2
+
+
+Archetype:: openEHR-EHR-SECTION.adhoc.v1
+
+
+
+
+:toc:
+
+
+
+
+== Bildediagnostikk
+== Kartlegging bildediagnostikk
+[options="header", cols="3,3,5,5,30"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartlegging bildediagnostikk* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.investigation_screening.v1_
+
+
+Svarene kan være selvrapporterte.
+|at0040| 0..1| DV_CODED_TEXT | Kartleggingsformål
+a|
+* Brystkreft (no.onk.bildediagnostikk: 4)
+
+
+Designkommentar:
+Dette feltet er navnet no.onk.bildediagnostikk for å si at kartleggingsformålet er om det er gjort noe bildediagnostikk innenfor onkoloki (felles kreftjournalprosjektet). 
+Selve valglisten er hvilke gruppe av krefttyper som er det er kartlagt for. Dette er et internt kodesett. 
+|at0027| 0..1| DV_CODED_TEXT | Er bildediagnostiske undersøkelser gjennomført?
+a|
+* at0028 -> Ja 
+* at0029 -> Nei 
+* at0030 -> Ukjent 
+
+
+Designkommentar:
+Dette er inngangsspørsmålet om det i det hele tatt er gjort noe bildediagnostikk. 
+Dette har man med for å få en avkreftelse om det faktisk er tatt stilling til spm. mao. egentlig for å få med alternativet nei. 
+|at0043| 0..1| DV_TEXT | Overordnet beskrivelse bildediagnostiske undersøkelse
+a|
+
+
+Designkommentar:
+Her kan man skrive et resyme for alle bildediagnostiske undersøkelser uten å spesifisere nærmere hvilken modalitet man faktisk har utført. 
+5+a|*Spesifikk undersøkelse mammografi* + 
+CLUSTER: _at0026_
+
+
+Designkommentar:
+Bruk separate instanser av dette CLUSTER'et for å skille mellom spesifikke undersøkelser/modaliteter eller gruppering av undersøkelser/modaliteter,
+Her kan man legge inn forskjellige modaliteter eller spesifikke undersøkelser man har gjort. 
+F.eks. hvis man vil ha en instans av UL, MR og CT - da må dette clusteret gjentas for hver hovedgruppe/modalitet. 
+Dato og Resyme  i dette interne CLUSTERet er fjernet, og hvis det er svart   bekreftende på at den er utført (ja) så vil detaljene (dato og resyme samt kroppsdel) bli dokumentert i Klinisk grunnlag arketypen SLOTet inn i ytterligere detaljer i dette interne CLUSTERET.
+|at0021| 1..1| DV_CODED_TEXT | Bildeprosedyre mammografi
+a|
+* Mammografi (DICOM_modality: MG)
+
+
+Designkommentar:
+Her skal det i skjermbildet vises skjelettscintigrafi, men modaliteten er nukleærmedisin, men dette skal ikke synes. 
+Det er lagt til skjelett som anatomisk sted, da det er nukleærmedisinsk undersøkelse av skjelett.
+|at0024| 0..1| DV_CODED_TEXT | Er denne undersøkelsen utført?
+a|
+* at0036 -> Ja 
+* at0037 -> Nei 
+5+a|*Spesifikk undersøkelse Mammografi* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+
+
+Designkommentar:
+Hvis dette CLUSTERet brukes må man alltid sette inn Bildeprosedyre/bildemodalitet navn. 
+
+Her kan man skrive inn dato og resyme for hver modalitet hvis man ikke trenger dette for hver kroppsdel man har tatt bilde av. 
+
+Hvis man ønsker å ha resyme og dato for hver kroppsdel man har tatt ved hjelp av denne modaliteten må man gjenta Klinisk grunnlag modalitet per kroppsdel (Klinisk grunnlag CLUSTER 2) som er slottet inn i Yttligere detaljer i Klinisk grunnlag CLUSTER 1. Da vil også resyme og dato i den overordnede Klinisk grunnlag (CLUSTER 1) være overflødig. Kanskje også Spesifikk metode/tilleggsmetode hvis dette er spesifisert per kroppsdel. 
+
+Hvis man ønsker å skrive dato og resyme for flere kroppsdeler kan man gjenta Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) per anatomisk lokalisasjon. 
+
+
+|at0003| 0..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* Mammografi (SNOMED-CT: 71651007)
+|at0005| 0..1| DV_TEXT | Resymé mammografi
+a|
+
+
+Designkommentar:
+Resyme for den spesifikke undersøkelsen/modaliteten som helhet. 
+Her kan man legge inn resyme for hele MR undersøkelse. Ønsker man å legge inn resyme for hver kroppsdel man har tatt MR på må man bruke resyme i CLUSTERet Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) som er slottet inn i Ytterligere detaljer. Da kan dette elementet være overflødig.
+|at0006| 0..1| DV_DATE_TIME | Undersøkelsesdato
+|
+
+
+Designkommentar:
+Dato for den spesifikke undersøkelsen/modaliteten som helhet. 
+Her kan man legge inn dato for at en MR undersøkelse er tatt. Ønsker man å legge inn dato for hver kroppsdel man har tatt MR på (hvis disse avviker fra hverandre), må man bruke dato i CLUSTERet Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) som er slottet inn i Ytterligere detaljer. Da kan dette elementet være overflødig.
+
+|at0022| 1..1| DV_CODED_TEXT | Modalitet
+a|
+* Mammografi (DICOM-modality: MG)
+
+
+Designkommentar:
+Her skal man kopiere den samme koden som man i Bildeprosedyre/bildemodalitet navn under det interne CLUSTERet Spesifikk underesøkelse/bildemodalitet. 
+Dette kan f.eks. være en SNOMED-CT kode eller DICOM modalitetkode. 
+Eksempler:
+726551006	Kontrast mammografi
+241058008	Forstørrelsesmammografi
+450566007	Tomosyntese (DBT)
+1331946003	CT med kontrast
+765172009	Doppler ultrasound (procedure)
+443631006	Ultrasonography with contrast (procedure)
+433231002	Contrast echocardiography (procedure)
+
+|at0022| 0..*| DV_CODED_TEXT | Tilleggsmetode
+a|
+* Kontrast mammografi (SNOMED-CT: 726551006)
+* Forstørrelsesmammografi (SNOMED-CT: 241058008)
+* Tomosyntese (DBT) av mamma (SNOMED-CT: 450566007)
+
+
+Designkommentar:
+Her skal man kopiere den samme koden som man i Bildeprosedyre/bildemodalitet navn under det interne CLUSTERet Spesifikk underesøkelse/bildemodalitet. 
+Dette kan f.eks. være en SNOMED-CT kode eller DICOM modalitetkode. 
+Eksempler:
+726551006	Kontrast mammografi
+241058008	Forstørrelsesmammografi
+450566007	Tomosyntese (DBT)
+1331946003	CT med kontrast
+765172009	Doppler ultrasound (procedure)
+443631006	Ultrasonography with contrast (procedure)
+433231002	Contrast echocardiography (procedure)
+
+5+a|*Spesifikk undersøkelse UL* + 
+CLUSTER: _at0026_
+
+
+Designkommentar:
+Bruk separate instanser av dette CLUSTER'et for å skille mellom spesifikke undersøkelser/modaliteter eller gruppering av undersøkelser/modaliteter,
+Her kan man legge inn forskjellige modaliteter eller spesifikke undersøkelser man har gjort. 
+F.eks. hvis man vil ha en instans av UL, MR og CT - da må dette clusteret gjentas for hver hovedgruppe/modalitet. 
+Dato og Resyme  i dette interne CLUSTERet er fjernet, og hvis det er svart   bekreftende på at den er utført (ja) så vil detaljene (dato og resyme samt kroppsdel) bli dokumentert i Klinisk grunnlag arketypen SLOTet inn i ytterligere detaljer i dette interne CLUSTERET.
+|at0021| 1..1| DV_CODED_TEXT | Bildeprosedyre UL
+a|
+* Ultralyd (DICOM_modality: US)
+
+
+Designkommentar:
+Her skal det i skjermbildet vises skjelettscintigrafi, men modaliteten er nukleærmedisin, men dette skal ikke synes. 
+Det er lagt til skjelett som anatomisk sted, da det er nukleærmedisinsk undersøkelse av skjelett.
+|at0024| 0..1| DV_CODED_TEXT | Er denne undersøkelsen utført?
+a|
+* at0036 -> Ja 
+* at0037 -> Nei 
+5+a|*Spesifikk undersøkelse UL* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+
+
+Designkommentar:
+Hvis dette CLUSTERet brukes må man alltid sette inn Bildeprosedyre/bildemodalitet navn. 
+
+Her kan man skrive inn dato og resyme for hver modalitet hvis man ikke trenger dette for hver kroppsdel man har tatt bilde av. 
+
+Hvis man ønsker å ha resyme og dato for hver kroppsdel man har tatt ved hjelp av denne modaliteten må man gjenta Klinisk grunnlag modalitet per kroppsdel (Klinisk grunnlag CLUSTER 2) som er slottet inn i Yttligere detaljer i Klinisk grunnlag CLUSTER 1. Da vil også resyme og dato i den overordnede Klinisk grunnlag (CLUSTER 1) være overflødig. Kanskje også Spesifikk metode/tilleggsmetode hvis dette er spesifisert per kroppsdel. 
+
+Hvis man ønsker å skrive dato og resyme for flere kroppsdeler kan man gjenta Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) per anatomisk lokalisasjon. 
+
+
+|at0003| 0..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* Ultralyd-undersøkelse (SNOMED-CT: 16310003)
+|at0005| 0..1| DV_TEXT | Resymé ultralyd
+a|
+
+
+Designkommentar:
+Resyme for den spesifikke undersøkelsen/modaliteten som helhet. 
+Her kan man legge inn resyme for hele MR undersøkelse. Ønsker man å legge inn resyme for hver kroppsdel man har tatt MR på må man bruke resyme i CLUSTERet Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) som er slottet inn i Ytterligere detaljer. Da kan dette elementet være overflødig.
+|at0006| 0..1| DV_DATE_TIME | Undersøkelsesdato
+|
+
+
+Designkommentar:
+Dato for den spesifikke undersøkelsen/modaliteten som helhet. 
+Her kan man legge inn dato for at en MR undersøkelse er tatt. Ønsker man å legge inn dato for hver kroppsdel man har tatt MR på (hvis disse avviker fra hverandre), må man bruke dato i CLUSTERet Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) som er slottet inn i Ytterligere detaljer. Da kan dette elementet være overflødig.
+
+|at0022| 1..1| DV_CODED_TEXT | Modalitet
+a|
+* Ultralyd (DICOM-modality: US)
+
+
+Designkommentar:
+Her skal man kopiere den samme koden som man i Bildeprosedyre/bildemodalitet navn under det interne CLUSTERet Spesifikk underesøkelse/bildemodalitet. 
+Dette kan f.eks. være en SNOMED-CT kode eller DICOM modalitetkode. 
+Eksempler:
+726551006	Kontrast mammografi
+241058008	Forstørrelsesmammografi
+450566007	Tomosyntese (DBT)
+1331946003	CT med kontrast
+765172009	Doppler ultrasound (procedure)
+443631006	Ultrasonography with contrast (procedure)
+433231002	Contrast echocardiography (procedure)
+
+5+a|*Modalitet per kroppsdel* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+
+
+Designkommentar:
+Hvis man ønsker å legge til hvilke kroppsdel man har gjort den bildediagnostiske undersøkelsen på. 
+Hvis man ønsker kun å ramse opp hvilke kroppsdel man har tatt undersøkelsen på uten å ha med resyme og dato, er alle elementer bortsett fra Anatomisk lokalisering overflødig. Da kan man ha en instans av denne Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) og kun gjenta CLUSTERet Anatomisk lokalisering i Ytterligere detaljer. 
+
+Hvis man ønsker å ha med Resyme og dato per kroppsdel, samt tilleggsmetode per kroppsdel, kan dette Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) gjentas per kroppsdel. 
+
+Selve modaliteten settes i Klinisk grunnlag prosedyre/modalitet (CLUSTER 1). 
+|at0022| 1..1| DV_CODED_TEXT | Modalitet
+a|
+* Ultralyd (DICOM-modality: US)
+
+
+Designkommentar:
+Her kan man legge inn mer spesifikk prosedyre som er gjennomført for hver enkelt kroppsdel/anatomisk lokalisasjon, for eksempel om det er gjort med kontrast (kontrastmammografi), eller forstørrelsesmammografi, tomosyntese av mamma (DBT), Cone beam CT.
+Eksempler:
+726551006	Kontrast mammografi
+241058008	Forstørrelsesmammografi
+450566007	Tomosyntese (DBT)
+1331946003	CT med kontrast
+765172009	Doppler ultrasound (procedure)
+443631006	Ultrasonography with contrast (procedure)
+433231002	Contrast echocardiography (procedure)
+
+5+a|*Anatomisk lokalisering mamma* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_CODED_TEXT | Mamma
+a|
+* Mamma (bryst) (SNOMED-CT: 76752008)
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Anatomisk lokalisering aksille* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_CODED_TEXT | Aksille
+a|
+* Aksille (SNOMED-CT: 91470000)
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Anatomisk lokalisering lever* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_CODED_TEXT | Lever
+a|
+* Lever (SNOMED-CT: 10200004)
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Anatomisk lokalisering annet* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_TEXT | Navn på kroppssted
+a|
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Spesifikk undersøkelse CT* + 
+CLUSTER: _at0026_
+
+
+Designkommentar:
+Bruk separate instanser av dette CLUSTER'et for å skille mellom spesifikke undersøkelser/modaliteter eller gruppering av undersøkelser/modaliteter,
+Her kan man legge inn forskjellige modaliteter eller spesifikke undersøkelser man har gjort. 
+F.eks. hvis man vil ha en instans av UL, MR og CT - da må dette clusteret gjentas for hver hovedgruppe/modalitet. 
+Dato og Resyme  i dette interne CLUSTERet er fjernet, og hvis det er svart   bekreftende på at den er utført (ja) så vil detaljene (dato og resyme samt kroppsdel) bli dokumentert i Klinisk grunnlag arketypen SLOTet inn i ytterligere detaljer i dette interne CLUSTERET.
+|at0021| 1..1| DV_CODED_TEXT | Bildeprosedyre CT
+a|
+* CT (DICOM_modality: CT)
+
+
+Designkommentar:
+Her skal det i skjermbildet vises skjelettscintigrafi, men modaliteten er nukleærmedisin, men dette skal ikke synes. 
+Det er lagt til skjelett som anatomisk sted, da det er nukleærmedisinsk undersøkelse av skjelett.
+|at0024| 0..1| DV_CODED_TEXT | Er denne undersøkelsen utført?
+a|
+* at0036 -> Ja 
+* at0037 -> Nei 
+5+a|*Spesifikk undersøkelse CT* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+
+
+Designkommentar:
+Hvis dette CLUSTERet brukes må man alltid sette inn Bildeprosedyre/bildemodalitet navn. 
+
+Her kan man skrive inn dato og resyme for hver modalitet hvis man ikke trenger dette for hver kroppsdel man har tatt bilde av. 
+
+Hvis man ønsker å ha resyme og dato for hver kroppsdel man har tatt ved hjelp av denne modaliteten må man gjenta Klinisk grunnlag modalitet per kroppsdel (Klinisk grunnlag CLUSTER 2) som er slottet inn i Yttligere detaljer i Klinisk grunnlag CLUSTER 1. Da vil også resyme og dato i den overordnede Klinisk grunnlag (CLUSTER 1) være overflødig. Kanskje også Spesifikk metode/tilleggsmetode hvis dette er spesifisert per kroppsdel. 
+
+Hvis man ønsker å skrive dato og resyme for flere kroppsdeler kan man gjenta Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) per anatomisk lokalisasjon. 
+
+
+|at0003| 0..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* CT-undersøkelse (SNOMED-CT: 77477000)
+
+
+Det anbefales å kode "Funn" med en terminologi, der det er mulig.
+|at0005| 0..1| DV_TEXT | Resymé CT
+a|
+
+
+Designkommentar:
+Resyme for den spesifikke undersøkelsen/modaliteten som helhet. 
+Her kan man legge inn resyme for hele MR undersøkelse. Ønsker man å legge inn resyme for hver kroppsdel man har tatt MR på må man bruke resyme i CLUSTERet Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) som er slottet inn i Ytterligere detaljer. Da kan dette elementet være overflødig.
+|at0006| 0..1| DV_DATE_TIME | Undersøkelsesdato
+|
+
+
+Designkommentar:
+Dato for den spesifikke undersøkelsen/modaliteten som helhet. 
+Her kan man legge inn dato for at en MR undersøkelse er tatt. Ønsker man å legge inn dato for hver kroppsdel man har tatt MR på (hvis disse avviker fra hverandre), må man bruke dato i CLUSTERet Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) som er slottet inn i Ytterligere detaljer. Da kan dette elementet være overflødig.
+
+|at0022| 1..1| DV_CODED_TEXT | Modalitet
+a|
+* CT (DICOM-modality: CT)
+
+
+Designkommentar:
+Her skal man kopiere den samme koden som man i Bildeprosedyre/bildemodalitet navn under det interne CLUSTERet Spesifikk underesøkelse/bildemodalitet. 
+Dette kan f.eks. være en SNOMED-CT kode eller DICOM modalitetkode. 
+Eksempler:
+726551006	Kontrast mammografi
+241058008	Forstørrelsesmammografi
+450566007	Tomosyntese (DBT)
+1331946003	CT med kontrast
+765172009	Doppler ultrasound (procedure)
+443631006	Ultrasonography with contrast (procedure)
+433231002	Contrast echocardiography (procedure)
+
+5+a|*Modalitet per kroppsdel* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+
+
+Designkommentar:
+Hvis man ønsker å legge til hvilke kroppsdel man har gjort den bildediagnostiske undersøkelsen på. 
+Hvis man ønsker kun å ramse opp hvilke kroppsdel man har tatt undersøkelsen på uten å ha med resyme og dato, er alle elementer bortsett fra Anatomisk lokalisering overflødig. Da kan man ha en instans av denne Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) og kun gjenta CLUSTERet Anatomisk lokalisering i Ytterligere detaljer. 
+
+Hvis man ønsker å ha med Resyme og dato per kroppsdel, samt tilleggsmetode per kroppsdel, kan dette Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) gjentas per kroppsdel. 
+
+Selve modaliteten settes i Klinisk grunnlag prosedyre/modalitet (CLUSTER 1). 
+|at0022| 1..1| DV_CODED_TEXT | Modalitet
+a|
+* CT (DICOM-modality: CT)
+
+
+Designkommentar:
+Her kan man legge inn mer spesifikk prosedyre som er gjennomført for hver enkelt kroppsdel/anatomisk lokalisasjon, for eksempel om det er gjort med kontrast (kontrastmammografi), eller forstørrelsesmammografi, tomosyntese av mamma (DBT), Cone beam CT.
+Eksempler:
+726551006	Kontrast mammografi
+241058008	Forstørrelsesmammografi
+450566007	Tomosyntese (DBT)
+1331946003	CT med kontrast
+765172009	Doppler ultrasound (procedure)
+443631006	Ultrasonography with contrast (procedure)
+433231002	Contrast echocardiography (procedure)
+
+5+a|*Anatomisk lokalisering caput* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_CODED_TEXT | Caput
+a|
+* Caput (hode) (SNOMED-CT: 69536005)
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Anatomisk lokalisering thorax* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_CODED_TEXT | Thorax
+a|
+* Thorax (SNOMED-CT: 51185008)
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Anatomisk lokalisering abdomen* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_CODED_TEXT | Abdomen
+a|
+* Abdomen (SNOMED-CT: 818983003)
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Anatomisk lokalisering pelvis* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_CODED_TEXT | Pelvis
+a|
+* Pelvis (bekken) (SNOMED-CT: 12921003)
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Anatomisk lokalisering annet* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_TEXT | Navn på kroppssted
+a|
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Spesifikk undersøkelse MR* + 
+CLUSTER: _at0026_
+
+
+Designkommentar:
+Bruk separate instanser av dette CLUSTER'et for å skille mellom spesifikke undersøkelser/modaliteter eller gruppering av undersøkelser/modaliteter,
+Her kan man legge inn forskjellige modaliteter eller spesifikke undersøkelser man har gjort. 
+F.eks. hvis man vil ha en instans av UL, MR og CT - da må dette clusteret gjentas for hver hovedgruppe/modalitet. 
+Dato og Resyme  i dette interne CLUSTERet er fjernet, og hvis det er svart   bekreftende på at den er utført (ja) så vil detaljene (dato og resyme samt kroppsdel) bli dokumentert i Klinisk grunnlag arketypen SLOTet inn i ytterligere detaljer i dette interne CLUSTERET.
+|at0021| 1..1| DV_CODED_TEXT | Bildeprosedyre MR
+a|
+* MR (DICOM_modality: MR)
+
+
+Designkommentar:
+Her skal det i skjermbildet vises skjelettscintigrafi, men modaliteten er nukleærmedisin, men dette skal ikke synes. 
+Det er lagt til skjelett som anatomisk sted, da det er nukleærmedisinsk undersøkelse av skjelett.
+|at0024| 0..1| DV_CODED_TEXT | Er denne undersøkelsen utført?
+a|
+* at0036 -> Ja 
+* at0037 -> Nei 
+5+a|*Spesifikk undersøkelse MR* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+
+
+Designkommentar:
+Hvis dette CLUSTERet brukes må man alltid sette inn Bildeprosedyre/bildemodalitet navn. 
+
+Her kan man skrive inn dato og resyme for hver modalitet hvis man ikke trenger dette for hver kroppsdel man har tatt bilde av. 
+
+Hvis man ønsker å ha resyme og dato for hver kroppsdel man har tatt ved hjelp av denne modaliteten må man gjenta Klinisk grunnlag modalitet per kroppsdel (Klinisk grunnlag CLUSTER 2) som er slottet inn i Yttligere detaljer i Klinisk grunnlag CLUSTER 1. Da vil også resyme og dato i den overordnede Klinisk grunnlag (CLUSTER 1) være overflødig. Kanskje også Spesifikk metode/tilleggsmetode hvis dette er spesifisert per kroppsdel. 
+
+Hvis man ønsker å skrive dato og resyme for flere kroppsdeler kan man gjenta Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) per anatomisk lokalisasjon. 
+
+
+|at0003| 0..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* MR-undersøkelse (SNOMED-CT: 113091000)
+
+
+Det anbefales å kode "Funn" med en terminologi, der det er mulig.
+|at0005| 0..1| DV_TEXT | Resymé MR
+a|
+
+
+Designkommentar:
+Resyme for den spesifikke undersøkelsen/modaliteten som helhet. 
+Her kan man legge inn resyme for hele MR undersøkelse. Ønsker man å legge inn resyme for hver kroppsdel man har tatt MR på må man bruke resyme i CLUSTERet Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) som er slottet inn i Ytterligere detaljer. Da kan dette elementet være overflødig.
+|at0006| 0..1| DV_DATE_TIME | Undersøkelsesdato
+|
+
+
+Designkommentar:
+Dato for den spesifikke undersøkelsen/modaliteten som helhet. 
+Her kan man legge inn dato for at en MR undersøkelse er tatt. Ønsker man å legge inn dato for hver kroppsdel man har tatt MR på (hvis disse avviker fra hverandre), må man bruke dato i CLUSTERet Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) som er slottet inn i Ytterligere detaljer. Da kan dette elementet være overflødig.
+
+|at0022| 1..1| DV_CODED_TEXT | Modalitet
+a|
+* MR (DICOM-modality: MR)
+
+
+Designkommentar:
+Her skal man kopiere den samme koden som man i Bildeprosedyre/bildemodalitet navn under det interne CLUSTERet Spesifikk underesøkelse/bildemodalitet. 
+Dette kan f.eks. være en SNOMED-CT kode eller DICOM modalitetkode. 
+Eksempler:
+726551006	Kontrast mammografi
+241058008	Forstørrelsesmammografi
+450566007	Tomosyntese (DBT)
+1331946003	CT med kontrast
+765172009	Doppler ultrasound (procedure)
+443631006	Ultrasonography with contrast (procedure)
+433231002	Contrast echocardiography (procedure)
+
+5+a|*Modalitet per kroppsdel* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+
+
+Designkommentar:
+Hvis man ønsker å legge til hvilke kroppsdel man har gjort den bildediagnostiske undersøkelsen på. 
+Hvis man ønsker kun å ramse opp hvilke kroppsdel man har tatt undersøkelsen på uten å ha med resyme og dato, er alle elementer bortsett fra Anatomisk lokalisering overflødig. Da kan man ha en instans av denne Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) og kun gjenta CLUSTERet Anatomisk lokalisering i Ytterligere detaljer. 
+
+Hvis man ønsker å ha med Resyme og dato per kroppsdel, samt tilleggsmetode per kroppsdel, kan dette Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) gjentas per kroppsdel. 
+
+Selve modaliteten settes i Klinisk grunnlag prosedyre/modalitet (CLUSTER 1). 
+|at0022| 1..1| DV_CODED_TEXT | Modalitet
+a|
+* MR (DICOM-modality: MR)
+
+
+Designkommentar:
+Her kan man legge inn mer spesifikk prosedyre som er gjennomført for hver enkelt kroppsdel/anatomisk lokalisasjon, for eksempel om det er gjort med kontrast (kontrastmammografi), eller forstørrelsesmammografi, tomosyntese av mamma (DBT), Cone beam CT.
+Eksempler:
+726551006	Kontrast mammografi
+241058008	Forstørrelsesmammografi
+450566007	Tomosyntese (DBT)
+1331946003	CT med kontrast
+765172009	Doppler ultrasound (procedure)
+443631006	Ultrasonography with contrast (procedure)
+433231002	Contrast echocardiography (procedure)
+
+5+a|*Anatomisk lokalisering caput* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_CODED_TEXT | Caput
+a|
+* Caput (hode) (SNOMED-CT: 69536005)
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Anatomisk lokalisering mamma* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_CODED_TEXT | Mamma
+a|
+* Mamma (bryst) (SNOMED-CT: 76752008)
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Anatomisk lokalisering columna vertebralis* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_CODED_TEXT | Columna vertebralis
+a|
+* Columna vertebralis (ryggrad) (SNOMED-CT: 421060004)
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Anatomisk lokalisering lever* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_CODED_TEXT | Lever
+a|
+* Lever (SNOMED-CT: 10200004)
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Anatomisk lokalisering pelvis* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_CODED_TEXT | Pelvis
+a|
+* Pelvis (bekken) (SNOMED-CT: 12921003)
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Anatomisk lokalisering annet* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_TEXT | Navn på kroppssted
+a|
+
+
+Designkommentar:
+Navn på kroppsdel, her bør man bruke et kodeverk, f.eks. SNOMED-CT. Listen bygges ut etter hvert som behov oppstår.
+5+a|*Spesifikk undersøkelse PET-CT* + 
+CLUSTER: _at0026_
+
+
+Designkommentar:
+Bruk separate instanser av dette CLUSTER'et for å skille mellom spesifikke undersøkelser/modaliteter eller gruppering av undersøkelser/modaliteter,
+Her kan man legge inn forskjellige modaliteter eller spesifikke undersøkelser man har gjort. 
+F.eks. hvis man vil ha en instans av UL, MR og CT - da må dette clusteret gjentas for hver hovedgruppe/modalitet. 
+Dato og Resyme  i dette interne CLUSTERet er fjernet, og hvis det er svart   bekreftende på at den er utført (ja) så vil detaljene (dato og resyme samt kroppsdel) bli dokumentert i Klinisk grunnlag arketypen SLOTet inn i ytterligere detaljer i dette interne CLUSTERET.
+|at0021| 1..1| DV_CODED_TEXT | Bildeprosedyre PET-CT
+a|
+* PET-CT (DICOM_modality: PTCT)
+
+
+Designkommentar:
+Her skal det i skjermbildet vises skjelettscintigrafi, men modaliteten er nukleærmedisin, men dette skal ikke synes. 
+Det er lagt til skjelett som anatomisk sted, da det er nukleærmedisinsk undersøkelse av skjelett.
+|at0024| 0..1| DV_CODED_TEXT | Er denne undersøkelsen utført?
+a|
+* at0036 -> Ja 
+* at0037 -> Nei 
+5+a|*Spesifikk undersøkelse PET-CT* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+
+
+Designkommentar:
+Hvis dette CLUSTERet brukes må man alltid sette inn Bildeprosedyre/bildemodalitet navn. 
+
+Her kan man skrive inn dato og resyme for hver modalitet hvis man ikke trenger dette for hver kroppsdel man har tatt bilde av. 
+
+Hvis man ønsker å ha resyme og dato for hver kroppsdel man har tatt ved hjelp av denne modaliteten må man gjenta Klinisk grunnlag modalitet per kroppsdel (Klinisk grunnlag CLUSTER 2) som er slottet inn i Yttligere detaljer i Klinisk grunnlag CLUSTER 1. Da vil også resyme og dato i den overordnede Klinisk grunnlag (CLUSTER 1) være overflødig. Kanskje også Spesifikk metode/tilleggsmetode hvis dette er spesifisert per kroppsdel. 
+
+Hvis man ønsker å skrive dato og resyme for flere kroppsdeler kan man gjenta Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) per anatomisk lokalisasjon. 
+
+
+|at0003| 0..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* PET-CT undersøkelse (SNOMED-CT: 450436003)
+
+
+Det anbefales å kode "Funn" med en terminologi, der det er mulig.
+|at0005| 0..1| DV_TEXT | Resymé PET-CT
+a|
+
+
+Designkommentar:
+Resyme for den spesifikke undersøkelsen/modaliteten som helhet. 
+Her kan man legge inn resyme for hele MR undersøkelse. Ønsker man å legge inn resyme for hver kroppsdel man har tatt MR på må man bruke resyme i CLUSTERet Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) som er slottet inn i Ytterligere detaljer. Da kan dette elementet være overflødig.
+|at0006| 0..1| DV_DATE_TIME | Undersøkelsesdato
+|
+
+
+Designkommentar:
+Dato for den spesifikke undersøkelsen/modaliteten som helhet. 
+Her kan man legge inn dato for at en MR undersøkelse er tatt. Ønsker man å legge inn dato for hver kroppsdel man har tatt MR på (hvis disse avviker fra hverandre), må man bruke dato i CLUSTERet Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) som er slottet inn i Ytterligere detaljer. Da kan dette elementet være overflødig.
+
+|at0022| 1..1| DV_CODED_TEXT | Modalitet
+a|
+* PET-CT (DICOM-modality: PTCT)
+
+
+Designkommentar:
+Her skal man kopiere den samme koden som man i Bildeprosedyre/bildemodalitet navn under det interne CLUSTERet Spesifikk underesøkelse/bildemodalitet. 
+Dette kan f.eks. være en SNOMED-CT kode eller DICOM modalitetkode. 
+Eksempler:
+726551006	Kontrast mammografi
+241058008	Forstørrelsesmammografi
+450566007	Tomosyntese (DBT)
+1331946003	CT med kontrast
+765172009	Doppler ultrasound (procedure)
+443631006	Ultrasonography with contrast (procedure)
+433231002	Contrast echocardiography (procedure)
+
+5+a|*Spesifikk undersøkelse skjelettscintigrafi* + 
+CLUSTER: _at0026_
+
+
+Designkommentar:
+Bruk separate instanser av dette CLUSTER'et for å skille mellom spesifikke undersøkelser/modaliteter eller gruppering av undersøkelser/modaliteter,
+Her kan man legge inn forskjellige modaliteter eller spesifikke undersøkelser man har gjort. 
+F.eks. hvis man vil ha en instans av UL, MR og CT - da må dette clusteret gjentas for hver hovedgruppe/modalitet. 
+Dato og Resyme  i dette interne CLUSTERet er fjernet, og hvis det er svart   bekreftende på at den er utført (ja) så vil detaljene (dato og resyme samt kroppsdel) bli dokumentert i Klinisk grunnlag arketypen SLOTet inn i ytterligere detaljer i dette interne CLUSTERET.
+|at0021| 1..1| DV_CODED_TEXT | Bildeprosedyre skjelettscintigrafi
+a|
+* NM (DICOM_modality: NM)
+
+
+Designkommentar:
+Her skal det i skjermbildet vises skjelettscintigrafi, men modaliteten er nukleærmedisin, men dette skal ikke synes. 
+Det er lagt til skjelett som anatomisk sted, da det er nukleærmedisinsk undersøkelse av skjelett.
+|at0024| 0..1| DV_CODED_TEXT | Er denne undersøkelsen utført?
+a|
+* at0036 -> Ja 
+* at0037 -> Nei 
+5+a|*Spesifikk undersøkelse Skjelettscintigrafi* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+
+
+Designkommentar:
+Hvis dette CLUSTERet brukes må man alltid sette inn Bildeprosedyre/bildemodalitet navn. 
+
+Her kan man skrive inn dato og resyme for hver modalitet hvis man ikke trenger dette for hver kroppsdel man har tatt bilde av. 
+
+Hvis man ønsker å ha resyme og dato for hver kroppsdel man har tatt ved hjelp av denne modaliteten må man gjenta Klinisk grunnlag modalitet per kroppsdel (Klinisk grunnlag CLUSTER 2) som er slottet inn i Yttligere detaljer i Klinisk grunnlag CLUSTER 1. Da vil også resyme og dato i den overordnede Klinisk grunnlag (CLUSTER 1) være overflødig. Kanskje også Spesifikk metode/tilleggsmetode hvis dette er spesifisert per kroppsdel. 
+
+Hvis man ønsker å skrive dato og resyme for flere kroppsdeler kan man gjenta Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) per anatomisk lokalisasjon. 
+
+
+|at0003| 0..1| DV_CODED_TEXT | Undersøkelsesnavn
+a|
+* Skjelettscintigrafi (SNOMED-CT: 41747008)
+
+
+Det anbefales å kode "Funn" med en terminologi, der det er mulig.
+|at0005| 0..1| DV_TEXT | Resymé skjelettscintigrafi
+a|
+
+
+Designkommentar:
+Resyme for den spesifikke undersøkelsen/modaliteten som helhet. 
+Her kan man legge inn resyme for hele MR undersøkelse. Ønsker man å legge inn resyme for hver kroppsdel man har tatt MR på må man bruke resyme i CLUSTERet Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) som er slottet inn i Ytterligere detaljer. Da kan dette elementet være overflødig.
+|at0006| 0..1| DV_DATE_TIME | Undersøkelsesdato
+|
+
+
+Designkommentar:
+Dato for den spesifikke undersøkelsen/modaliteten som helhet. 
+Her kan man legge inn dato for at en MR undersøkelse er tatt. Ønsker man å legge inn dato for hver kroppsdel man har tatt MR på (hvis disse avviker fra hverandre), må man bruke dato i CLUSTERet Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) som er slottet inn i Ytterligere detaljer. Da kan dette elementet være overflødig.
+
+|at0022| 1..1| DV_CODED_TEXT | Modalitet
+a|
+* NM (DICOM-modality: NM)
+
+
+Designkommentar:
+Her skal man kopiere den samme koden som man i Bildeprosedyre/bildemodalitet navn under det interne CLUSTERet Spesifikk underesøkelse/bildemodalitet. 
+Dette kan f.eks. være en SNOMED-CT kode eller DICOM modalitetkode. 
+Eksempler:
+726551006	Kontrast mammografi
+241058008	Forstørrelsesmammografi
+450566007	Tomosyntese (DBT)
+1331946003	CT med kontrast
+765172009	Doppler ultrasound (procedure)
+443631006	Ultrasonography with contrast (procedure)
+433231002	Contrast echocardiography (procedure)
+
+5+a|*Modalitet per kroppsdel* + 
+CLUSTER: _openEHR-EHR-CLUSTER.clinical_evidence.v1_
+
+
+Designkommentar:
+Hvis man ønsker å legge til hvilke kroppsdel man har gjort den bildediagnostiske undersøkelsen på. 
+Hvis man ønsker kun å ramse opp hvilke kroppsdel man har tatt undersøkelsen på uten å ha med resyme og dato, er alle elementer bortsett fra Anatomisk lokalisering overflødig. Da kan man ha en instans av denne Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) og kun gjenta CLUSTERet Anatomisk lokalisering i Ytterligere detaljer. 
+
+Hvis man ønsker å ha med Resyme og dato per kroppsdel, samt tilleggsmetode per kroppsdel, kan dette Klinisk grunnlag modalitet per kroppsdel (CLUSTER 2) gjentas per kroppsdel. 
+
+Selve modaliteten settes i Klinisk grunnlag prosedyre/modalitet (CLUSTER 1). 
+|at0022| 1..1| DV_CODED_TEXT | Modalitet
+a|
+* NM (DICOM-modality: NM)
+
+
+Designkommentar:
+Her kan man legge inn mer spesifikk prosedyre som er gjennomført for hver enkelt kroppsdel/anatomisk lokalisasjon, for eksempel om det er gjort med kontrast (kontrastmammografi), eller forstørrelsesmammografi, tomosyntese av mamma (DBT), Cone beam CT.
+Eksempler:
+726551006	Kontrast mammografi
+241058008	Forstørrelsesmammografi
+450566007	Tomosyntese (DBT)
+1331946003	CT med kontrast
+765172009	Doppler ultrasound (procedure)
+443631006	Ultrasonography with contrast (procedure)
+433231002	Contrast echocardiography (procedure)
+
+5+a|*Anatomisk lokalisering skjelett* + 
+CLUSTER: _openEHR-EHR-CLUSTER.anatomical_location.v1_
+
+
+Designkommentar:
+Her kan man legge inn hvilke kroppsdel man har tatt bilde av. 
+Hvis man ikke trenger å ha med resyme og dato for hver anatomisk sted man har tatt bilde kan kun dette CLUSTERet gjentas for hver kroppsdel. 
+|at0001| 1..1| DV_CODED_TEXT | Skjelett
+a|
+* Skjelett (SNOMED-CT: 113192009)
+
+
+Designkommentar:
+Denne behøver ikke vises i skjermbildet, bare lagre ned.
+|====
