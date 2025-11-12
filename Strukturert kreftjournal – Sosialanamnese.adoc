@@ -1,5 +1,4 @@
 :toc:
-:toc-title: Innholdsfortegnelse
 :toclevels: 1
 
 
