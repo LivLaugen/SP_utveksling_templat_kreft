@@ -1,0 +1,288 @@
+:toc:
+:toc-title: Innholdsfortegnelse
+:toclevels: 1
+
+
+= Strukturert kreftjournal – Sosialanamnese
+
+I Strukturert kreftjournal er det utviklet et standardisert templat for opptak av sosialanamnese.  
+Templatet består av følgende komponent:
+
+== Utdanningssammendrag
+
+Dette brukes for å registrere et individs utdanningsnivå i forbindelse med prosjektet Strukturert kreftjournal.  
+
+Verdisettet for dataelementet *"Høyeste fullførte utdanningsnivå"* er standardisert basert på krav utarbeidet av Helsedirektoratet.  
+
+Templatet benyttes i sosialanamnese-delen av Strukturert kreftjournal, men småtemplatet med det standardiserte verdisettet kan også brukes utenfor prosjektet, for eksempel ved registrering av arbeidsstatus.
+
+=== Modellering
+
+Informasjonsmodellen for registrering av utdanningssammendrag er basert på følgende arketype:  
+https://arketyper.no/ckm/archetypes/1078.36.2192[Utdanningssammendrag – arketyper.no]
+
+.Overordnet beskrivelse av arketyper og felter som brukes
+[cols="1,1,2,2,6", options="header"]
+|===
+|NodeId |Attr. |RM Type |Name |Description
+5+a|*Utdanningssammendrag* +
+EVALUATION: _openEHR-EHR-EVALUATION.education_summary.v1_
+
+|at0002
+|0..1
+|DV_CODED_TEXT
+|Høyeste fullførte utdanningsnivå 
+a|
+* Ingen utdanning (no.utdanningsnivaa: 0) +
+* Grunnskole (no.utdanningsnivaa: 1) +
+* Videregående (no.utdanningsnivaa: 2) +
+* Universitet/Høyskole < 4 år (no.utdanningsnivaa: 3) +
+* Universitet/Høyskole ≥ 4 år (no.utdanningsnivaa: 4) +
+* Ukjent (no.utdanningsnivaa: 9)
+|
+|at0028
+|0..1
+|DV_DATE_TIME
+|Sist oppdatert
+|Oppdateres når utdanning registreres eller endres i `CLUSTER.education_record` (Utdanning).
+|===
+
+== Arbeidsstatus
+
+Brukes for å registrere et individs arbeidsstatus i forbindelse med prosjektet Strukturert kreftjournal.
+
+Verdisettet for dataelementet *"Arbeidsstatus"* er standardisert basert på krav utarbeidet av Helsedirektoratet. 
+
+Dette templatet vil bli brukt i prosjektet Strukturert Kreftjournal under sosialanamnese.
+
+Småtemplatet med det standardiserte verdisettet kan benyttes utenfor Strukturert kreftjournal hvor det lagres data om arbeidsstatus.
+
+Verdisettet med tilhørende forklaring i dette templatet for arbeidsstatus er:
+- I arbeid = Alle som har jobb og identifiserer seg med at deres hovedkategori er å være i arbeid. Både fulltid og deltid.
+- Ikke i arbeid = Alle som ikke har et arbeidsforhold: hjemmeværende, permitterte, arbeidssøkende, uføretrygdet, under rehabilitering, under attføring eller arbeidsmarkedskurs o.l., samt avtjener verneplikt, siviltjeneste. De med et arbeidsforhold, men som er midlertidig sykemeldt ansees for å være i arbeid.
+- Alderspensjonist = Ikke uførepensjon eller andre pensjonsformer annet enn aldersrelatert. AFP er inkludert.
+- Under utdanning/studerer = Innrullert i et studieløp og identifiserer seg som hovedsakelig student/elev. Både fulltid og deltid.
+- Ukjent = Ukjent arbeidsstatus.
+
+
+=== Modellering
+
+
+Informasjonsmodellen for registrering av arbeidssammendrag er basert på følgende arketyper:  
+https://arketyper.no/ckm/archetypes/1078.36.1945[Arbeidssammendrag – arketyper.no], https://arketyper.no/ckm/archetypes/1078.36.543[Arbeidsforhold/rolle – arketyper.no], https://arketyper.no/ckm/archetypes/1078.36.3004[Sykemelding – arketyper.no]
+
+.Overordnet beskrivelse av arketyper og felter som brukes
+[cols="1,1,2,2,6", options="header"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Arbeidssammendrag* + 
+EVALUATION: _openEHR-EHR-EVALUATION.occupation_summary.v1_
+|at0004| 0..1| DV_CODED_TEXT | Arbeidsstatus
+a|
+* I arbeid (no.arbeidsstatus: 1)
+* Ikke i arbeid (no.arbeidsstatus: 2)
+* Alderspensjonist (no.arbeidsstatus: 3)
+* Under utdanning/studerer (no.arbeidsstatus: 4)
+* Ukjent (no.arbeidsstatus: 9)
+
+5+a|*Arbeidsforhold/rolle* + 
+CLUSTER: _openEHR-EHR-CLUSTER.occupation_record.v1_
+|at0005| 0..1| DV_TEXT | Tittel/rolle
+a|
+
+5+a|*Sykemelding* + 
+CLUSTER: _openEHR-EHR-CLUSTER.sick_note_ous.v1_
+|at0004| 0..1| DV_DATE_TIME | Sykemelding - fra dato
+|
+
+
+Startdatoen for sykemeldingen.
+|at0001| 0..1| DV_DURATION | Varighet
+|
+
+
+Varigheten av sykemeldinsperioden til individet.
+|at0009| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+
+
+Ved implementering av arketypen forutsettes det at dersom en arbeidsepisode legges til eller oppdateres, vil også denne datoen oppdateres.
+|====
+
+== Samlivsstatus
+
+Brukes for å registrere et individs samlivsstatus i forbindelse med prosjektet Strukturert Kreftjournal. Det er med vilje ikke brukt juridisk sivilstand da dette registreres i PAS delen av EPJ.
+
+Verdisettet for dataelementet "Samlivsstatus" er standardisert med bakgrunn i variabler fra SSB (https://www.ssb.no/klass/klassifikasjoner/19).
+
+Dette templatet vil bli brukt i prosjektet Strukturert Kreftjournal under sosialanamnese.
+
+Småtemplatet med det standardiserte verdisettet kan benyttes utenfor Strukturert kreftjournal hvor det lagres data om samlivsstatus.
+
+
+=== Modellering
+
+Informasjonsmodellen for registrering av samlivsstatus er basert på følgende arketype:  
+https://arketyper.no/ckm/archetypes/1078.36.2295[Sosialt nettverk – arketyper.no]
+
+.Overordnet beskrivelse av arketyper og felter som brukes
+[cols="1,1,2,2,6", options="header"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Sosialt nettverk* + 
+EVALUATION: _openEHR-EHR-EVALUATION.social_network.v1_
+|at0002| 0..1| DV_CODED_TEXT | Samlivsstatus
+a|
+* Ugift/enslig (no.samlivsstatus: 1)
+* Gift/samboer/registrert partner (no.samlivsstatus: 2)
+* Enke/enkemann/gjenlevende partner eller samboer (no.samlivsstatus: 3)
+* Skilt/separert (no.samlivsstatus: 4)
+* Ukjent (no.samlivsstatus: 9)
+
+
+Verdisettet for dataelementet "Samlivsstatus" er standardisert med bakgrunn i variabler fra SSB (https://www.ssb.no/klass/klassifikasjoner/19).
+
+|at0018| 0..1| DV_TEXT | Kommentar
+a|
+|at0011| 0..1| DV_DATE_TIME | Sist oppdatert
+|
+
+
+Datoen da samlivsstatus sist ble oppdatert.
+|====
+
+== Samlivsform
+Brukes for å registrere et individs samlivsform, dvs. om individet bor sammen med noen eller ikke.
+
+Dette templatet vil bli brukt i prosjektet Strukturert Kreftjournal under sosialanamnese.
+
+Arketypen Kartleggingsspørsmål om sosiale forhold (openEHR-EHR-OBSERVATION.social_context_screening.v1) er benyttet med spørsmål om hvilken samlivsform pasienten har. 
+
+Småtemplatet med det standardiserte verdisettet kan benyttes utenfor Strukturert kreftjournal hvor det lagres data om en pasients samlivsstatus.
+
+Verdisettet med tilhørende forklaring i dette templatet for samlivsstatus er:
+1 - Bor alene (Inkl. Alene med barn <18).
+2 - Bor med noen (Partner og eller barn >18 år, bofelleskap, venner).
+3 - Bor på institusjon/ sykehjem (Fast plass, ikke korttidsopphold. Gjelder også der egen bolig er døgnbemannet).
+9 - Ukjent
+
+
+
+
+=== Modellering
+
+Informasjonsmodellen for registrering av samlivsform er basert på følgende arketype:  
+https://arketyper.no/ckm/archetypes/1078.36.2380[Kartleggingsspørsmål om sosiale forhold – arketyper.no]
+
+.Overordnet beskrivelse av arketyper og felter som brukes
+[cols="1,1,2,2,6", options="header"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartleggingspørsmål om sosiale forhold samlivsform* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.social_context_screening.v1_
+|at0034| 0..1| DV_CODED_TEXT | Kartleggingsformål
+a|
+* Samlivsform (no.onk.sosiale_forhold: SAM)
+
+
+Fast verdi som er skjult for bruker. 
+5+a|*Spesifikt sosialt forhold* + 
+CLUSTER: _at0022_
+|at0004| 1..1| DV_CODED_TEXT | Hvilken samlivsform har pasienten?
+a|
+* Bor alene (Inkl. alene med barn <18) (no.samlivsform: 1)
+* Bor med noen (Partner og/eller med barn >18 år, bofelleskap, venner) (no.samlivsform: 2)
+* Bor på institusjon/ sykehjem (Fast plass, ikke korttidsopphold. Gjelder også der egen bolig er døgnbemannet) (no.samlivsform: 3)
+* Ukjent (no.samlivsform: 9)
+|====
+== Omsorgsansvar_kartlegging
+Brukes for å registrere kartleggingsspørsmål om et individ har ansvar/omsorg for mindreårige barn og andre individer over 18 år i forbindelse med prosjektet Strukturert Kreftjournal.
+
+Dette templatet vil bli brukt i prosjektet Strukturert Kreftjournal under sosialanamnese.
+
+Arketypen Kartleggingsspørsmål om sosiale forhold (openEHR-EHR-OBSERVATION.social_context_screening.v1) er benyttet med to spørsmål, ett for om pasienten har ansvar for barn under 18 år og et spørsmål for om pasienten har ansvar for egne barn/andre over 18 år. 
+
+Småtemplatet med det standardiserte verdisettet kan benyttes utenfor Strukturert kreftjournal hvor det lagres data om kartleggingsspørsmål om omsorgsansvar.
+
+=== Modellering
+
+Informasjonsmodellen for registrering av omsorgsansvar_kartlegging er basert på følgende arketype:  
+https://arketyper.no/ckm/archetypes/1078.36.2380[Kartleggingsspørsmål om sosiale forhold – arketyper.no]
+
+.Overordnet beskrivelse av arketyper og felter som brukes
+[cols="1,1,2,2,6", options="header"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Kartlegging omsorgsansvar* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.social_context_screening.v1_
+|at0034| 0..1| DV_CODED_TEXT | Kartleggingsformål
+a|
+* Kartlegging av om individet har omsorgsansvar (no.onk.sosiale_forhold: OA)
+
+
+I prosjektet strukturert kreftjournal er det etablert et eget kodeverk for kartleggingsformål. no.onk.sosiale_forhold.
+5+a|*Omsorgsperson for barn under 18 år* + 
+CLUSTER: _at0022_
+|at0004| 1..1| DV_CODED_TEXT | Sosialt forhold
+a|
+* Ansvarlig for barn under 18 år (no.onk.sosiale_forhold: U18)
+
+
+Navngiving av et spesifikt sosialt forhold.
+|at0005| 0..1| DV_CODED_TEXT | Har pasienten ansvar for barn under 18 år?
+a|
+* at0023 -> Ja 
+* at0024 -> Nei 
+* at0027 -> Ukjent 
+5+a|*Barn som pårørende* + 
+CLUSTER: _at0022_
+|at0004| 1..1| DV_CODED_TEXT | Sosialt forhold
+a|
+* Barn som pårørende (no.onk.sosiale_forhold: BPU18)
+
+
+Navngiving av et spesifikt sosialt forhold.
+|at0005| 0..1| DV_CODED_TEXT | Finnes det barn som pårørende?
+a|
+* at0023 -> Ja 
+* at0024 -> Nei 
+* at0027 -> Ukjent 
+|at0025| 0..1| DV_TEXT | Kommentar
+a|
+5+a|*Omsorgsperson for personer over 18 år* + 
+CLUSTER: _at0022_
+|at0004| 1..1| DV_CODED_TEXT | Sosialt forhold
+a|
+* Ansvarlig for barn/andre over 18 år (no.onk.sosiale_forhold: O18)
+
+
+Navngiving av et spesifikt sosialt forhold.
+|at0005| 0..1| DV_CODED_TEXT | Har pasienten ansvar for egne barn/andre over 18 år?
+a|
+* at0023 -> Ja 
+* at0024 -> Nei 
+* at0027 -> Ukjent 
+|====
+
+== Fritekst relatert til sosialanamnese
+
+=== Modellering
+
+Informasjonsmodellen for registrering av Fritekst relatert til sosialanamnese er basert på følgende arketype:  
+https://arketyper.no/ckm/archetypes/1078.36.1999[Tidfestet fritekst – arketyper.no]
+
+.Overordnet beskrivelse av arketyper og felter som brukes
+[cols="1,1,2,2,6", options="header"]
+|====
+|NodeId|Attr.|RM Type| Name |Description
+5+a|*Fritekst relatert til sosial anamnese* + 
+OBSERVATION: _openEHR-EHR-OBSERVATION.progress_note.v1_
+Skal ikke være med i eksport til register. 
+|at0004| 0..1| DV_TEXT | Fritekst relatert til sosial anamnese
+a|
+5+a|*Semistrukturert metadata dips* + 
+CLUSTER: _openEHR-EHR-CLUSTER.semistrukturert_metadata_dips.v1_
+|at0001| 0..1| DV_CODED_TEXT | Klassifisering av informasjon
+a|
+* Sosial anamnese (no.dips.Freetext.Classification: 01-Oncology-Sosial-anamnese)
+|====
