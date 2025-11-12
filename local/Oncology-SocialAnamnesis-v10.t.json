@@ -26,7 +26,7 @@
       "User roles" : "",
       "MD5-CAM-1.0.1" : "1eeed5c360858a80d89f24991926fd7e",
       "PARENT:MD5-CAM-1.0.1" : "E51B66549F2C04336B514E1DAE9B93C8",
-      "sem_ver" : "13.0.0",
+      "sem_ver" : "15.0.0",
       "build_uid" : "",
       "original_language" : "ISO_639-1::nb"
     },
@@ -96,6 +96,126 @@
         "otherDetails" : {
           "notes" : "Generated automatically by Adl Designer"
         }
+      },
+      "de" : {
+        "@type" : "RESOURCE_DESCRIPTION_ITEM",
+        "language" : {
+          "terminologyId" : {
+            "value" : "ISO_639-1"
+          },
+          "codeString" : "de"
+        },
+        "purpose" : "Dient zur Erfassung der Details auf Dokumentebene einer einzelnen Interaktion, eines Kontaktes oder eines Pflegeereignisses zwischen einer zu pflegenden Person und Gesundheitsdienstleistern für die Bereitstellung von Gesundheitsdienstleistung. Dies kann entweder Angesicht zu Angesicht (Face-to-Face), über Telefon oder ein anderes elektronisches Medium erfolgen.",
+        "keywords" : [ "Begegnung", "Kontakt", "Visite", "Pflegeereignis", "Ereignis", "Besuch" ],
+        "use" : "Verwendung als generischer Container auf Dokumentebene zum Aufzeichnen von Details einer einzelnen Interaktion, eines Kontakts oder eines Pflegeereignisses zwischen einem Subjekt und einem Gesundheitsdienstleister.\r\nDer Kontakt kann von Angesicht zu Angesicht, über Telefon oder ein anderes elektronisches Medium erfolgen. Die Modalität kann bei Bedarf über das Referenzmodell COMPOSITION / mode Attribut erfasst werden.\r\n\r\nDie Hauptabschnitte / Inhaltskomponente wurde absichtlich nicht stark eingeschränkt. Dies ermöglicht es, diese Composition innerhalb eines Templates mit beliebigen SECTION- oder ENTRY-Archetypen zu füllen, die für den klinischen Zweck geeignet sind.\r\n\r\nAuch wenn sie für den klinischen Inhalt nicht eingeschränkt sind, bietet die Spezifikation von COMPOSITION.Encounter einen signifikanten Wert, da sie eine explizite Abfrage aller Encounter innerhalb einer Patientenakte ermöglicht.\r\n\r\nDie Context-Komponente enthält einen optionalen 'Extension' SLOT, der während des Template-Designs zu verschiedenen Zwecken verwendet werden kann:\r\n- Zum Hinzufügen von optionalen Kontextinformationen, wie Informationen zur Episode \r\n- Zur Vereinheitlichung oder Verknüpfung mit Modellformalismen wie FHIR oder CIMI \r\n\r\nTypische Beispiele sind eine klinische Visite, eine pflegerische Überwachung oder eine telemedizinische Beratung.",
+        "misuse" : "Nicht zur Darstellung von Details einer gesamten Behandlungsepisode geeignet.\r\n\r\nNicht zur Darstellung von persistenten, zusammengefassten Patienteninformationen wie eine Problemliste oder eine Medikamentenübersicht geeignet.\r\n\r\nNicht zur Darstellung von Berichten eines Diagnosedienstes, z.B. Bildgebung oder Labortests, geeignet.\r\n\r\nNicht zur Darstellung von der gleichnamige FHIR-Ressource geeignet- dort liegt eine Diskrepanz vor.",
+        "originalResourceUri" : { },
+        "otherDetails" : { }
+      },
+      "sv" : {
+        "@type" : "RESOURCE_DESCRIPTION_ITEM",
+        "language" : {
+          "terminologyId" : {
+            "value" : "ISO_639-1"
+          },
+          "codeString" : "sv"
+        },
+        "purpose" : "Att registrera detaljer av en enskild interaktion, kontakt eller en vårdhändelse mellan vårdtagare och vårdgivare inom hälso-och sjukvården. Interaktionen kan både vara genom ett fysiskt möte eller på distans.",
+        "keywords" : [ "vårdtillfälle", "kontakt", "besök", "vårdhändelse" ],
+        "use" : "Används för att registrera detaljer från en enskild interaktion, kontakt eller vårdhändelse mellan vårdtagare och vårdgivare. \r\n \r\nKontakten kan ske genom ett fysiskt möte eller via telefon eller annat elektroniskt medium. Uppgifter om mötesform kan vid behov läggas till i egenskaperna i referensmodellen Composition/mode. \r\n\r\nDe huvudsakliga avsnitts- och innehållskomponenterna har avsiktligt lämnats utan begränsning. Det tillåter ifyllning med SECTION eller ENTRY-arketyper som är lämpliga för det kliniska syftet.\r\n\r\nTrots att det inte finns någon begränsning för kliniskt innehåll ger specifikationen för COMPOSITION.Encounter ett signifikant värde genom att tillåta detaljerade förfrågningar om alla händelser i en patientjournal.\r\n\r\nFältet Extra information kan användas till att lägga till valfri kontextuell information, exempelvis episoduppgifter eller uppgifter som möjliggör samordning eller anpassning till andra modellformalismer som FHIR eller CIMI samt detaljerade beskrivningar av deltagare.\r\n\r\nTypiska exempel är ett klinikbesök, en observation av sjuksköterska eller en telemedicinsk konsultation.",
+        "misuse" : "Ska inte användas för att registrera detaljer om en hel vårdepisod. \r\n\r\nSka inte användas för beständig patientinformation som exempelvis en problemlista eller medicinsk sammanfattning.\r\n\r\nSka inte användas för att presentera en rapport från en diagnostisk tjänst, exempelvis en röntgenbild eller laboratorietest.\r\n\r\nSka inte användas för att presentera FHIR-resursen med samma namn. Det finns en motsättning mellan räckvidd och avsikt.",
+        "originalResourceUri" : { },
+        "otherDetails" : { }
+      },
+      "fi" : {
+        "@type" : "RESOURCE_DESCRIPTION_ITEM",
+        "language" : {
+          "terminologyId" : {
+            "value" : "ISO_639-1"
+          },
+          "codeString" : "fi"
+        },
+        "purpose" : "*To record the document level details of a single interaction, contact or care event between a subject of care and healthcare provider(s) for the provision of healthcare service(s). This can be either a face-to-face or remote interaction.(en)",
+        "keywords" : [ "*encounter(en)", "*contact(en)", "*visit(en)", "*care event(en)" ],
+        "use" : "*Use as a generic document-level container for recording details of a single interaction, contact or care event between a subject of care and healthcare provider(s).\r\nThe contact may be face-to-face, via telephone or another electronic medium. Modality can be captured, if required, via the reference model COMPOSITION/mode attribute.\r\n\r\nThe main Sections/Content component has been deliberately left unconstrained. This will allow it to be populated with any SECTION or ENTRY archetypes appropriate for the clinical purpose within a template.\r\n\r\nEven though unconstrained for clinical content, specification of COMPOSITION.Encounter provides significant value by allowing for explicit querying of all Encounters within a patient record.\r\n\r\nThe Context component contains an optional 'Extension' SLOT that can be used in template design to:\r\n- add optional contextual information, such as episode information; or\r\n- allow for harmonisation or alignment with other model formalisms such as FHIR or CIMI, such as explicit representation of participants that are usually managed by the openEHR Reference Model in an openEHR archetype.\r\n\r\nTypical examples are a clinic visit, a nursing observation or a telemedicine consultation.(en)",
+        "misuse" : "*Not to be used to record details about an entire episode of care.\r\n\r\nNot to be used to carry persistent, summarised patient information, such as a problem list or medication summary.\r\n\r\nNot to be used to represent the report of a diagnostic service, such as imaging or laboratory testing.\r\n\r\nNot to be used to represent the FHIR resource of the same name - there is a mismatch scope and intent.(en)",
+        "originalResourceUri" : { },
+        "otherDetails" : { }
+      },
+      "pt-br" : {
+        "@type" : "RESOURCE_DESCRIPTION_ITEM",
+        "language" : {
+          "terminologyId" : {
+            "value" : "ISO_639-1"
+          },
+          "codeString" : "pt-br"
+        },
+        "purpose" : "Registrar os detalhes de uma interação, contato ou episódio de cuidado para a provisão de serviços de saúde entre um sujeito do cuidado e um profissional de saúde. Pode se referir tanto a uma interação presencial quanto à distância.",
+        "keywords" : [ "encontro", "contato", "visita", "episódio de cuidado" ],
+        "use" : "Usar como um documento genérico para registrar detalhes de uma interação simples, contato ou episódio de atenção à saúde entre um sujeito do cuidado e profissional(is) de saúde.\r\nO contato pode ser presencial, via telefone ou outro meio eletrônico. A modalidade pode ser identificada, se necessário, através do modelo de referência COMPOSITION/mode attribute.\r\n\r\nO componente main Sections/Content foi deixado deliberadamente sem restrições. Isto permitirá que ele seja populado com qualquer arquétipo SECTION ou ENTRY apropriado para o propósito clínico em um template.\r\n\r\nEmbora sem restrições para conteúdo clínico, especificação de COMPOSITION, Encounter oferece importante valor por permitir pesquisa de todos os Encontros num prontuário do paciente.\r\n\r\nO componente Contexto contem um SLOT 'Extensão' opcional que pode ser usado no design do template para:\r\n- adicionar informação contextual opcional, como informação do episódio; ou\r\n- permitir a harmonização ou alinhamento com outros modelos ou formalismos como FHIR ou CIMI, como uma representação explícita de participantes que normalmente são gerenciados pelo Modelo de Referência openEHR num arquétipo openEHR.\r\n\r\nExemplos típicos são visita a uma clínica, observação de enfermagem ou uma consulta de telemedicina.",
+        "misuse" : "Não deve ser utilizado para registrar detalhes de um episódio de cuidado completo.\r\n\r\nNão deve ser utilizado para guardar informações persistentes, resumidas de um paciente, como uma lista de problemas ou resumo de medicamentos.\r\n\r\nNão deve ser utilizado para representar o relato de um serviço diagnóstico como exames laboratoriais ou de imagem.\r\n\r\nNão deve ser utilizado para representar recurso FHIR do mesmo nome - há uma incompatibilidade de objetivo e intenção.",
+        "originalResourceUri" : { },
+        "otherDetails" : { }
+      },
+      "it" : {
+        "@type" : "RESOURCE_DESCRIPTION_ITEM",
+        "language" : {
+          "terminologyId" : {
+            "value" : "ISO_639-1"
+          },
+          "codeString" : "it"
+        },
+        "purpose" : "Registrare i dettagli a livello di documento di una singola interazione, contatto o evento di cura tra un soggetto di cura e il/i fornitore/i di assistenza sanitaria per la fornitura di servizi sanitari. Può trattarsi di un'interazione faccia a faccia o a distanza.",
+        "keywords" : [ "incontro", "contatto", "visita", "evento di cura" ],
+        "use" : "Utilizzare come contenitore generico a livello di documento per registrare i dettagli di una singola interazione, contatto o evento di cura tra un soggetto di cura e il/i fornitore/i di assistenza sanitaria.\r\nIl contatto può avvenire faccia a faccia, per telefono o su un altro mezzo elettronico. La modalità può essere catturata, se necessario, tramite il modello di riferimento COMPOSITION/mode attribute.\r\n\r\nLa principale sezione/componente del contenuto è stata volutamente lasciata libera. Ciò consentirà di popolarla con qualsiasi archetipo di SECTION o ENTRY propriato per lo scopo clinico all'interno di un modello.\r\n\r\nAnche se non è vincolata al contenuto clinico, la specificazione di COMPOSITION.Contatto fornisce un valore significativo, consentendo l'interrogazione esplicita di tutti gli Incontri all'interno della cartella clinica di un paziente.\r\n\r\nIl componente Context contiene un SLOT opzionale 'Extension' SLOT che può essere utilizzato nella progettazione del template per:\r\n- aggiungere informazioni contestuali opzionali, come le informazioni sugli episodi; oppure\r\n- consentire l'armonizzazione o l'allineamento con altri formalismi del modello come FHIR o CIMI, come la rappresentazione esplicita dei partecipanti che sono solitamente gestiti dal modello di riferimento openEHR in un archetipo openEHR.\r\n\r\nEsempi tipici sono una visita in clinica, un'osservazione infermieristica o un consulto di telemedicina.",
+        "misuse" : "Da non utilizzare per portare informazioni persistenti e riassunte sui pazienti, come un elenco di problemi o un sommario dei farmaci.\r\n\r\nDa non utilizzare per rappresentare il rapporto di un servizio diagnostico, come l'imaging o gli esami di laboratorio.\r\n\r\nNon deve essere utilizzato per rappresentare l'omonima risorsa FHIR - c'è un disallineamento di scopo e di intenti.",
+        "originalResourceUri" : { },
+        "otherDetails" : { }
+      },
+      "fr" : {
+        "@type" : "RESOURCE_DESCRIPTION_ITEM",
+        "language" : {
+          "terminologyId" : {
+            "value" : "ISO_639-1"
+          },
+          "codeString" : "fr"
+        },
+        "purpose" : "*To record the document level details of a single interaction, contact or care event between a subject of care and healthcare provider(s) for the provision of healthcare service(s). This can be either a face-to-face or remote interaction.(en)",
+        "keywords" : [ "rencontre", "contact", "visite", "événement de soins" ],
+        "use" : "*Use as a generic document-level container for recording details of a single interaction, contact or care event between a subject of care and healthcare provider(s).\r\nThe contact may be face-to-face, via telephone or another electronic medium. Modality can be captured, if required, via the reference model COMPOSITION/mode attribute.\r\n\r\nThe main Sections/Content component has been deliberately left unconstrained. This will allow it to be populated with any SECTION or ENTRY archetypes appropriate for the clinical purpose within a template.\r\n\r\nEven though unconstrained for clinical content, specification of COMPOSITION.Encounter provides significant value by allowing for explicit querying of all Encounters within a patient record.\r\n\r\nThe Context component contains an optional 'Extension' SLOT that can be used in template design to:\r\n- add optional contextual information, such as episode information; or\r\n- allow for harmonisation or alignment with other model formalisms such as FHIR or CIMI, such as explicit representation of participants that are usually managed by the openEHR Reference Model in an openEHR archetype.\r\n\r\nTypical examples are a clinic visit, a nursing observation or a telemedicine consultation.(en)",
+        "misuse" : "*Not to be used to record details about an entire episode of care.\r\n\r\nNot to be used to carry persistent, summarised patient information, such as a problem list or medication summary.\r\n\r\nNot to be used to represent the report of a diagnostic service, such as imaging or laboratory testing.\r\n\r\nNot to be used to represent the FHIR resource of the same name - there is a mismatch scope and intent.(en)",
+        "originalResourceUri" : { },
+        "otherDetails" : { }
+      },
+      "es" : {
+        "@type" : "RESOURCE_DESCRIPTION_ITEM",
+        "language" : {
+          "terminologyId" : {
+            "value" : "ISO_639-1"
+          },
+          "codeString" : "es"
+        },
+        "purpose" : "Registrar, a nivel de documento, una única interacción, contacto o evento de cuidado, entre un sujeto de cuidado (paciente) y un proveedor de servicios de salud (profesional médico, de enfermería, etc.). Puede ser una interacción cara a cara o remota.",
+        "keywords" : [ "encuentro", "contacto", "visita", "evento de cuidado" ],
+        "use" : "Se debe usar como una definición de documento genérico para registrar información de una única interacción o contacto con un proveedor de salud. Esta definición no especifica la estructura interna de secciones y entradas. Dicha especificación debería hacerse mediante especializaciones del arquetipo o mediante plantillas operativas (Operational Templates - OPT).",
+        "misuse" : "No se debe utilizar para registrar información de un episodio de salud entero.\r\n\r\nNo debe contener información persistente o resúmenes, como lista de problemas o medicación.\r\n\r\nNo se debe usar para registrar resultados de laboratorio o imagenología.\r\n",
+        "originalResourceUri" : { },
+        "otherDetails" : { }
+      },
+      "nl" : {
+        "@type" : "RESOURCE_DESCRIPTION_ITEM",
+        "language" : {
+          "terminologyId" : {
+            "value" : "ISO_639-1"
+          },
+          "codeString" : "nl"
+        },
+        "purpose" : "Om de documentniveau-details van een enkele interactie, contact of zorggebeurtenis tussen een onderwerp van zorg en een zorgverlener vast te leggen voor de voorziening van zorgverlening. Dit kan face-to-face-contact zijn of interactie op afstand.",
+        "keywords" : [ "contact", "ontmoeting", "bezoek", "zorggebeurtenis", "zorg" ],
+        "use" : "Gebruik als een generiek document-niveau container voor het vastleggen van details van een enkele interactie, contact of zorg gebeurtenis tussen een onderwerp van zorg en zorgverlener(s).\r\nHet contact kan face-to-face zijn, telefonisch of via een ander elektronisch medium. Modaliteit kan, indien nodig, vastgelegd worden met behulp van het referentiemodel COMPOSITION/mode kenmerk.\r\n\r\nHet voornaamste Secties/Inhoud component is opzettelijk onbeperkt gelaten. Hierdoor is het toegestaan dat het gevuld wordt met een willekeurige SECTION of ENTRY archetype die toepasselijk is voor de klinische toepassing binnen een template.\r\n\r\nOndanks de onbeperktheid voor klinische inhoud, zal specificatie van de COMPOSITION.Encounter een belangrijke waarde leveren door het toestaan van expliciet querien binnen alle contacten van een patient-record.\r\n\r\nDe Context-component bevat een optioneel 'Extensie'-slot (koppelpunt) dat gebruikt kan worden in ontwerp van templates om:\r\n- optionele contextuele informatie toe te voegen, zoals episode informatie; of\r\n- harmonisatie of uitlijning met andere model formalismen toe te staan zoals FHIR of CIMI, zoals een expliciete representatie van deelnemers die gewoonlijk geregeld wordt door het openEHR referentiemodel in een openEHR archetype.\r\n\r\nTypische voorbeelden zijn een klinisch bezoek, een verpleegkundige observatie of een tele-medisch consult.",
+        "misuse" : "Niet te gebruiken om details vast te leggen over een volledige zorg-episode.\r\n\r\nNiet te gebruiken om volhardende, samengevatte patient-gegevens te bevatten, zoals een probleemlijst or samenvatting van medicatie.\r\n\r\nNiet te gebruiken om een rapport van een diagnostische dienst te representeren, zoals beelden of laboratorium-onderzoek.\r\n\r\nNiet te gebruiken om een FHIR-bron met eenzelfde naam te representeren - dan is er een conflict in de scope en doelstelling.",
+        "originalResourceUri" : { },
+        "otherDetails" : { }
       }
     }
   },
@@ -175,7 +295,15 @@
       "es-ar" : { },
       "en" : { },
       "ko" : { },
-      "nb" : { }
+      "nb" : { },
+      "pt-br" : { },
+      "es" : { },
+      "nl" : { },
+      "sv" : { },
+      "de" : { },
+      "fi" : { },
+      "it" : { },
+      "fr" : { }
     },
     "termBindings" : { },
     "terminologyExtracts" : { },
@@ -1409,8 +1537,8 @@
             "rmAttributeName" : "events",
             "children" : [ {
               "@type" : "C_COMPLEX_OBJECT",
-              "rmTypeName" : "EVENT",
-              "nodeId" : "at0002",
+              "rmTypeName" : "POINT_EVENT",
+              "nodeId" : "at0002.1",
               "attributes" : [ {
                 "@type" : "C_ATTRIBUTE",
                 "rmAttributeName" : "data",
@@ -3009,17 +3137,19 @@
                 "children" : [ {
                   "@type" : "C_COMPLEX_OBJECT",
                   "rmTypeName" : "DV_CODED_TEXT",
-                  "occurrences" : "0..1",
+                  "occurrences" : "1..1",
                   "attributes" : [ {
                     "@type" : "C_ATTRIBUTE",
                     "rmAttributeName" : "defining_code",
-                    "existence" : "0..1",
                     "children" : [ {
                       "@type" : "C_TERMINOLOGY_CODE",
+                      "rmTypeName" : "TERMINOLOGY_CODE",
+                      "occurrences" : "0..1",
                       "terminologyId" : {
                         "value" : "no.arbeidsstatus"
                       },
                       "constraint" : [ ],
+                      "selectedTerminologies" : [ "no.arbeidsstatus" ],
                       "includedExternalTerminologyCodes" : [ {
                         "terminologyId" : "no.arbeidsstatus",
                         "code" : "1",
@@ -4181,7 +4311,7 @@
             "rmAttributeName" : "events",
             "children" : [ {
               "@type" : "C_COMPLEX_OBJECT",
-              "rmTypeName" : "EVENT",
+              "rmTypeName" : "POINT_EVENT",
               "occurrences" : "0..1",
               "nodeId" : "at0002.1",
               "attributes" : [ {
@@ -4204,29 +4334,31 @@
                         "children" : [ {
                           "@type" : "C_COMPLEX_OBJECT",
                           "rmTypeName" : "DV_CODED_TEXT",
-                          "occurrences" : "0..1",
+                          "occurrences" : "1..1",
                           "defaultValue" : {
-                            "@type" : "DV_CODED_TEXT",
-                            "value" : "Kartlegging av om individet har omsorgsansvar",
                             "defining_code" : {
-                              "@type" : "CODE_PHRASE",
                               "terminology_id" : {
-                                "@type" : "TERMINOLOGY_ID",
-                                "value" : "no.onk.sosiale_forhold"
+                                "value" : "no.onk.sosiale_forhold",
+                                "@type" : "TERMINOLOGY_ID"
                               },
-                              "code_string" : "OA"
-                            }
+                              "code_string" : "OA",
+                              "@type" : "CODE_PHRASE"
+                            },
+                            "value" : "Kartlegging av om individet har omsorgsansvar",
+                            "@type" : "DV_CODED_TEXT"
                           },
                           "attributes" : [ {
                             "@type" : "C_ATTRIBUTE",
                             "rmAttributeName" : "defining_code",
-                            "existence" : "0..1",
                             "children" : [ {
                               "@type" : "C_TERMINOLOGY_CODE",
+                              "rmTypeName" : "TERMINOLOGY_CODE",
+                              "occurrences" : "0..1",
                               "terminologyId" : {
                                 "value" : "no.onk.sosiale_forhold"
                               },
                               "constraint" : [ ],
+                              "selectedTerminologies" : [ "no.onk.sosiale_forhold" ],
                               "includedExternalTerminologyCodes" : [ {
                                 "terminologyId" : "no.onk.sosiale_forhold",
                                 "code" : "OA",
@@ -4782,17 +4914,19 @@
                 "children" : [ {
                   "@type" : "C_COMPLEX_OBJECT",
                   "rmTypeName" : "DV_CODED_TEXT",
-                  "occurrences" : "0..1",
+                  "occurrences" : "1..1",
                   "attributes" : [ {
                     "@type" : "C_ATTRIBUTE",
                     "rmAttributeName" : "defining_code",
-                    "existence" : "0..1",
                     "children" : [ {
                       "@type" : "C_TERMINOLOGY_CODE",
+                      "rmTypeName" : "TERMINOLOGY_CODE",
+                      "occurrences" : "0..1",
                       "terminologyId" : {
                         "value" : "no.utdanningsnivaa"
                       },
                       "constraint" : [ ],
+                      "selectedTerminologies" : [ "no.utdanningsnivaa" ],
                       "includedExternalTerminologyCodes" : [ {
                         "terminologyId" : "no.utdanningsnivaa",
                         "code" : "0",
@@ -4931,6 +5065,115 @@
     "author" : {
       "name" : "Mona Saleh"
     },
+    "otherDetails" : { }
+  }, {
+    "@type" : "TRANSLATION_DETAILS",
+    "language" : {
+      "terminologyId" : {
+        "value" : "ISO_639-1"
+      },
+      "codeString" : "de"
+    },
+    "author" : {
+      "name" : "Anneka Sargeant",
+      "organisation" : "Medizinische Informatik, UMG",
+      "email" : "anneka.sargeant@med.uni-goettingen.de"
+    },
+    "otherDetails" : { }
+  }, {
+    "@type" : "TRANSLATION_DETAILS",
+    "language" : {
+      "terminologyId" : {
+        "value" : "ISO_639-1"
+      },
+      "codeString" : "sv"
+    },
+    "author" : {
+      "name" : "Kirsi Poikela",
+      "organisation" : "Tieto Sweden AB",
+      "email" : "ext.kirsi.poikela@tieto.com"
+    },
+    "otherDetails" : { }
+  }, {
+    "@type" : "TRANSLATION_DETAILS",
+    "language" : {
+      "terminologyId" : {
+        "value" : "ISO_639-1"
+      },
+      "codeString" : "fi"
+    },
+    "author" : { },
+    "otherDetails" : { }
+  }, {
+    "@type" : "TRANSLATION_DETAILS",
+    "language" : {
+      "terminologyId" : {
+        "value" : "ISO_639-1"
+      },
+      "codeString" : "pt-br"
+    },
+    "author" : {
+      "name" : "Vladimir Pizzo",
+      "organisation" : "Hospital Sirio Libanes, Brazil",
+      "email" : "vladimir.pizzo@hsl.org.br"
+    },
+    "otherDetails" : { }
+  }, {
+    "@type" : "TRANSLATION_DETAILS",
+    "language" : {
+      "terminologyId" : {
+        "value" : "ISO_639-1"
+      },
+      "codeString" : "it"
+    },
+    "author" : {
+      "name" : "Paolo Anedda",
+      "organisation" : "Inpeco",
+      "email" : "paolo.anedda@inpeco.com"
+    },
+    "otherDetails" : { }
+  }, {
+    "@type" : "TRANSLATION_DETAILS",
+    "language" : {
+      "terminologyId" : {
+        "value" : "ISO_639-1"
+      },
+      "codeString" : "fr"
+    },
+    "author" : {
+      "name" : "Vanessa Pereira",
+      "organisation" : "Better - Pathfinder",
+      "email" : "vanessapereira@protonmail.com"
+    },
+    "otherDetails" : { }
+  }, {
+    "@type" : "TRANSLATION_DETAILS",
+    "language" : {
+      "terminologyId" : {
+        "value" : "ISO_639-1"
+      },
+      "codeString" : "es"
+    },
+    "author" : {
+      "name" : "Pablo Pazos",
+      "organisation" : "CaboLabs"
+    },
+    "accreditation" : "Computer Engineer",
+    "otherDetails" : { }
+  }, {
+    "@type" : "TRANSLATION_DETAILS",
+    "language" : {
+      "terminologyId" : {
+        "value" : "ISO_639-1"
+      },
+      "codeString" : "nl"
+    },
+    "author" : {
+      "name" : "Dennis Valk",
+      "organisation" : "Code24 BV",
+      "email" : "dennis.valk@code24.nl, dennis@code24.nl"
+    },
+    "accreditation" : "Code24 BV",
     "otherDetails" : { }
   } ]
 }
